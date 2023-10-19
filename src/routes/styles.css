@@ -36,6 +36,21 @@
 
 	--transition-length: 0.4s;
 
+	--max-full-width: '1920px';
+	--max-tablet-width: '1024px';
+	--max-limit-width: '1366px';
+	--max-width-extra-small: '575.98px';
+	--max-width-SMALL: '767.98px';
+	--max-width-MEDIUM: '991.98px';
+	--max-width-LARGE: '1199.98px';
+	--max-width-X_LARGE: '1366px';
+
+	--min-width-EXTRA_SMALL: '576px';
+	--min-width-SMALL: '768px';
+	--min-width-MEDIUM: '992px';
+	--min-width-LARGE: '1200px';
+	--min-width-X_LARGE: '1367px';
+
 	transition: color var(--transition-length) linear;
 	-webkit-transition: var(--transition-length);
 }
