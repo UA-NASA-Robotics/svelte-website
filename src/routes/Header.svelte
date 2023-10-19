@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
+	import { onMount } from 'svelte';
 
 	const Themes = {
 		Light: 'Light',
@@ -13,9 +14,34 @@
 
 	function changeTheme() {
 		theme = theme == Themes.Light ? Themes.Dark : Themes.Light;
+		localStorage.setItem('theme', theme);
+		updateTheme();
+	}
+
+	function updateTheme() {
 		if (theme === 'Dark') window.document.body.classList.add('dark');
 		else window.document.body.classList.remove('dark');
 	}
+
+	function isTheme(theme: unknown): theme is Theme {
+		for (const themeType of Object.keys(Themes)) {
+			if (theme == themeType) return true;
+		}
+
+		return false;
+	}
+
+	onMount(() => {
+		const value = localStorage.getItem('theme');
+
+		if (isTheme(value)) {
+			theme = value;
+		} else {
+			theme = Themes.Light;
+		}
+
+		updateTheme();
+	});
 </script>
 
 <header>
@@ -70,7 +96,7 @@
 	<div class="switch-container">
 		<p>{theme}</p>
 		<label class="switch">
-			<input type="checkbox" on:change={changeTheme} value={theme === Themes.Dark} />
+			<input type="checkbox" on:change={changeTheme} checked={theme === Themes.Dark} />
 			<span class="slider round" />
 		</label>
 	</div>
