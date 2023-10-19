@@ -16,6 +16,7 @@
 	color: var(--color-text);
 
 	--ua-dark-blue: #041e42;
+	--ua-dark-grey: rgb(29, 36, 50);
 	--ua-blue: #004c9d;
 	--ua-gold: #a89968;
 	--ua-cream: #fff7e9;
@@ -28,6 +29,7 @@
 
 	--dark-bg-primary: var(--ua-dark-blue);
 	--dark-bg-secondary: var(--ua-blue);
+	--dark-bg-tertiary: var(--ua-dark-grey);
 	--dark-txt-primary: #ffffff;
 	--dark-txt-secondary: #eeeeee;
 	--dark-accent: #a89968;
@@ -42,24 +44,34 @@ body {
 	min-height: 100vh;
 	margin: 0;
 	background-attachment: fixed;
-	background-color: var(--color-bg-1);
+	background-color: var(--light-bg-primary);
 	background-size: 100vw 100vh;
-	background-image: radial-gradient(
+	transition: color var(--transition-length) linear;
+	-webkit-transition: var(--transition-length);
+	/*background-image: radial-gradient(
 			50% 50% at 50% 50%,
 			rgba(255, 255, 255, 0.75) 0%,
 			rgba(255, 255, 255, 0) 100%
 		),
-		linear-gradient(180deg, var(--color-bg-0) 0%, var(--color-bg-1) 15%, var(--color-bg-2) 50%);
+		linear-gradient(180deg, var(--color-bg-0) 0%, var(--color-bg-1) 15%, var(--color-bg-2) 50%);*/
 }
 
 h1,
 h2,
 p {
 	font-weight: 400;
+	color: var(--light-txt-primary);
+	transition: color var(--transition-length) linear;
+	-webkit-transition: var(--transition-length);
 }
 
 p {
 	line-height: 1.5;
+}
+
+
+:global(body.dark) h1 {
+	color: var(--dark-txt-primary);
 }
 
 a {

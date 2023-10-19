@@ -86,13 +86,13 @@
 	header {
 		display: flex;
 		justify-content: space-between;
-		background-color: var(--light-bg-primary);
+		background-color: var(--light-bg-secondary);
 		transition: color var(--transition-length) linear;
 		-webkit-transition: var(--transition-length);
 	}
 
 	:global(body.dark) header {
-		background-color: var(--dark-bg-primary);
+		background-color: var(--dark-bg-tertiary);
 	}
 
 	nav {
