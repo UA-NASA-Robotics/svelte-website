@@ -7,13 +7,14 @@
 	const HeaderBackgroundImageUpdate = () => {
 	let currentUrl = window.location.href.split('/'); //split the url at the slashes
 	let headerImgLink = currentUrl[currentUrl.length - 1]; //get the last item in the array the base page name
+	headerImgLink = headerImgLink.split('?')[0]; //remove any query params
 	if (headerImgLink == '') { //fix / index page
 		headerImgLink = 'home';
 	}
 	let headerImgLinkPath = '/src/lib/images/' + headerImgLink + '.jpg'; //create the path to the image
 
 	const header = document.querySelector('header'); //get the header element
-    header.style.backgroundImage = 'url(' + headerImgLinkPath + ')'; //set the background image
+	if (header) header.style.backgroundImage = 'url(' + headerImgLinkPath + ')'; //set the background image
 	};
 
 	onMount(() => {
