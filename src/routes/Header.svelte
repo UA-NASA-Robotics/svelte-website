@@ -1,6 +1,30 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import { onMount } from 'svelte';
+	import { onNavigate } from '$app/navigation';
+
+	//Header Background Img Load
+	const HeaderBackgroundImageUpdate = () => {
+	let currentUrl = window.location.href.split('/'); //split the url at the slashes
+	let headerImgLink = currentUrl[currentUrl.length - 1]; //get the last item in the array the base page name
+	headerImgLink = headerImgLink.split('?')[0]; //remove any query params
+	if (headerImgLink == '') { //fix / index page
+		headerImgLink = 'home';
+	}
+	let headerImgLinkPath = '/src/lib/images/' + headerImgLink + '.jpg'; //create the path to the image
+
+	const header = document.querySelector('header'); //get the header element
+	if (header) header.style.backgroundImage = 'url(' + headerImgLinkPath + ')'; //set the background image
+	};
+
+	onMount(() => {
+		HeaderBackgroundImageUpdate();
+	});
+	onNavigate(() => {
+		HeaderBackgroundImageUpdate();
+	});
+	//--------
+
 
 	const Themes = {
 		Light: 'Light',
@@ -112,14 +136,19 @@
 	header {
 		display: flex;
 		justify-content: space-between;
-		background-color: var(--light-bg-primary);
+		/*background-color: var(--light-bg-secondary);
 		transition: color var(--transition-length) linear;
-		-webkit-transition: var(--transition-length);
+		-webkit-transition: var(--transition-length);*/
+
+		background-image: ''; /*set by js on mount or navigate*/
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+		height: 300px;
+		background-position: center;
+		box-shadow: inset 0 0 0 1000px rgba(25, 44, 139, 0.559);
 	}
 
-	:global(body.dark) header {
-		background-color: var(--dark-bg-primary);
-	}
 
 	nav {
 		display: flex;
@@ -158,7 +187,7 @@
 	}
 
 	p {
-		color: var(--light-txt-primary);
+		color: var(--dark-txt-primary);
 		font-weight: 700;
 		font-size: 0.8rem;
 		text-transform: uppercase;
@@ -177,7 +206,7 @@
 		height: 100%;
 		align-items: center;
 		padding: 0 0.5rem;
-		color: var(--light-txt-primary);
+		color: var(--dark-txt-primary);
 		font-weight: 700;
 		font-size: 0.8rem;
 		text-transform: uppercase;
@@ -187,9 +216,6 @@
 		-webkit-transition: var(--transition-length);
 	}
 
-	:global(body.dark) nav a {
-		color: var(--dark-txt-primary);
-	}
 
 	a:hover {
 		color: var(--light-accent);
@@ -203,11 +229,13 @@
 
 	a[aria-current='page'] {
 		background-color: var(--light-bg-secondary);
+		color: var(--light-txt-secondary);
 		transition: color var(--transition-length) linear;
 		-webkit-transition: var(--transition-length);
 	}
 
 	:global(body.dark) a[aria-current='page'] {
+		color: var(--dark-txt-secondary);
 		background-color: var(--dark-bg-secondary);
 	}
 

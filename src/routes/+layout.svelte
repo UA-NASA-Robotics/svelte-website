@@ -37,6 +37,13 @@
 		display: flex;
 		flex-direction: column;
 		min-height: 100vh;
+		background-color: var(--light-bg-primary);
+		transition: color var(--transition-length) linear;
+		-webkit-transition: var(--transition-length);
+	}
+
+	:global(body.dark) .app {
+	background-color: var(--dark-bg-primary);
 	}
 
 	main {
