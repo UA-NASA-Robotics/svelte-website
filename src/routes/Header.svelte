@@ -3,28 +3,58 @@
 	import { onMount } from 'svelte';
 	import { onNavigate } from '$app/navigation';
 
-	//Header Background Img Load
-	const HeaderBackgroundImageUpdate = () => {
-	let currentUrl = window.location.href.split('/'); //split the url at the slashes
-	let headerImgLink = currentUrl[currentUrl.length - 1]; //get the last item in the array the base page name
-	headerImgLink = headerImgLink.split('?')[0]; //remove any query params
-	if (headerImgLink == '') { //fix / index page
-		headerImgLink = 'home';
-	}
-	let headerImgLinkPath = '/src/lib/images/' + headerImgLink + '.jpg'; //create the path to the image
-
-	const header = document.querySelector('header'); //get the header element
-	if (header) header.style.backgroundImage = 'url(' + headerImgLinkPath + ')'; //set the background image
+	type Route = {
+		name: string;
+		route: string;
 	};
 
-	onMount(() => {
-		HeaderBackgroundImageUpdate();
-	});
-	onNavigate(() => {
-		HeaderBackgroundImageUpdate();
-	});
-	//--------
+	type HeaderRoute = Route & {
+		imgSrc: string;
+		subroutes?: Route[];
+	};
 
+	const routes: HeaderRoute[] = [
+		{
+			name: 'Home',
+			route: '/',
+			imgSrc: ''
+		},
+		{
+			name: 'Competition',
+			route: '/competition',
+			imgSrc: ''
+		},
+		{
+			name: 'History',
+			route: '/sverdle',
+			imgSrc: ''
+		},
+		{
+			name: 'New Members',
+			route: '/new-members',
+			imgSrc: ''
+		},
+		{
+			name: 'Sponsors',
+			route: '/sponsors',
+			imgSrc: ''
+		},
+		{
+			name: 'Outreach',
+			route: '/outreach',
+			imgSrc: ''
+		},
+		{
+			name: 'Officers',
+			route: '/officers',
+			imgSrc: ''
+		},
+		{
+			name: 'Contact Us',
+			route: '/contact-us',
+			imgSrc: ''
+		}
+	];
 
 	const Themes = {
 		Light: 'Light',
@@ -55,7 +85,24 @@
 		return false;
 	}
 
+	//Header Background Img Load
+	function headerBackgroundImageUpdate() {
+		let currentUrl = window.location.href.split('/'); //split the url at the slashes
+		let headerImgLink = currentUrl[currentUrl.length - 1]; //get the last item in the array the base page name
+		headerImgLink = headerImgLink.split('?')[0]; //remove any query params
+		if (headerImgLink == '') {
+			//fix / index page
+			headerImgLink = 'home';
+		}
+		let headerImgLinkPath = '/src/lib/images/' + headerImgLink + '.jpg'; //create the path to the image
+
+		const header = document.querySelector('header'); //get the header element
+		if (header) header.style.backgroundImage = 'url(' + headerImgLinkPath + ')'; //set the background image
+	}
+
 	onMount(() => {
+		headerBackgroundImageUpdate();
+
 		const value = localStorage.getItem('theme');
 
 		if (isTheme(value)) {
@@ -66,55 +113,25 @@
 
 		updateTheme();
 	});
+
+	onNavigate(() => {
+		headerBackgroundImageUpdate();
+	});
 </script>
 
 <header>
-	<!-- <div class="corner">
-		<a href="https://kit.svelte.dev">
-			<img src={logo} alt="SvelteKit" />
-		</a>
-	</div> -->
-
-	<img src="https://uanasarobotics.org/Images/Logo.png" />
+	<img src="/src/lib/images/Logo.png" />
 
 	<nav>
-		<!-- <svg viewBox="0 0 2 3" aria-hidden="true">
-			<path d="M0,0 L1,2 C1.5,3 1.5,3 2,3 L2,0 Z" />
-		</svg> -->
 		<ul>
-			<li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
-				<a href="/" aria-current={$page.url.pathname === '/' ? 'page' : undefined}>Home</a>
-			</li>
-			<li aria-current={$page.url.pathname === '/about' ? 'page' : undefined}>
-				<a href="/about" aria-current={$page.url.pathname === '/about' ? 'page' : undefined}
-					>Competition</a
-				>
-			</li>
-			<li aria-current={$page.url.pathname.startsWith('/sverdle') ? 'page' : undefined}>
-				<a
-					href="/sverdle"
-					aria-current={$page.url.pathname.startsWith('/sverdle') ? 'page' : undefined}>History</a
-				>
-			</li>
-			<li>
-				<a>New Members</a>
-			</li>
-			<li>
-				<a>Sponsers</a>
-			</li>
-			<li>
-				<a>Outreach</a>
-			</li>
-			<li>
-				<a>Officers</a>
-			</li>
-			<li>
-				<a>Contact Us</a>
-			</li>
+			{#each routes as { name, route }}
+				<li aria-current={$page.url.pathname === route ? 'page' : undefined}>
+					<a href={route} aria-current={$page.url.pathname === route ? 'page' : undefined}>
+						{name}
+					</a>
+				</li>
+			{/each}
 		</ul>
-		<!-- <svg viewBox="0 0 2 3" aria-hidden="true">
-			<path d="M0,0 L0,3 C0.5,3 0.5,3 1,2 L2,0 Z" />
-		</svg> -->
 	</nav>
 
 	<div class="switch-container">
@@ -124,21 +141,15 @@
 			<span class="slider round" />
 		</label>
 	</div>
-
-	<!-- <div class="corner">
-		<a href="https://github.com/sveltejs/kit">
-			<img src={github} alt="GitHub" />
-		</a>
-	</div> -->
 </header>
 
 <style>
 	header {
 		display: flex;
 		justify-content: space-between;
-		/*background-color: var(--light-bg-secondary);
-		transition: color var(--transition-length) linear;
-		-webkit-transition: var(--transition-length);*/
+		/* background-color: var(--light-bg-secondary); */
+		/* transition: color var(--transition-length) ease-in-out; */
+		-webkit-transition: var(--transition-length);
 
 		background-image: ''; /*set by js on mount or navigate*/
 		background-size: cover;
@@ -148,7 +159,6 @@
 		background-position: center;
 		box-shadow: inset 0 0 0 1000px rgba(25, 44, 139, 0.559);
 	}
-
 
 	nav {
 		display: flex;
@@ -215,7 +225,6 @@
 		transition: color var(--transition-length) linear;
 		-webkit-transition: var(--transition-length);
 	}
-
 
 	a:hover {
 		color: var(--light-accent);
