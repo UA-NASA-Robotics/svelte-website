@@ -80,12 +80,13 @@ p {
 	-webkit-transition: var(--transition-length);
 }
 
+body.dark h1, body.dark h2, body.dark p {
+	color: var(--dark-txt-primary);
+}
+
 p {
 	line-height: 1.5;
 }
-
-
-
 
 a {
 	color: var(--color-theme-1);
@@ -99,15 +100,13 @@ a:hover {
 h1 {
 	font-size: 2rem;
 	text-align: center;
+
 }
 
 h2 {
 	font-size: 1rem;
 }
 
-:global(body.dark) h2 {
-	color: var(--dark-txt-primary);
-}
 
 pre {
 	font-size: 16px;
