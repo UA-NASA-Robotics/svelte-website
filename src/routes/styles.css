@@ -85,9 +85,7 @@ p {
 }
 
 
-:global(body.dark) h1 {
-	color: var(--dark-txt-primary);
-}
+
 
 a {
 	color: var(--color-theme-1);
@@ -105,6 +103,10 @@ h1 {
 
 h2 {
 	font-size: 1rem;
+}
+
+:global(body.dark) h2 {
+	color: var(--dark-txt-primary);
 }
 
 pre {
