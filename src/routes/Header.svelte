@@ -97,10 +97,10 @@
 				>
 			</li>
 			<li>
-				<a>New Members</a>
+				<a>New Members   </a>
 			</li>
 			<li>
-				<a>Sponsers</a>
+				<a>ll (°)  (°)</a>
 			</li>
 			<li>
 				<a>Outreach</a>
@@ -136,9 +136,9 @@
 	header {
 		display: flex;
 		justify-content: space-between;
-		/*background-color: var(--light-bg-secondary);
+		background-color: var(--light-bg-secondary);
 		transition: color var(--transition-length) linear;
-		-webkit-transition: var(--transition-length);*/
+		-webkit-transition: var(--transition-length);
 
 		background-image: ''; /*set by js on mount or navigate*/
 		background-size: cover;
@@ -149,6 +149,9 @@
 		box-shadow: inset 0 0 0 1000px rgba(25, 44, 139, 0.559);
 	}
 
+	:global(body.dark) header {
+		background-color: var(--dark-bg-secondary);
+	}
 
 	nav {
 		display: flex;
@@ -214,6 +217,7 @@
 		text-decoration: none;
 		transition: color var(--transition-length) linear;
 		-webkit-transition: var(--transition-length);
+		border-radius: 5px;
 	}
 
 
