@@ -87,30 +87,45 @@
 				<a href="/" aria-current={$page.url.pathname === '/' ? 'page' : undefined}>Home</a>
 			</li>
 			<li aria-current={$page.url.pathname === '/about-competition' ? 'page' : undefined}>
-				<a href="/about-competition" aria-current={$page.url.pathname === '/about' ? 'page' : undefined}
+				<a href="/about-competition" aria-current={$page.url.pathname === '/about-competition' ? 'page' : undefined}
 					>Competition</a
 				>
 			</li>
-			<li aria-current={$page.url.pathname.startsWith('/sverdle') ? 'page' : undefined}>
+			<li aria-current={$page.url.pathname.startsWith('/our-history') ? 'page' : undefined}>
 				<a
-					href="/sverdle"
-					aria-current={$page.url.pathname.startsWith('/sverdle') ? 'page' : undefined}>History</a
+					href="/our-history"
+					aria-current={$page.url.pathname.startsWith('/our-history') ? 'page' : undefined}>History</a
 				>
 			</li>
-			<li>
-				<a>New Members   </a>
+			<li aria-current={$page.url.pathname.startsWith('/new-members') ? 'page' : undefined}>
+				<a
+					href="/new-members"
+					aria-current={$page.url.pathname.startsWith('/new-members') ? 'page' : undefined}>New Members</a
+				>
 			</li>
-			<li>
-				<a>Sponsors</a>
+			<li aria-current={$page.url.pathname.startsWith('/sponsors') ? 'page' : undefined}>
+				<a
+					href="/sponsors"
+					aria-current={$page.url.pathname.startsWith('/sponsors') ? 'page' : undefined}>Sponsors</a
+				>
 			</li>
-			<li>
-				<a>Outreach</a>
+			<li aria-current={$page.url.pathname.startsWith('/outreach') ? 'page' : undefined}>
+				<a
+					href="/outreach"
+					aria-current={$page.url.pathname.startsWith('/outreach') ? 'page' : undefined}>Outreach</a
+				>
 			</li>
-			<li>
-				<a>Officers</a>
+			<li aria-current={$page.url.pathname.startsWith('/officers') ? 'page' : undefined}>
+				<a
+					href="/officers"
+					aria-current={$page.url.pathname.startsWith('/officers') ? 'page' : undefined}>Officers</a
+				>
 			</li>
-			<li>
-				<a>Contact Us</a>
+			<li aria-current={$page.url.pathname.startsWith('/contact-us') ? 'page' : undefined}>
+				<a
+					href="/contact-us"
+					aria-current={$page.url.pathname.startsWith('/contact-us') ? 'page' : undefined}>Contact Us</a
+				>
 			</li>
 		</ul>
 		<!-- <svg viewBox="0 0 2 3" aria-hidden="true">
