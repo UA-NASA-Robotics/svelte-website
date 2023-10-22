@@ -74,8 +74,9 @@
 			<img src={logo} alt="SvelteKit" />
 		</a>
 	</div> -->
+	<div class="baseContainer">
 
-	<img src="https://uanasarobotics.org/Images/Logo.png" />
+	<img src="https://uanasarobotics.org/Images/Logo.png" alt="logo"/>
 
 	<nav>
 		<!-- <svg viewBox="0 0 2 3" aria-hidden="true">
@@ -85,8 +86,8 @@
 			<li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
 				<a href="/" aria-current={$page.url.pathname === '/' ? 'page' : undefined}>Home</a>
 			</li>
-			<li aria-current={$page.url.pathname === '/about' ? 'page' : undefined}>
-				<a href="/about" aria-current={$page.url.pathname === '/about' ? 'page' : undefined}
+			<li aria-current={$page.url.pathname === '/about-competition' ? 'page' : undefined}>
+				<a href="/about-competition" aria-current={$page.url.pathname === '/about' ? 'page' : undefined}
 					>Competition</a
 				>
 			</li>
@@ -100,7 +101,7 @@
 				<a>New Members   </a>
 			</li>
 			<li>
-				<a>ll (°)  (°)</a>
+				<a>Sponsors</a>
 			</li>
 			<li>
 				<a>Outreach</a>
@@ -124,6 +125,7 @@
 			<span class="slider round" />
 		</label>
 	</div>
+</div>
 
 	<!-- <div class="corner">
 		<a href="https://github.com/sveltejs/kit">
@@ -134,8 +136,9 @@
 
 <style>
 	header {
-		display: flex;
-		justify-content: space-between;
+		/*display: flex;
+		justify-content: space-between;*/
+		position: relative;
 		background-color: var(--light-bg-secondary);
 		transition: color var(--transition-length) linear;
 		-webkit-transition: var(--transition-length);
@@ -153,11 +156,20 @@
 		background-color: var(--dark-bg-secondary);
 	}
 
+	.baseContainer{
+		display: flex;
+		justify-content: space-between;
+		width: 100%;
+		position: absolute;
+		bottom: 0;
+	}
+
 	nav {
 		display: flex;
 		justify-content: center;
 		flex: 1;
 		align-self: center;
+		position: relative;
 	}
 
 	ul {
