@@ -102,7 +102,7 @@
 	footer div a img {
 		width: 30px;
 	}
-
+  
 	@media (min-width: 480px) {
 		footer {
 			padding: 12px 0;
