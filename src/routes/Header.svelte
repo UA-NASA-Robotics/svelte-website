@@ -21,12 +21,12 @@
 		},
 		{
 			name: 'Competition',
-			route: '/competition',
+			route: '/about-competition',
 			imgSrc: ''
 		},
 		{
 			name: 'History',
-			route: '/sverdle',
+			route: '/our-history',
 			imgSrc: ''
 		},
 		{
@@ -120,6 +120,7 @@
 </script>
 
 <header>
+	<div class="baseContainer">
 	<img src="/src/lib/images/Logo.png" />
 
 	<nav>
@@ -131,6 +132,7 @@
 					</a>
 				</li>
 			{/each}
+
 		</ul>
 	</nav>
 
@@ -141,14 +143,18 @@
 			<span class="slider round" />
 		</label>
 	</div>
+	</div>
 </header>
 
 <style>
 	header {
-		display: flex;
-		justify-content: space-between;
-		/* background-color: var(--light-bg-secondary); */
-		/* transition: color var(--transition-length) ease-in-out; */
+
+		/*display: flex;
+		justify-content: space-between;*/
+		position: relative;
+		background-color: var(--light-bg-secondary);
+		transition: color var(--transition-length) linear;
+
 		-webkit-transition: var(--transition-length);
 
 		background-image: ''; /*set by js on mount or navigate*/
@@ -160,11 +166,24 @@
 		box-shadow: inset 0 0 0 1000px rgba(25, 44, 139, 0.559);
 	}
 
+	:global(body.dark) header {
+		background-color: var(--dark-bg-secondary);
+	}
+
+	.baseContainer{
+		display: flex;
+		justify-content: space-between;
+		width: 100%;
+		position: absolute;
+		bottom: 0;
+	}
+
 	nav {
 		display: flex;
 		justify-content: center;
 		flex: 1;
 		align-self: center;
+		position: relative;
 	}
 
 	ul {
@@ -224,6 +243,7 @@
 		text-decoration: none;
 		transition: color var(--transition-length) linear;
 		-webkit-transition: var(--transition-length);
+		border-radius: 5px;
 	}
 
 	a:hover {

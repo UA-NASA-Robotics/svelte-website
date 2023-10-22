@@ -1,9 +1,9 @@
-<script lang="ts">
-</script>
+<svelte:head>
+	<title>Contact Us</title>
+	<meta name="description" content="Get in touch with us..." />
+</svelte:head>
 
-<div>
-	<p>Contact us</p>
+<div class="text-column">
+	<p> make contact form appear here</p>
 </div>
 
-<style>
-</style>
