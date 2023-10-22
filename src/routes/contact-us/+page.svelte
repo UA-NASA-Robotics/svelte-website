@@ -6,3 +6,4 @@
 <div class="text-column">
 	<p> make contact form appear here</p>
 </div>
+
