@@ -21,12 +21,12 @@
 		},
 		{
 			name: 'Competition',
-			route: '/competition',
+			route: '/about-competition',
 			imgSrc: ''
 		},
 		{
 			name: 'History',
-			route: '/sverdle',
+			route: '/our-history',
 			imgSrc: ''
 		},
 		{
@@ -120,8 +120,8 @@
 </script>
 
 <header>
+	<div class="baseContainer">
 	<img src="/src/lib/images/Logo.png" />
-
 
 	<nav>
 		<ul>
@@ -142,6 +142,7 @@
 			<input type="checkbox" on:change={changeTheme} checked={theme === Themes.Dark} />
 			<span class="slider round" />
 		</label>
+	</div>
 	</div>
 </header>
 
