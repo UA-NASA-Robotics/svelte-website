@@ -121,7 +121,7 @@
 
 <header>
 	<div class="baseContainer">
-	<img src="/src/lib/images/Logo.png" />
+	<img src="/src/lib/images/Logo.png" alt="logo" />
 
 	<nav>
 		<ul>
