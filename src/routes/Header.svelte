@@ -159,7 +159,7 @@
 		background-size: cover;
 		background-repeat: no-repeat;
 		background-attachment: fixed;
-		height: 300px;
+		height: 150px;
 		background-position: center;
 		box-shadow: inset 0 0 0 1000px rgba(25, 44, 139, 0.559);
 	}
@@ -173,7 +173,7 @@
 		justify-content: space-between;
 		width: 100%;
 		position: absolute;
-		bottom: 0;
+		top: 0;
 	}
 
 	nav {
