@@ -242,6 +242,7 @@
 		transition: color var(--transition-length) linear;
 		-webkit-transition: var(--transition-length);
 		border-radius: 5px;
+		font-family: var(--title-font);
 	}
 
 	a:hover {
