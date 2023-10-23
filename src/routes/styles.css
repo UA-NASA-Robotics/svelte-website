@@ -158,3 +158,42 @@ button:focus:not(:focus-visible) {
 	width: 1px;
 	white-space: nowrap;
 }
+
+.thirds{ /* A third of the width for columns*/
+  flex: 1;
+  flex-direction: column;
+  width: 30%;
+  float: left;
+  border: 2px solid var(--light-bg-primary);
+  border-radius: 5px;
+  background-color: var(--light-bg-primary);
+  transition: background-color var(--transition-length) linear;
+  -webkit-transition: var(--transition-length);
+  padding: 1%;
+}
+
+body.dark .thirds{
+	background-color: var(--dark-bg-primary);
+	border: 2px solid var(--dark-bg-primary);
+}
+
+.thirds:hover{
+	border: 2px solid var(--ua-dark-grey);
+}
+
+body.dark .thirds:hover{
+	border: 2px solid var(--ua-gold);
+}
+
+@media screen and (max-width: 900px) {
+  .thirds {
+	width: 100%;
+	margin-top: 0;
+	flex:1;
+  }
+	
+}
+
+.flex-columns{
+	display: flex;
+}
