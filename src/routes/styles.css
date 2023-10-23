@@ -160,6 +160,8 @@ button:focus:not(:focus-visible) {
 }
 
 .thirds{ /* A third of the width for columns*/
+  flex: 1;
+  flex-direction: column;
   width: 30%;
   float: left;
   border: 2px solid var(--light-bg-primary);
@@ -187,12 +189,11 @@ body.dark .thirds:hover{
   .thirds {
 	width: 100%;
 	margin-top: 0;
+	flex:1;
   }
 	
 }
 
-.columns{
+.flex-columns{
 	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
 }
