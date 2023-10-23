@@ -121,34 +121,32 @@
 
 <header>
 	<div class="baseContainer">
-	<img src="/src/lib/images/Logo.png" alt="logo" />
+		<img src="/src/lib/images/Logo.png" alt="NASA RMC Logo" />
 
-	<nav>
-		<ul>
-			{#each routes as { name, route }}
-				<li aria-current={$page.url.pathname === route ? 'page' : undefined}>
-					<a href={route} aria-current={$page.url.pathname === route ? 'page' : undefined}>
-						{name}
-					</a>
-				</li>
-			{/each}
+		<nav>
+			<ul>
+				{#each routes as { name, route }}
+					<li aria-current={$page.url.pathname === route ? 'page' : undefined}>
+						<a href={route} aria-current={$page.url.pathname === route ? 'page' : undefined}>
+							{name}
+						</a>
+					</li>
+				{/each}
+			</ul>
+		</nav>
 
-		</ul>
-	</nav>
-
-	<div class="switch-container">
-		<p>{theme}</p>
-		<label class="switch">
-			<input type="checkbox" on:change={changeTheme} checked={theme === Themes.Dark} />
-			<span class="slider round" />
-		</label>
-	</div>
+		<div class="switch-container">
+			<p>{theme}</p>
+			<label class="switch">
+				<input type="checkbox" on:change={changeTheme} checked={theme === Themes.Dark} />
+				<span class="slider round" />
+			</label>
+		</div>
 	</div>
 </header>
 
 <style>
 	header {
-
 		/*display: flex;
 		justify-content: space-between;*/
 		position: relative;
@@ -170,7 +168,7 @@
 		background-color: var(--dark-bg-secondary);
 	}
 
-	.baseContainer{
+	.baseContainer {
 		display: flex;
 		justify-content: space-between;
 		width: 100%;
