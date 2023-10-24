@@ -53,6 +53,11 @@
 			name: 'Contact Us',
 			route: '/contact-us',
 			imgSrc: ''
+		},
+		{
+			name: 'Events',
+			route: '/events',
+			imgSrc: ''
 		}
 	];
 
