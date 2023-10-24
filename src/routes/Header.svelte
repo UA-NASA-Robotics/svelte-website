@@ -135,13 +135,15 @@
 			</ul>
 		</nav>
 
-		<div class="switch-container">
-			<p>{theme}</p>
-			<label class="switch">
-				<input type="checkbox" on:change={changeTheme} checked={theme === Themes.Dark} />
-				<span class="slider round" />
-			</label>
-		</div>
+		<label class="switch">
+			<input
+				type="checkbox"
+				on:change={changeTheme}
+				checked={theme === Themes.Dark}
+				class={theme == Themes.Light ? 'fa-solid fa-sun' : 'fa-solid fa-moon'}
+			/>
+			<span class="slider round" />
+		</label>
 	</div>
 </header>
 
@@ -273,14 +275,6 @@
 		margin: 5px;
 	}
 
-	.switch-container {
-		align-items: center;
-		margin: 20px;
-		align-self: center;
-		display: flex;
-		flex-direction: column;
-	}
-
 	.switch {
 		position: relative;
 		display: inline-block;
@@ -320,6 +314,15 @@
 		transition: var(--transition-length);
 	}
 
+	input + .slider {
+		align-items: center;
+		justify-content: center;
+		font-family: 'Font Awesome 5 Free';
+		content: '\f00c';
+		color: #000;
+		font-weight: 600;
+	}
+
 	input:checked + .slider {
 		background-color: var(--light-accent);
 		transition: color var(--transition-length) linear;
@@ -353,5 +356,14 @@
 
 	.slider.round:before {
 		border-radius: 50%;
+	}
+
+	i {
+		font-size: large;
+		color: var(--light-txt-primary);
+	}
+
+	:global(body.dark) i {
+		color: var(--dark-txt-primary);
 	}
 </style>
