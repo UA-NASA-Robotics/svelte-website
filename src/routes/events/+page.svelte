@@ -38,6 +38,9 @@
 		if (events == null) {
 			calender.innerHTML =
 				'<div class="eventCard"><p>There was an error loading the events. Please try again later.</p><br><a href="/events"><button onClick="window.location.reload();">Refresh</button></a></div>';
+		} else if (events.length == 0) {
+			calender.innerHTML =
+				'<div class="eventCard"><p>There are no upcoming events at this time.</p></div>';
 		} else {
 			calender.innerHTML = '';
 			for (let i = 0; i < events.length; i++) {
@@ -50,17 +53,23 @@
 				let date = new Date(parseInt(event.event_date) * 1000);
 				eventDate.innerText = date.toDateString() + ' ' + date.toLocaleTimeString();
 				let eventLocation = document.createElement('p');
-				eventLocation.innerText = event.event_description;
+				eventLocation.innerText = event.event_location;
 				let eventDescription = document.createElement('p');
-				if (event.event_required_attendance == '0') {
-					eventDescription.innerText = 'This event is not required for members to attend.';
+				eventDescription.innerText = event.event_description;
+				let eventAttendanceRequired = document.createElement('p');
+
+				if (event.event_required === '0') {
+					eventAttendanceRequired.innerHTML =
+						'<sub>This event is not required for members to attend.</sub>';
 				} else {
-					eventDescription.innerText = 'This event is required for members to attend.';
+					eventAttendanceRequired.innerHTML =
+						'<sub><b>This event is required for members to attend.</b></sub>';
 				}
 				eventDiv.appendChild(eventTitle);
 				eventDiv.appendChild(eventDate);
 				eventDiv.appendChild(eventLocation);
 				eventDiv.appendChild(eventDescription);
+				eventDiv.appendChild(eventAttendanceRequired);
 				calender.appendChild(eventDiv);
 			}
 		}
