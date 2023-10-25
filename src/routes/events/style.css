@@ -35,10 +35,11 @@ body.dark .eventCard:hover {
 	float: left;
 }
 
-.eventImgDiv {
+.eventImageDiv {
 	width: 49%;
 	flex: 1;
 	float: left;
+	display: flex;
 }
 
 .eventImg {
