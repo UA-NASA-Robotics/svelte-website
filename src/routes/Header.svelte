@@ -141,13 +141,14 @@
 		</nav>
 
 		<label class="switch">
-			<input
-				type="checkbox"
-				on:change={changeTheme}
-				checked={theme === Themes.Dark}
-				class={theme == Themes.Light ? 'fa-solid fa-sun' : 'fa-solid fa-moon'}
-			/>
-			<span class="slider round" />
+			<input type="checkbox" on:change={changeTheme} checked={theme === Themes.Dark} />
+			<span class="slider round">
+				<i
+					class={theme === Themes.Light
+						? 'theme-icon fa-solid fa-sun'
+						: 'theme-icon fa-solid fa-moon'}
+				/>
+			</span>
 		</label>
 	</div>
 </header>
@@ -285,6 +286,8 @@
 		display: inline-block;
 		width: 60px;
 		height: 34px;
+		align-self: center;
+		margin: 20px;
 	}
 
 	/* Hide default HTML checkbox */
@@ -302,12 +305,13 @@
 		left: 0;
 		right: 0;
 		bottom: 0;
-		background-color: var(--light-txt-secondary);
+		background-color: var(--light-bg-primary);
 		-webkit-transition: var(--transition-length);
 		transition: var(--transition-length);
+		display: flex;
 	}
 
-	.slider:before {
+	/* .slider:before {
 		position: absolute;
 		content: '';
 		height: 26px;
@@ -317,7 +321,7 @@
 		background-color: white;
 		-webkit-transition: var(--transition-length);
 		transition: var(--transition-length);
-	}
+	} */
 
 	input + .slider {
 		align-items: center;
@@ -329,7 +333,7 @@
 	}
 
 	input:checked + .slider {
-		background-color: var(--light-accent);
+		background-color: var(--dark-bg-primary);
 		transition: color var(--transition-length) linear;
 		-webkit-transition: var(--transition-length);
 	}
@@ -341,11 +345,11 @@
 	}
 
 	:global(body.dark) input:checked + .slider {
-		background-color: var(--dark-accent);
+		background-color: var(--dark-bg-primary);
 	}
 
 	:global(body.dark) input:focus + .slider {
-		box-shadow: 0 0 1px var(--dark-accent);
+		box-shadow: 0 0 1px var(--dark-bg-primary);
 	}
 
 	input:checked + .slider:before {
@@ -363,12 +367,20 @@
 		border-radius: 50%;
 	}
 
-	i {
+	.theme-icon {
 		font-size: large;
 		color: var(--light-txt-primary);
+		-webkit-transition: var(--transition-length);
+		transition: var(--transition-length);
+		-webkit-transform: translateX(-13px);
+		-ms-transform: translateX(-13px);
+		transform: translateX(-13px);
 	}
 
-	:global(body.dark) i {
+	:global(body.dark) .theme-icon {
+		-webkit-transform: translateX(13px);
+		-ms-transform: translateX(13px);
+		transform: translateX(13px);
 		color: var(--dark-txt-primary);
 	}
 </style>
