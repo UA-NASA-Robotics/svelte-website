@@ -1,5 +1,5 @@
 .eventCard {
-	width: 70%;
+	width: 90%;
 	border: 2px solid var(--light-bg-primary);
 	border-radius: 5px;
 	background-color: var(--ua-light-grey);
@@ -7,6 +7,8 @@
 	-webkit-transition: var(--transition-length);
 	padding: 1%;
 	margin-top: 5%;
+
+	display: flex;
 }
 
 body.dark .eventCard {
@@ -22,7 +24,37 @@ body.dark .eventCard:hover {
 	border: 2px solid var(--ua-gold);
 }
 
-.calender-content {
+.calenderContent {
 	width: 100%;
 	align-items: center;
+}
+
+.eventText {
+	width: 49%;
+	flex: 1;
+	float: left;
+}
+
+.eventImgDiv {
+	width: 49%;
+	flex: 1;
+	float: left;
+}
+
+.eventImg {
+	width: 100%;
+}
+
+.bar {
+	color: var(--light-txt-secondary);
+	background-color: var(--light-txt-secondary);
+	height: 2px;
+	border-width: 0px;
+	width: 80%;
+	margin: auto 0;
+}
+
+body.dark .bar {
+	color: var(--dark-txt-secondary);
+	background-color: var(--dark-txt-secondary);
 }
