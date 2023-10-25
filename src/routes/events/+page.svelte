@@ -41,7 +41,7 @@
 						<p>{event.event_location}</p>
 						<p>{event.event_description}</p>
 						<sub>
-							{#if event.event_required}
+							{#if event.event_required === '1'}
 								<b>This event is required for members to attend.</b>
 							{:else}
 								This event is not required for members to attend.
