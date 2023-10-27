@@ -23,7 +23,7 @@
 		Here is an live-updated calender of events Akron RMC Robotics will be attending. Come join us at
 		these events and meet the team!
 	</p>
-	<div class="calender-content">
+	<div class="calenderContent">
 		{#await promise}
 			<p>Loading...</p>
 		{:then events}
@@ -49,15 +49,17 @@
 							</p>
 							<p>{event.event_location}</p>
 							<p>{event.event_description}</p>
-							<p>
-								<sub>
-									{#if event.event_required === '1'}
-										<b>This event is required for members to attend.*</b>
-									{:else}
-										This event is not required for members to attend.*
-									{/if}
-								</sub>
-							</p>
+							<div class="attendanceMessage">
+								<p>
+									<sub>
+										{#if event.event_required === '1'}
+											<b>This event is required for members to attend.*</b>
+										{:else}
+											This event is not required for members to attend.*
+										{/if}
+									</sub>
+								</p>
+							</div>
 						</div>
 					</div>
 				{/each}

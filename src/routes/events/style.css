@@ -8,8 +8,6 @@
 	padding: 1%;
 	margin-top: 5%;
 	float: left;
-	flex: 1;
-	flex-direction: column;
 }
 
 body.dark .eventCard {
@@ -27,8 +25,9 @@ body.dark .eventCard:hover {
 
 .calenderContent {
 	width: 100%;
-	align-items: center;
 	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
 }
 
 .eventText {
