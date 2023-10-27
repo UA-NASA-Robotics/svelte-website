@@ -1,0 +1,30 @@
+[
+	{
+		"name": "James Nestor",
+		"image": "/src/lib/images/officers/placeholder1.jpg",
+		"team_title": "Software Lead",
+		"degree": ["Computer Science", "Applied Mathematics", "Bio-informatics", "Statistics2"],
+		"biography": "James is a senior at the University of California, San Diego, pursuing a B.S. in Computer Science with a minor in Applied Mathematics. He is interested in the intersection of computer science and biology, and is currently working on a project to predict the effects of mutations on protein structure. In his free time, James enjoys playing the piano, reading, and playing video games."
+	},
+	{
+		"name": "Johnathan Daus",
+		"image": "/src/lib/images/officers/placeholder2.jpg",
+		"team_title": "Team Treasurer",
+		"degree": ["Paleontology"],
+		"biography": "Johnathan is a senior at the University of California, San Diego, pursuing a B.S. in Paleontology. He is interested in the intersection of paleontology and biology, and is currently working on a project to predict the effects of mutations on protein structure. In his free time, Johnathan enjoys playing the piano, reading, and playing video games."
+	},
+	{
+		"name": "Brandon McCune",
+		"image": "/src/lib/images/officers/placeholder4.jpg",
+		"team_title": "Project Manager",
+		"degree": ["Mayonnaise Development"],
+		"biography": "Brandon is a senior at the University of California, San Diego, pursuing a B.S. in Mayonnaise Development. He is interested in the intersection of mayonnaise and biology, and is currently working on a project to predict the effects of mutations on protein structure. In his free time, Brandon enjoys playing the piano, reading, and playing video games."
+	},
+	{
+		"name": "Faith Stewart",
+		"image": "/src/lib/images/officers/placeholder3.jpg",
+		"team_title": "Electrical Officer",
+		"degree": ["Electrical Engineering"],
+		"biography": "Faith is a senior at the University of California, San Diego, pursuing a B.S. in Electrical Engineering. She is interested in the intersection of electrical engineering and biology, and is currently working on a project to predict the effects of mutations on protein structure. In her free time, Faith enjoys playing the piano, reading, and playing video games."
+	}
+]

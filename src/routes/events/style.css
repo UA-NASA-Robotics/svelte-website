@@ -1,5 +1,5 @@
 .eventCard {
-	width: 90%;
+	width: 47%;
 	border: 2px solid var(--light-bg-primary);
 	border-radius: 5px;
 	background-color: var(--ua-light-grey);
@@ -7,12 +7,13 @@
 	-webkit-transition: var(--transition-length);
 	padding: 1%;
 	margin-top: 5%;
-
-	display: flex;
+	float: left;
+	flex: 1;
+	flex-direction: column;
 }
 
 body.dark .eventCard {
-	/*background-color: var(--dark-bg-primary);*/
+	background-color: var(--ua-dark-grey);
 	border: 2px solid var(--dark-bg-primary);
 }
 
@@ -27,23 +28,26 @@ body.dark .eventCard:hover {
 .calenderContent {
 	width: 100%;
 	align-items: center;
+	display: flex;
 }
 
 .eventText {
-	width: 49%;
-	flex: 1;
-	float: left;
+	width: 100%;
+	margin-top: 20px;
 }
 
 .eventImageDiv {
-	width: 49%;
-	flex: 1;
-	float: left;
-	display: flex;
+	width: 100%;
 }
 
 .eventImg {
 	width: 100%;
+}
+
+@media (max-width: 900px) {
+	.eventCard {
+		width: 100%;
+	}
 }
 
 .bar {
@@ -56,6 +60,11 @@ body.dark .eventCard:hover {
 }
 
 body.dark .bar {
-	color: var(--dark-txt-secondary);
-	background-color: var(--dark-txt-secondary);
+	color: var(--dark-txt-primary);
+	background-color: var(--dark-accent);
+}
+
+.asteriskCard {
+	width: 100%;
+	float: left;
 }
