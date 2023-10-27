@@ -1,0 +1,119 @@
+.officerCard {
+	width: 100%;
+	border: 2px solid var(--light-bg-primary);
+	border-radius: 5px;
+	background-color: var(--ua-light-grey);
+	transition: background-color var(--transition-length) linear;
+	-webkit-transition: var(--transition-length);
+	padding: 1%;
+	margin-top: 5%;
+	float: left;
+	flex: 1;
+	flex-direction: column;
+}
+
+body.dark .officerCard {
+	background-color: var(--ua-dark-grey);
+	border: 2px solid var(--dark-bg-primary);
+}
+
+.officerCard:hover {
+	border: 2px solid var(--ua-dark-grey);
+}
+
+body.dark .officerCard:hover {
+	border: 2px solid var(--ua-gold);
+}
+
+.officerContent {
+	width: 100%;
+	align-items: center;
+	display: flex;
+}
+
+.officerText {
+	width: 49%;
+	margin-top: 20px;
+	float: left;
+}
+
+.officerImageDiv {
+	width: 47%;
+	float: left;
+	margin-right: 20px;
+}
+
+.officerImg {
+	width: 100%;
+}
+
+@media (max-width: 900px) {
+	.officerText {
+		width: 100%;
+	}
+	.officerImageDiv {
+		width: 100%;
+	}
+}
+
+.bar {
+	color: var(--light-txt-secondary);
+	background-color: var(--light-txt-secondary);
+	height: 2px;
+	border-width: 0px;
+	width: 80%;
+	margin: auto 0;
+}
+
+body.dark .bar {
+	color: var(--dark-txt-primary);
+	background-color: var(--dark-accent);
+}
+
+.degreeTokenDiv {
+	width: 100%;
+	margin-top: 15px;
+	margin-bottom: 20px;
+	float: left;
+}
+
+.degreeToken {
+	background-color: var(--ua-dark-grey);
+	border: 2px solid var(--ua-dark-grey);
+	border-radius: 5px;
+	float: left;
+	height: 20px;
+	margin-right: 5px;
+	margin-top: 5px;
+	align-items: center;
+	text-align: center;
+	padding: 0px;
+	transition: background-color var(--transition-length) linear;
+	-webkit-transition: var(--transition-length);
+}
+
+.degreeToken:hover {
+	border: 2px solid var(--ua-blue);
+}
+
+body.dark .degreeToken {
+	background-color: var(--ua-light-grey);
+}
+
+body.dark .degreeToken:hover {
+	border: 2px solid var(--ua-gold);
+}
+
+.degreeTokenText {
+	color: var(--dark-txt-primary);
+	text-align: center;
+	font-size: 75%;
+	margin-left: 2px;
+	margin-right: 2px;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+body.dark .degreeTokenText {
+	color: var(--light-txt-secondary);
+}
