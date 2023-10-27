@@ -3,7 +3,17 @@
 		"name": "James Nestor",
 		"image": "/src/lib/images/officers/placeholder1.jpg",
 		"team_title": "Software Lead",
-		"degree": ["Computer Science", "Applied Mathematics", "Bio-informatics", "Statistics2"],
+		"degree": [
+			"Computer Science",
+			"Applied Mathematics",
+			"Bio-informatics",
+			"Statistics2",
+			"Computer Engineering",
+			"Very Large Scale Integration",
+			"Paleontology",
+			"Lawn care",
+			"Tax Evasion Specialty"
+		],
 		"biography": "James is a senior at the University of California, San Diego, pursuing a B.S. in Computer Science with a minor in Applied Mathematics. He is interested in the intersection of computer science and biology, and is currently working on a project to predict the effects of mutations on protein structure. In his free time, James enjoys playing the piano, reading, and playing video games."
 	},
 	{
