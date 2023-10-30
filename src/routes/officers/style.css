@@ -7,9 +7,10 @@
 	-webkit-transition: var(--transition-length);
 	padding: 1%;
 	margin-top: 5%;
+	display: flex;
 	float: left;
 	flex: 1;
-	flex-direction: column;
+	flex-direction: row;
 }
 
 body.dark .officerCard {
@@ -25,10 +26,16 @@ body.dark .officerCard:hover {
 	border: 2px solid var(--ua-gold);
 }
 
+.officerCardReverse {
+	flex-direction: row-reverse;
+	justify-content: right;
+}
+
 .officerContent {
 	width: 100%;
 	align-items: center;
 	display: flex;
+	flex-direction: column;
 }
 
 .officerText {
