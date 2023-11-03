@@ -17,15 +17,15 @@
 <div class="text-column">
 	<h1>Team Officers</h1>
 	<p>Meet the officers of our team!</p>
-	<div class="officer-content">
+	<div class="officerContent">
 		{#await promise}
 			<p>Loading...</p>
 		{:then officers}
 			{#if officers.length <= 0}
 				<div class="officerCard"><p>There are no officer biographies at this time.</p></div>
 			{:else}
-				{#each officers as officer}
-					<div class="officerCard">
+				{#each officers as officer, index}
+					<div class={index % 2 == 0 ? 'officerCard' : 'officerCard officerCardReverse'}>
 						{#if officer.image && officer.image.length > 0}
 							<div class="officerImageDiv">
 								<img src={officer.image} alt="officer Thumbnail" class="officerImg" />
