@@ -92,9 +92,11 @@
 
 	//Header Background Img Load
 	function headerBackgroundImageUpdate() {
-		let currentUrl = window.location.href.split('/'); //split the url at the slashes
-		let headerImgLink = currentUrl[currentUrl.length - 1]; //get the last item in the array the base page name
-		headerImgLink = headerImgLink.split('?')[0]; //remove any query params
+		let currentUrl = window.location.href; //split the url at the slashes
+		currentUrl = currentUrl.split('?')[0]; //remove any query params
+		let currentUrllist = currentUrl.split('/'); //split the url at the slashes
+		let headerImgLink = currentUrllist[currentUrllist.length - 1]; //get the last item in the array the base page name
+
 		if (headerImgLink == '') {
 			//fix / index page
 			headerImgLink = 'home';
