@@ -8,10 +8,19 @@
 		route: string;
 	};
 
-	type HeaderRoute = Route & {
+	type HeaderLink = {
+		name: string;
 		imgSrc: string;
-		subroutes?: Route[];
 	};
+
+	type HeaderRouteWithoutSubroutes = Route & HeaderLink;
+
+	type HeaderRouteWithSubroutes = HeaderLink & {
+		route?: string;
+		subroutes: Route[];
+	};
+
+	type HeaderRoute = HeaderRouteWithoutSubroutes | HeaderRouteWithSubroutes;
 
 	const routes: HeaderRoute[] = [
 		{
@@ -20,14 +29,22 @@
 			imgSrc: ''
 		},
 		{
-			name: 'Competition',
-			route: '/about-competition',
-			imgSrc: ''
-		},
-		{
-			name: 'History',
-			route: '/our-history',
-			imgSrc: ''
+			name: 'Team',
+			imgSrc: '',
+			subroutes: [
+				{
+					name: 'Competition',
+					route: '/about-competition'
+				},
+				{
+					name: 'History',
+					route: '/our-history'
+				},
+				{
+					name: 'Officers',
+					route: '/officers'
+				}
+			]
 		},
 		{
 			name: 'New Members',
@@ -45,11 +62,6 @@
 			imgSrc: ''
 		},
 		{
-			name: 'Officers',
-			route: '/officers',
-			imgSrc: ''
-		},
-		{
 			name: 'Contact Us',
 			route: '/contact-us',
 			imgSrc: ''
@@ -60,6 +72,54 @@
 			imgSrc: ''
 		}
 	];
+
+	// const routes: HeaderRoute[] = [
+	// 	{
+	// 		name: 'Home',
+	// 		route: '/',
+	// 		imgSrc: ''
+	// 	},
+	// 	{
+	// 		name: 'Competition',
+	// 		route: '/about-competition',
+	// 		imgSrc: ''
+	// 	},
+	// 	{
+	// 		name: 'History',
+	// 		route: '/our-history',
+	// 		imgSrc: ''
+	// 	},
+	// 	{
+	// 		name: 'New Members',
+	// 		route: '/new-members',
+	// 		imgSrc: ''
+	// 	},
+	// 	{
+	// 		name: 'Sponsors',
+	// 		route: '/sponsors',
+	// 		imgSrc: ''
+	// 	},
+	// 	{
+	// 		name: 'Outreach',
+	// 		route: '/outreach',
+	// 		imgSrc: '',
+	// 	},
+	// 	{
+	// 		name: 'Officers',
+	// 		route: '/officers',
+	// 		imgSrc: ''
+	// 	},
+	// 	{
+	// 		name: 'Contact Us',
+	// 		route: '/contact-us',
+	// 		imgSrc: ''
+	// 	},
+	// 	{
+	// 		name: 'Events',
+	// 		route: '/events',
+	// 		imgSrc: ''
+	// 	}
+	// ];
 
 	const Themes = {
 		Light: 'Light',
@@ -130,12 +190,46 @@
 
 		<nav>
 			<ul>
-				{#each routes as { name, route }}
-					<li aria-current={$page.url.pathname === route ? 'page' : undefined}>
-						<a href={route} aria-current={$page.url.pathname === route ? 'page' : undefined}>
-							{name}
-						</a>
-					</li>
+				{#each routes as route}
+					{#if 'subroutes' in route}
+						<li
+							aria-current={$page.url.pathname === route.route ||
+							route.subroutes.some((sub) => sub.route === $page.url.pathname)
+								? 'page'
+								: undefined}
+							class="dropdown"
+						>
+							<a
+								href={route.route}
+								aria-current={$page.url.pathname === route.route ||
+								route.subroutes.some((sub) => sub.route === $page.url.pathname)
+									? 'page'
+									: undefined}
+								class="dropbtn"
+							>
+								{route.name}
+							</a>
+							<div class="dropdown-content">
+								{#each route.subroutes as sub}
+									<a
+										href={sub.route}
+										aria-current={$page.url.pathname === sub.route ? 'page' : undefined}
+									>
+										{sub.name}
+									</a>
+								{/each}
+							</div>
+						</li>
+					{:else}
+						<li aria-current={$page.url.pathname === route.route ? 'page' : undefined}>
+							<a
+								href={route.route}
+								aria-current={$page.url.pathname === route.route ? 'page' : undefined}
+							>
+								{route.name}
+							</a>
+						</li>
+					{/if}
 				{/each}
 			</ul>
 		</nav>
@@ -382,5 +476,38 @@
 		-ms-transform: translateX(13px);
 		transform: translateX(13px);
 		color: var(--dark-txt-primary);
+	}
+
+	.dropdown {
+		position: relative;
+		display: inline-block;
+	}
+
+	.dropdown-content {
+		display: none;
+		position: absolute;
+		background-color: #f1f1f1;
+		min-width: 160px;
+		box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+		z-index: 1;
+	}
+
+	.dropdown-content a {
+		color: black;
+		padding: 12px 16px;
+		text-decoration: none;
+		display: block;
+	}
+
+	.dropdown-content a:hover {
+		/* background-color: #ddd; */
+	}
+
+	.dropdown:hover .dropdown-content {
+		display: block;
+	}
+
+	.dropdown:hover .dropbtn {
+		/* background-color: #3e8e41; */
 	}
 </style>
