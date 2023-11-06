@@ -3,17 +3,6 @@ import { Database } from '../../components/Database';
 
 /** @type {import('./$types').Actions} */
 export const actions = {
-	login: async ({ cookies, request }) => {
-		const data = await request.formData();
-		const email = data.get('email');
-		const password = data.get('password');
-
-		if (!email) {
-			return fail(400, { email, missing: true });
-		}
-
-		return { success: true };
-	},
 	contact_submission: async ({ request }) => {
 		const data = await request.formData();
 
