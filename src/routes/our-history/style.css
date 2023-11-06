@@ -1,0 +1,145 @@
+.robotCard {
+	width: 100%;
+	border: 2px solid var(--light-bg-primary);
+	border-radius: 5px;
+	background-color: var(--ua-light-grey);
+	transition: background-color var(--transition-length) linear;
+	-webkit-transition: var(--transition-length);
+	padding: 1%;
+	margin-top: 5%;
+	display: flex;
+	float: left;
+	flex: 1;
+	flex-direction: row;
+}
+
+body.dark .robotCard {
+	background-color: var(--ua-dark-grey);
+	border: 2px solid var(--dark-bg-primary);
+}
+
+.robotCard:hover {
+	border: 2px solid var(--ua-dark-grey);
+}
+
+body.dark .robotCard:hover {
+	border: 2px solid var(--ua-gold);
+}
+
+.robotCardReverse {
+	flex-direction: row-reverse;
+	justify-content: right;
+}
+
+.robotContent {
+	width: 100%;
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+}
+
+.robotText {
+	width: 49%;
+	margin-top: 20px;
+	float: left;
+}
+
+.robotImageDiv {
+	width: 47%;
+	float: left;
+	margin-right: 20px;
+	margin-left: 20px;
+}
+
+.robotImg {
+	width: 90%;
+}
+
+@media (max-width: 900px) {
+	.robotText {
+		width: 100%;
+	}
+	.robotImageDiv {
+		width: 100%;
+	}
+	.robotCardReverse {
+		flex-direction: column;
+	}
+	.robotCard {
+		flex-direction: column;
+	}
+}
+
+.bar {
+	color: var(--light-txt-secondary);
+	background-color: var(--light-txt-secondary);
+	height: 2px;
+	border-width: 0px;
+	width: 80%;
+	margin: auto 0;
+}
+
+body.dark .bar {
+	color: var(--dark-txt-primary);
+	background-color: var(--dark-accent);
+}
+
+.degreeTokenDiv {
+	width: 100%;
+	margin-top: 15px;
+	margin-bottom: 20px;
+	float: left;
+}
+
+.degreeToken {
+	background-color: var(--ua-dark-grey);
+	border: 2px solid var(--ua-dark-grey);
+	border-radius: 5px;
+	float: left;
+	height: 20px;
+	margin-right: 5px;
+	margin-top: 5px;
+	align-items: center;
+	text-align: center;
+	padding: 0px;
+	transition: background-color var(--transition-length) linear;
+	-webkit-transition: var(--transition-length);
+}
+
+.degreeToken:hover {
+	border: 2px solid var(--ua-blue);
+}
+
+body.dark .degreeToken {
+	background-color: var(--ua-light-grey);
+}
+
+body.dark .degreeToken:hover {
+	border: 2px solid var(--ua-gold);
+}
+
+.degreeTokenText {
+	color: var(--dark-txt-primary);
+	text-align: center;
+	font-size: 75%;
+	margin-left: 2px;
+	margin-right: 2px;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+body.dark .degreeTokenText {
+	color: var(--light-txt-secondary);
+}
+
+.float-left {
+	display: flex;
+	float: left;
+	width: 49%;
+}
+.float-right {
+	display: flex;
+	width: 49%;
+	float: right;
+	align-items: flex-end;
+}
