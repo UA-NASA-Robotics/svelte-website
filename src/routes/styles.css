@@ -19,6 +19,8 @@
 	--ua-blue: #004c9d;
 	--ua-gold: #a89968;
 	--ua-cream: #fff7e9;
+	--ua-light-blue: #58b8fd;
+	--ua-dark-gold: #98780f;
 
 	--light-bg-primary: #ffffff;
 	--light-bg-secondary: #eeeeee;
@@ -116,8 +118,13 @@ p {
 }
 
 a {
-	color: var(--color-theme-1);
+	color: var(--ua-dark-gold);
 	text-decoration: none;
+	transition: color var(--transition-length) linear;
+}
+
+body.dark a {
+	color: var(--ua-light-blue);
 }
 
 a:hover {
