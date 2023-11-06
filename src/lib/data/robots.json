@@ -4,28 +4,28 @@
 		"name": "PiRATE",
 		"acronym": "Piloted Robotic All Terrain Excavator",
 		"description": "Here is our very first robot, PiRATE, who placed 6th out of 44 teams competing. We've come a long way since then, but you can still see similarities with our recent robots!",
-		"year": ""
+		"year": "2011-2012"
 	},
 	{
 		"image": "/src/lib/images/STACEE.jpg",
 		"name": "STACEE",
 		"acronym": "Systematic Technicial Automaton Collecting Extraterrestrial Elements",
 		"description": "In 2013 our robot STACEE placed 10th out of 50 teams. The team also won 3rd place in the slide presentation!",
-		"year": ""
+		"year": "2012-2013"
 	},
 	{
 		"image": "/src/lib/images/2016-award.jpg",
 		"acronym": "Robust Operational Collector Kinematically Excavating Elements",
 		"name": "ROCKEE",
 		"description": "Our 2018 robot, ROCKEE, placed 5th out of 44 teams competing! We also won third place for both outreach and our systems engineering paper!",
-		"year": ""
+		"year": "2017-2018"
 	},
 	{
 		"image": "/src/lib/images/audree.JPG",
 		"acronym": "Autonomous Drum Rotating Extraterrestrial Excavator",
 		"name": "AUDREE",
 		"description": "In 2019 the team placed 2nd out of 46 teams in the NASA competition, with 1st place in outreach and 4th place in systems engineering! Here is our 2019 robot AuDREE.",
-		"year": ""
+		"year": "2018-2019"
 	},
 	{
 		"image": "/src/lib/images/flaree.png",
