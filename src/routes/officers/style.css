@@ -48,10 +48,11 @@ body.dark .officerCard:hover {
 	width: 47%;
 	float: left;
 	margin-right: 20px;
+	margin-left: 20px;
 }
 
 .officerImg {
-	width: 100%;
+	width: 90%;
 }
 
 @media (max-width: 900px) {
@@ -60,6 +61,12 @@ body.dark .officerCard:hover {
 	}
 	.officerImageDiv {
 		width: 100%;
+	}
+	.officerCard {
+		flex-direction: column;
+	}
+	.officerCardReverse {
+		flex-direction: column;
 	}
 }
 
