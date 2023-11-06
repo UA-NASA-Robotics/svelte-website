@@ -7,9 +7,10 @@
 	-webkit-transition: var(--transition-length);
 	padding: 1%;
 	margin-top: 5%;
+	display: flex;
 	float: left;
 	flex: 1;
-	flex-direction: column;
+	flex-direction: row;
 }
 
 body.dark .officerCard {
@@ -25,10 +26,16 @@ body.dark .officerCard:hover {
 	border: 2px solid var(--ua-gold);
 }
 
+.officerCardReverse {
+	flex-direction: row-reverse;
+	justify-content: right;
+}
+
 .officerContent {
 	width: 100%;
 	align-items: center;
 	display: flex;
+	flex-direction: column;
 }
 
 .officerText {
@@ -41,10 +48,11 @@ body.dark .officerCard:hover {
 	width: 47%;
 	float: left;
 	margin-right: 20px;
+	margin-left: 20px;
 }
 
 .officerImg {
-	width: 100%;
+	width: 90%;
 }
 
 @media (max-width: 900px) {
@@ -53,6 +61,12 @@ body.dark .officerCard:hover {
 	}
 	.officerImageDiv {
 		width: 100%;
+	}
+	.officerCard {
+		flex-direction: column;
+	}
+	.officerCardReverse {
+		flex-direction: column;
 	}
 }
 
