@@ -4,11 +4,10 @@
 </svelte:head>
 
 <div class="text-column">
-	<p>This year (2023), we are helping out with a variety of outreach events, including:</p>
+	<p>This year (2023), we helped out with a variety of outreach events, including:</p>
 	<ul>
 		<li>Make a Difference Day</li>
 		<li>Firestone High School VEX VRC Competition</li>
-		<li>Brecksville-Broadview Heights High School VEX VRC Competition</li>
 	</ul>
 	<p>
 		To get up to date information about upcoming events goto our <a href="/events">
@@ -44,11 +43,24 @@
 			</p>
 		</div>
 	</div>
-	<h3>VRC Competitions</h3>
+	<h3>Firestone Vex Robotics Competition</h3>
 	<p>
-		We are helping out with two VEX VRC Competitions this year. We will be helping with the setup
-		and teardown of the competition, as well as helping with the competition itself. This includes
-		positions such as We will also be bringing our robot to the competition to show off to the
-		students!
+		Vex Robotics is a competition for middle and high school students. The students build robots to
+		compete in a game. This year, the game was called Over Under. The robots must score tri-balls
+		under a net, as well as climb a structure for end-game.
 	</p>
+	<h4>Our Roles</h4>
+	<div class="flex-columns">
+		<div class="seconds">
+			<p>
+				Our team was split throughout the different roles of the competition. We had a few people
+				who were score-keepers, a few who were queue tables, and a few who were judges. Firestone
+				High School also let us set up a table to show off our robot and talk to the students about
+				our team.
+			</p>
+		</div>
+		<div class="seconds">
+			<img src="/src/lib/images/outreach-team.jpg" alt="Group in-front of table" width="100%" />
+		</div>
+	</div>
 </div>
