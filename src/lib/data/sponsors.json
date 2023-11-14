@@ -1,0 +1,44 @@
+[
+	{
+		"logo": "/src/lib/images/sponsors/UniversityofAkron.jpg",
+		"name": "University of Akron",
+		"link": "http://www.uakron.edu/",
+		"majorSponsor": true
+	},
+	{
+		"logo": "/src/lib/images/sponsors/altium.jpg",
+		"name": "Altium",
+		"link": "http://www.altium.com/",
+		"majorSponsor": false
+	},
+	{
+		"logo": "/src/lib/images/sponsors/Pepperl-Fuchs.jpg",
+		"name": "Pepperl-Fuchs",
+		"link": "http://www.pepperl-fuchs.us/",
+		"majorSponsor": false
+	},
+	{
+		"logo": "/src/lib/images/sponsors/osgc.jpg",
+		"name": "Ohio Space Grant Consortium",
+		"link": "http://www.osgc.org/",
+		"majorSponsor": false
+	},
+	{
+		"logo": "/src/lib/images/sponsors/wardjet.jpg",
+		"name": "WardJet",
+		"link": "http://www.wardjet.com/",
+		"majorSponsor": false
+	},
+	{
+		"logo": "/src/lib/images/sponsors/schaeffler.jpg",
+		"name": "Schaeffler",
+		"link": "http://www.schaeffler.us/",
+		"majorSponsor": false
+	},
+	{
+		"logo": "/src/lib/images/sponsors/pozyx.jpg",
+		"name": "Pozyx",
+		"link": "http://www.pozyx.io/",
+		"majorSponsor": false
+	}
+]
