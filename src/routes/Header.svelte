@@ -347,6 +347,7 @@
 		-webkit-transition: var(--transition-length);
 		border-radius: 5px;
 		font-family: var(--title-font);
+		cursor: pointer;
 	}
 
 	a:hover {
@@ -502,7 +503,7 @@
 	}
 
 	.dropdown-content a:hover {
-		/* background-color: #ddd; */
+		color: var(--light-accent);
 	}
 
 	.dropdown:hover .dropdown-content {
