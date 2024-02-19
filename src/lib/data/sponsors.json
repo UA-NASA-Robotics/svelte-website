@@ -12,7 +12,7 @@
 		"majorSponsor": false
 	},
 	{
-		"logo": "/src/lib/images/sponsors/Pepperl-Fuchs.jpg",
+		"logo": "/src/lib/images/sponsors/pepperl-fuchs.jpg",
 		"name": "Pepperl-Fuchs",
 		"link": "http://www.pepperl-fuchs.us/",
 		"majorSponsor": false
@@ -21,7 +21,7 @@
 		"logo": "/src/lib/images/sponsors/osgc.jpg",
 		"name": "Ohio Space Grant Consortium",
 		"link": "http://www.osgc.org/",
-		"majorSponsor": false
+		"majorSponsor": true
 	},
 	{
 		"logo": "/src/lib/images/sponsors/wardjet.jpg",
@@ -40,5 +40,11 @@
 		"name": "Pozyx",
 		"link": "http://www.pozyx.io/",
 		"majorSponsor": false
+	},
+	{
+		"logo": "/src/lib/images/sponsors/anderson-power.png",
+		"name": "Anderson Power Products",
+		"link": "http://www.andersonpower.com/",
+		"majorSponsor": true
 	}
 ]
