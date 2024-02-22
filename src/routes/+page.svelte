@@ -7,7 +7,7 @@
 </svelte:head>
 
 <section>
-	<p><img alt="2023-2024 Team at Competition" src="/src/lib/images/home3.jpg" width="90%" /></p>
+	<img alt="2023-2024 Team at Competition" src="/src/lib/images/home3.jpg" width="90%" />
 	<h1>Who We Are</h1>
 	<p>
 		The NASA Robotic Mining Team is a student-led engineering design team that designs and builds an
@@ -42,11 +42,7 @@
 		</div>
 	</div>
 
-	<p>
-		<a href="/src/lib/images/team-with-bot.JPG"
-			><img src="/src/lib/images/team-with-bot.JPG" width="400" /></a
-		>
-	</p>
+	<img src="/src/lib/images/mocktails_ee_team.jpg" width="75%" />
 	<!-- How high is jacob lmao??-->
 </section>
 

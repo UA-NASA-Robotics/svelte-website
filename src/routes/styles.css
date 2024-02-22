@@ -297,3 +297,7 @@ body.dark .two-thirds:hover {
 .flex-columns {
 	display: flex;
 }
+
+img {
+	border-radius: 15px;
+}
