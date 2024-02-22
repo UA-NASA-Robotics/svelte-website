@@ -7,7 +7,7 @@
 </svelte:head>
 
 <section>
-	<p><img alt="2023-2024 Team at Competition" src="/src/lib/images/home3.jpg" /></p>
+	<p><img alt="2023-2024 Team at Competition" src="/src/lib/images/home3.jpg" width="90%" /></p>
 	<h1>Who We Are</h1>
 	<p>
 		The NASA Robotic Mining Team is a student-led engineering design team that designs and builds an
