@@ -106,7 +106,7 @@
 			</ul>
 		</div>
 		<div class="two-thirds">
-			<img src="/src/lib/images/lidar.jpg" width="400" alt="Software Sub-team Working" />
+			<img src="/src/lib/images/lidar.JPG" width="400" alt="Software Sub-team Working" />
 		</div>
 	</div>
 
