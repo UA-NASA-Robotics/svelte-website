@@ -45,4 +45,18 @@
 	.vertical-space {
 		height: 1em;
 	}
+
+	button {
+		color: var(--dark-txt-primary);
+		background-color: var(--ua-blue);
+		transition: color var(--transition-length) linear;
+		-webkit-transition: var(--transition-length);
+		border-radius: 0.5em;
+		padding: 0.5em 1em;
+	}
+
+	:global(body.dark) button {
+		background-color: var(--ua-gold);
+		color: var(--light-txt-primary);
+	}
 </style>
