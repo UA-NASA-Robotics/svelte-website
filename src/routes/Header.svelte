@@ -511,7 +511,7 @@
 		display: block;
 	}
 
-	.dropdown:hover .dropbtn {
-		/* background-color: #3e8e41; */
-	}
+	/*.dropdown:hover .dropbtn {
+		/* background-color: #3e8e41; 
+	}*/
 </style>
