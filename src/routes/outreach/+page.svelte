@@ -30,7 +30,11 @@
 	<div style="height: 100px;" />
 	<div class="flex-columns">
 		<div class="seconds">
-			<img src="/src/lib/images/outreach3.jpg" alt="Lane working on a toy car" width="100%" />
+			<img
+				src="/src/lib/images/jon-soldering.jpg"
+				alt="John helping students solder."
+				width="100%"
+			/>
 		</div>
 		<div class="seconds">
 			<p>

@@ -42,7 +42,7 @@
 		</div>
 	</div>
 
-	<img src="/src/lib/images/mocktails_ee_team.jpg" width="75%" />
+	<img src="/src/lib/images/welcome-back.jpg" width="75%" alt="The team in the design building." />
 	<!-- How high is jacob lmao??-->
 </section>
 
