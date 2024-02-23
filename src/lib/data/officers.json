@@ -1,40 +1,51 @@
 [
 	{
-		"name": "James Nestor",
-		"image": "/src/lib/images/officers/placeholder1.jpg",
-		"team_title": "Software Lead",
-		"degree": [
-			"Computer Science",
-			"Applied Mathematics",
-			"Bio-informatics",
-			"Statistics2",
-			"Computer Engineering",
-			"Very Large Scale Integration",
-			"Paleontology",
-			"Lawn care",
-			"Tax Evasion Specialty"
-		],
-		"biography": "James is a senior at the University of California, San Diego, pursuing a B.S. in Computer Science with a minor in Applied Mathematics. He is interested in the intersection of computer science and biology, and is currently working on a project to predict the effects of mutations on protein structure. In his free time, James enjoys playing the piano, reading, and playing video games."
+		"name": "Jacob Luis",
+		"image": "/src/lib/images/officers/Jacob.png",
+		"team_title": "Mechanical Officer",
+		"degree": ["Mechanical Engineering"],
+		"biography": "Jacob Lewis is the Mechanical Officer of the NASA Robotics Team and he is a third-year Mechanical Engineering major. Jacob's favorite memory within this club was leading the Mechanical Team in Alabama at the 2022/2023 NASA Robotics Mining Competition along with that he enjoyed to trip to Florida for the 2021/2022 Competition at NASA Kennedy Space Center!"
 	},
 	{
-		"name": "Johnathan Daus",
-		"image": "/src/lib/images/officers/placeholder2.jpg",
-		"team_title": "Team Treasurer",
-		"degree": ["Paleontology"],
-		"biography": "Johnathan is a senior at the University of California, San Diego, pursuing a B.S. in Paleontology. He is interested in the intersection of paleontology and biology, and is currently working on a project to predict the effects of mutations on protein structure. In his free time, Johnathan enjoys playing the piano, reading, and playing video games."
-	},
-	{
-		"name": "Brandon McCune",
-		"image": "/src/lib/images/officers/placeholder4.jpg",
-		"team_title": "Project Manager",
-		"degree": ["Mayonnaise Development"],
-		"biography": "Brandon is a senior at the University of California, San Diego, pursuing a B.S. in Mayonnaise Development. He is interested in the intersection of mayonnaise and biology, and is currently working on a project to predict the effects of mutations on protein structure. In his free time, Brandon enjoys playing the piano, reading, and playing video games."
+		"name": "Nick Seiler",
+		"image": "/src/lib/images/officers/Nick.png",
+		"team_title": "Mechanical Lead",
+		"degree": ["Mechanical Engineering", "Mathematics"],
+		"biography": "Nick Seiler is the new Mechanical Lead of the NASA Robotics Team and he is a second-year Mechanical Engineering major and pursing a minor in Mathematics. Nick’s favorite memory within this club was being able to volunteer and be a judge at multiple VEX Robotics Events!🚀"
 	},
 	{
 		"name": "Faith Stewart",
-		"image": "/src/lib/images/officers/placeholder3.jpg",
+		"image": "/src/lib/images/officers/Faith.png",
 		"team_title": "Electrical Officer",
+		"degree": ["Electrical Engineering", "Classics"],
+		"biography": "Faith Stewart is the Electrical Officer of the NASA Robotics Team and she is a third-year Electrical Engineering major and pursuing a minor in Classical Studies. Faith’s favorite memories within this club include the many of design reviews and being able to connect to the entire team as well as alumni!"
+	},
+	{
+		"name": "Lane Cline",
+		"image": "/src/lib/images/officers/Lane.png",
+		"team_title": "Electrical Lead",
+		"degree": ["Electrical Engineering", "History"],
+		"biography": "Lane Cline is the Electrical Lead of the NASA Robotics Team and he is a third-year Electrical Engineering major and pursing a minor in history. Lane’s favorite memory within this club was wiring the electrical system while at the University of Alabama and getting to participate at the 2022/2023 NASA Robotics Mining Competition!"
+	},
+	{
+		"name": "James Nestor",
+		"image": "/src/lib/images/officers/James.png",
+		"team_title": "Software Officer",
+		"degree": [""],
+		"biography": ""
+	},
+	{
+		"name": "Jackson Stillwagon",
+		"image": "/src/lib/images/officers/Jackson.pngs",
+		"team_title": "Software Lead",
 		"degree": ["Electrical Engineering"],
-		"biography": "Faith is a senior at the University of California, San Diego, pursuing a B.S. in Electrical Engineering. She is interested in the intersection of electrical engineering and biology, and is currently working on a project to predict the effects of mutations on protein structure. In her free time, Faith enjoys playing the piano, reading, and playing video games."
+		"biography": "Jackson Stillwagon is one of the new Software Leads of the NASA Robotics Team and he is a second-year Electrical Engineering major. Jackson's favorite memory within this club was attending Robsgiving this year with the entire Software Team!"
+	},
+	{
+		"name": "Nathan O’Brien",
+		"image": "/src/lib/images/officers/Nate.png",
+		"team_title": "Software Lead",
+		"degree": ["Computer Engineering", "Computer Science"],
+		"biography": "Nathan O’Brien is one of the new Software Leads of the NASA Robotics Team and he is a second-year Computer Engineering major and pursing a minor in Computer Science. Nathan’s favorite memory within this club was programming RoboFett to dance and play a Billie Joel song!"
 	}
 ]
