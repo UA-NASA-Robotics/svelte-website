@@ -21,15 +21,13 @@ export const actions = {
 		}
 
 		let db = new Database('leboeuflasing.ddns.net:5984', 'contact', 'lunaboticswebsitecontact');
-		let responce = await db.append('contact', { name: name, email: email, message: message });
-		console.log(responce);
+		let response = await db.append('contact', { name: name, email: email, message: message });
+		console.log(response);
 
-		if (responce.ok) {
+		if (response.ok) {
 			return { success: true };
 		} else {
-			return fail(400, { error: responce });
+			return fail(400, { error: response });
 		}
 	}
 };
-
-//user: contact pass: lunaboticswebsitecontact

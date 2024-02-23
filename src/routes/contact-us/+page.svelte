@@ -10,19 +10,39 @@
 	<h1>Contact Us</h1>
 	<p>
 		Do you have any questions or comments? Would you like to sponsor our team? Would you like to
-		invite us to present to your group? Please reach out to us here!
+		invite us to present to your group? Please reach out to us here. We will get back to you as soon
+		as we can!
 	</p>
 
-	<form method="POST" action="/contact-us?/contact_submission">
-		<label for="name">Name</label>
-		<input type="text" id="name" name="name" required />
+	<div class="flex-columns">
+		<form method="POST" action="/contact-us?/contact_submission" class="wide-input">
+			<div class="thirds">
+				<label for="name">Name</label>
+				<input type="text" id="name" name="name" required />
 
-		<label for="email">Email</label>
-		<input type="email" id="email" name="email" required />
+				<div class="vertical-space" />
 
-		<label for="message">Message</label>
-		<textarea id="message" name="message" required />
+				<label for="email">Email or Phone Number</label>
+				<input type="email" id="email" name="email" required />
+			</div>
 
-		<button type="submit">Send</button>
-	</form>
+			<div class="two-thirds">
+				<label for="message">Message</label> <br />
+				<textarea id="message" name="message" class="wide-input" required /> <br />
+
+				<button type="submit">Send</button>
+			</div>
+		</form>
+	</div>
 </div>
+
+<style>
+	.wide-input {
+		width: 100%;
+		display: flex;
+	}
+
+	.vertical-space {
+		height: 1em;
+	}
+</style>
