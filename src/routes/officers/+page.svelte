@@ -1,60 +1,49 @@
 <script lang="ts">
 	import './style.css';
+	import PersonnelBio from '../../components/PersonnelBio.svelte';
 
 	let promise = handleFetchOfficers();
 
 	async function handleFetchOfficers() {
-		let response = await fetch('/src/lib/data/officers.json', { method: 'GET' });
+		let response = await fetch('/src/lib/data/admins.json', { method: 'GET' });
 		return await response.json();
 	}
 </script>
 
 <svelte:head>
-	<title>Team Officers</title>
-	<meta name="description" content="The current officers on the team." />
+	<title>Team Leadership</title>
+	<meta name="description" content="The current leadership on the team." />
 </svelte:head>
 
 <div class="text-column">
-	<h1>Team Officers</h1>
-	<p>Meet the officers of our team!</p>
-	<div class="officerContent">
-		{#await promise}
-			<p>Loading...</p>
-		{:then officers}
-			{#if officers.length <= 0}
-				<div class="officerCard"><p>There are no officer biographies at this time.</p></div>
-			{:else}
-				{#each officers as officer, index}
-					<div class={index % 2 == 0 ? 'officerCard' : 'officerCard officerCardReverse'}>
-						{#if officer.image && officer.image.length > 0}
-							<div class="officerImageDiv">
-								<img src={officer.image} alt="officer Thumbnail" class="officerImg" />
-							</div>
-						{:else}
-							<!-- No image -->
-						{/if}
-
-						<div class="officerText">
-							<h2>{officer.name}</h2>
-							<hr class="bar" />
-							<div class="degreeTokenDiv">
-								{#each officer.degree as degree}
-									<div class="degreeToken">
-										<p class="degreeTokenText">{degree}</p>
-									</div>
-								{/each}
-							</div>
-							<h3>{officer.team_title}</h3>
-							<p>{officer.biography}</p>
-						</div>
-					</div>
-				{/each}
-			{/if}
-		{:catch error}
-			<div class="officerCard">
-				<p>There was an error loading the officers. Please try again later.</p>
-				<br /><button on:click={window.location.reload}>Refresh</button>
-			</div>
-		{/await}
+	<div class="left-shift" style="justify-content:left; display:grid;">
+		<h1 style="margin:0%">Team Leadership</h1>
 	</div>
+
+	{#await promise}
+		<div class="officerCard">
+			<p>Loading...</p>
+		</div>
+	{:then admins}
+		<!-- President -->
+		<h1 class="margin-top-only">President</h1>
+		<PersonnelBio Personnel={admins.presidents} />
+		<!-- Project Manager -->
+		<h1 class="margin-top-only">Project Manager</h1>
+		<PersonnelBio Personnel={admins.project_managers} />
+		<!-- Treasurer -->
+		<h1 class="margin-top-only">Treasurer</h1>
+		<PersonnelBio Personnel={admins.treasurers} />
+		<!-- Officers -->
+		<h1 class="margin-top-only">Sub-team Officers</h1>
+		<PersonnelBio Personnel={admins.officers} />
+		<!-- Leads -->
+		<h1 class="margin-top-only">Sub-team Leads</h1>
+		<PersonnelBio Personnel={admins.leads} />
+	{:catch error}
+		<div class="officerCard">
+			<p>There was an error loading the officers. Please try again later.</p>
+			<br /><button on:click={window.location.reload}>Refresh</button>
+		</div>
+	{/await}
 </div>
