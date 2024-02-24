@@ -23,8 +23,6 @@
 
 	type HeaderRoute = HeaderRouteWithoutSubroutes | HeaderRouteWithSubroutes;
 
-	//let siteMap = new Sitemap({ target:  }); //create a new sitemap component and mount it to the body ig. What is this constructor doing?
-
 	const routes: HeaderRoute[] = getRoutes(); /*[
 		{
 			name: 'Home',
