@@ -2,7 +2,7 @@
 	width: 100%;
 	border: 2px solid var(--light-bg-primary);
 	border-radius: 5px;
-	background-color: var(--ua-light-grey);
+	background-color: var(--light-bg-primary);
 	transition: background-color var(--transition-length) linear;
 	-webkit-transition: var(--transition-length);
 	padding: 1%;
@@ -18,17 +18,18 @@
 }
 
 body.dark .sponsorCard {
-	background-color: var(--ua-dark-grey);
+	background-color: var(--dark-bg-primary);
 	border: 2px solid var(--dark-bg-primary);
 }
 
+/*
 .sponsorCard:hover {
 	border: 2px solid var(--ua-dark-grey);
 }
 
 body.dark .sponsorCard:hover {
 	border: 2px solid var(--ua-gold);
-}
+}*/
 
 .sponsorCardReverse {
 	flex-direction: row-reverse;

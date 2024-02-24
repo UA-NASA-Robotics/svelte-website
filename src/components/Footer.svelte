@@ -6,14 +6,14 @@
 			alt: 'Facebook'
 		},
 		{
-			url: 'https://twitter.com/UAkronRobotics',
-			imgSrc: 'src/lib/images/logo-instagram.png',
-			alt: 'Instagram'
-		},
-		{
 			url: 'https://www.instagram.com/uakronrobotics/',
 			imgSrc: 'src/lib/images/logo-x-twitter.webp',
 			alt: 'X (FKA Twitter)'
+		},
+		{
+			url: 'https://twitter.com/UAkronRobotics',
+			imgSrc: 'src/lib/images/logo-instagram.png',
+			alt: 'Instagram'
 		},
 		{
 			url: 'https://www.youtube.com/@uanasaroboticsteam',
