@@ -2,7 +2,7 @@
 	width: 100%;
 	border: 2px solid var(--light-bg-primary);
 	border-radius: 5px;
-	background-color: var(--ua-light-grey);
+	background-color: var(--light-bg-primary);
 	transition: background-color var(--transition-length) linear;
 	-webkit-transition: var(--transition-length);
 	padding: 1%;
@@ -14,17 +14,17 @@
 }
 
 body.dark .officerCard {
-	background-color: var(--ua-dark-grey);
+	background-color: var(--dark-bg-primary);
 	border: 2px solid var(--dark-bg-primary);
 }
 
-.officerCard:hover {
+/*.officerCard:hover {
 	border: 2px solid var(--ua-dark-grey);
 }
 
 body.dark .officerCard:hover {
 	border: 2px solid var(--ua-gold);
-}
+}*/
 
 .officerCardReverse {
 	flex-direction: row-reverse;
@@ -45,6 +45,7 @@ body.dark .officerCard:hover {
 }
 
 .officerImageDiv {
+	display: flex;
 	width: 47%;
 	float: left;
 	margin-right: 20px;
@@ -53,6 +54,7 @@ body.dark .officerCard:hover {
 
 .officerImg {
 	width: 90%;
+	align-self: center;
 }
 
 @media (max-width: 900px) {
@@ -67,6 +69,9 @@ body.dark .officerCard:hover {
 	}
 	.officerCardReverse {
 		flex-direction: column;
+	}
+	.officerImg {
+		width: 70%;
 	}
 }
 
@@ -92,8 +97,8 @@ body.dark .bar {
 }
 
 .degreeToken {
-	background-color: var(--ua-dark-grey);
-	border: 2px solid var(--ua-dark-grey);
+	background-color: var(--light-bg-secondary);
+	border: 2px solid var(--light-bg-secondary);
 	border-radius: 5px;
 	float: left;
 	height: 20px;
@@ -106,20 +111,21 @@ body.dark .bar {
 	-webkit-transition: var(--transition-length);
 }
 
-.degreeToken:hover {
+/*.degreeToken:hover {
 	border: 2px solid var(--ua-blue);
-}
+}*/
 
 body.dark .degreeToken {
-	background-color: var(--ua-light-grey);
+	background-color: var(--dark-bg-secondary);
+	border: 2px solid var(--dark-bg-secondary);
 }
 
-body.dark .degreeToken:hover {
+/*body.dark .degreeToken:hover {
 	border: 2px solid var(--ua-gold);
-}
+}*/
 
 .degreeTokenText {
-	color: var(--dark-txt-primary);
+	color: var(--light-txt-primary);
 	text-align: center;
 	font-size: 75%;
 	margin-left: 2px;
@@ -129,5 +135,10 @@ body.dark .degreeToken:hover {
 }
 
 body.dark .degreeTokenText {
-	color: var(--light-txt-secondary);
+	color: var(--dark-txt-primary);
+}
+
+.margin-top-only {
+	margin-top: 1em;
+	margin-bottom: 0%;
 }

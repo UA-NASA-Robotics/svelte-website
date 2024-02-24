@@ -1,8 +1,8 @@
 .eventCard {
 	width: 47%;
-	border: 2px solid var(--light-bg-primary);
+	/*border: 2px solid var(--light-bg-primary);*/
 	border-radius: 5px;
-	background-color: var(--ua-light-grey);
+	background-color: var(--light-bg-primary);
 	transition: background-color var(--transition-length) linear;
 	-webkit-transition: var(--transition-length);
 	padding: 1%;
@@ -11,17 +11,17 @@
 }
 
 body.dark .eventCard {
-	background-color: var(--ua-dark-grey);
-	border: 2px solid var(--dark-bg-primary);
+	background-color: var(--dark-bg-primary);
+	/*border: 2px solid var(--dark-bg-primary);*/
 }
 
-.eventCard:hover {
+/*.eventCard:hover {
 	border: 2px solid var(--ua-dark-grey);
 }
 
 body.dark .eventCard:hover {
 	border: 2px solid var(--ua-gold);
-}
+}*/
 
 .calenderContent {
 	width: 100%;

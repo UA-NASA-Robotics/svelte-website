@@ -496,11 +496,19 @@
 		border-radius: 7px;
 	}
 
+	:global(body.dark) .dropdown-content {
+		background-color: var(--dark-bg-primary);
+	}
+
 	.dropdown-content a {
 		color: black;
 		padding: 12px 16px;
 		text-decoration: none;
 		display: block;
+	}
+
+	:global(body.dark) .dropdown-content a {
+		color: var(--dark-txt-primary);
 	}
 
 	.dropdown-content a:hover {
