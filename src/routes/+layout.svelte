@@ -1,5 +1,5 @@
 <script>
-	import Header from './Header.svelte';
+	import Header from '../components/Header.svelte';
 	import './styles.css';
 	import Footer from '../components/Footer.svelte';
 </script>

@@ -2,6 +2,7 @@
 	import { page } from '$app/stores';
 	import { onMount } from 'svelte';
 	import { onNavigate } from '$app/navigation';
+	import { getRoutes } from './Sitemap';
 
 	type Route = {
 		name: string;
@@ -22,7 +23,9 @@
 
 	type HeaderRoute = HeaderRouteWithoutSubroutes | HeaderRouteWithSubroutes;
 
-	const routes: HeaderRoute[] = [
+	//let siteMap = new Sitemap({ target:  }); //create a new sitemap component and mount it to the body ig. What is this constructor doing?
+
+	const routes: HeaderRoute[] = getRoutes(); /*[
 		{
 			name: 'Home',
 			route: '/',
@@ -71,7 +74,7 @@
 			route: '/events',
 			imgSrc: ''
 		}
-	];
+	];*/
 
 	// const routes: HeaderRoute[] = [
 	// 	{
