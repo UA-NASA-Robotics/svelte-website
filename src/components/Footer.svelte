@@ -155,7 +155,7 @@
 		margin: auto 0;
 	}
 
-	body.dark .bar {
+	:global(body.dark) .bar {
 		color: var(--dark-txt-primary);
 		background-color: var(--dark-accent);
 	}
