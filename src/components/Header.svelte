@@ -2,6 +2,7 @@
 	import { page } from '$app/stores';
 	import { onMount } from 'svelte';
 	import { onNavigate } from '$app/navigation';
+	import { getRoutes } from './Sitemap';
 
 	type Route = {
 		name: string;
@@ -22,7 +23,7 @@
 
 	type HeaderRoute = HeaderRouteWithoutSubroutes | HeaderRouteWithSubroutes;
 
-	const routes: HeaderRoute[] = [
+	const routes: HeaderRoute[] = getRoutes(); /*[
 		{
 			name: 'Home',
 			route: '/',
@@ -71,7 +72,7 @@
 			route: '/events',
 			imgSrc: ''
 		}
-	];
+	];*/
 
 	// const routes: HeaderRoute[] = [
 	// 	{
