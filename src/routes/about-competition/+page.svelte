@@ -70,7 +70,7 @@
 				<li>Robot design and testing</li>
 				<li>
 					Innovation from prior years' designs Proof of Life Video This video shows our robot in
-					action performing two digging cycles. Click here to see our 2019 proof of life video!
+					action performing two digging cycles.
 				</li>
 			</ul>
 			<img src="/src/lib/images/audree-pic.JPG" width="85%" alt="Previous Robot Design" />
@@ -79,7 +79,7 @@
 			<h4>Public Outreach Project Report:</h4>
 			<p>
 				In this paper, we describe our outreach efforts over the course of the year. For more
-				information on our outreach, click here.
+				information on our outreach, <a href="/outreach">click here.</a>
 			</p>
 			<ul>
 				<li>What outreach was done</li>
@@ -101,8 +101,7 @@
 			<h4>Systems Engineering Paper</h4>
 			<p>
 				This paper demonstrates how our team uses the systems engineering process in designing,
-				building, and testing our robot. Click here for more information about systems engineering.
-				The paper has two main sections:
+				building, and testing our robot. The paper has two main sections:
 			</p>
 			<ul>
 				<li>
