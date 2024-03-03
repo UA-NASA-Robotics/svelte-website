@@ -50,7 +50,7 @@
 		<div class="two-thirds">
 			<img
 				src="/src/lib/images/waterjet-cutter.jpg"
-				width="400"
+				width="100%"
 				alt="Mechanical Sub-team Working"
 			/>
 		</div>
@@ -68,7 +68,7 @@
 	</p>
 	<div class="flex-columns">
 		<div class="two-thirds">
-			<img src="/src/lib/images/jon-and-eli.jpg" width="400" alt="Electrical Sub-team Working" />
+			<img src="/src/lib/images/jon-and-eli.jpg" width="100%" alt="Electrical Sub-team Working" />
 		</div>
 		<div class="thirds">
 			<ul>
@@ -106,7 +106,7 @@
 			</ul>
 		</div>
 		<div class="two-thirds">
-			<img src="/src/lib/images/lidar.JPG" width="400" alt="Software Sub-team Working" />
+			<img src="/src/lib/images/lidar.JPG" width="100%" alt="Software Sub-team Working" />
 		</div>
 	</div>
 
