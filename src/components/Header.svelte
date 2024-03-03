@@ -7,6 +7,7 @@
 	type Route = {
 		name: string;
 		route: string;
+		headerLevel: number;
 	};
 
 	type HeaderLink = {
@@ -129,7 +130,7 @@
 			topLevelTextLength += route.name.length;
 		});
 		let percent = 100 / ((topLevelTextLength / RoutesTopLevelLength) * 6); //5.8 is the average length of a word in terms of it's height... yeah this is very hacky
-		let verticalPercent = percent * 3.5; //this just kinda looks right... I don't know why is this so hard
+		let verticalPercent = percent * 2.7; //this just kinda looks right... I don't know why is this so hard
 		document.documentElement.style.setProperty('--nav-page-font-size', percent + 'cqw');
 		document.documentElement.style.setProperty(
 			'--nav-page-vertical-font-size',
@@ -147,11 +148,12 @@
 		</div>
 
 		<div class="collapser hidden" id="collapser">
+			<!--
 			<div class="menu-toggle-container">
 				<a href="#top" class="menu-toggle" on:click|preventDefault={toggleMenu}>
 					<i class="fa-solid fa-bars hamburger" />
 				</a>
-			</div>
+			</div>-->
 
 			<nav class="topNav">
 				<ul class="nav-contents">
@@ -302,11 +304,9 @@
 		display: flex;
 		flex-wrap: wrap;
 		align-self: center;
-		justify-content: center;
 		border-radius: 2cqw;
 		padding: 1%;
 		text-decoration: none;
-		background-color: var(--light-bg-primary);
 	}
 
 	.sub-nav {
@@ -321,10 +321,14 @@
 		list-style-type: none;
 		/*font-size: var(--nav-page-font-size); moved */
 		margin-right: 5%;
+		display: flex;
+		flex-wrap: wrap;
+		flex-direction: row;
 		/*margin-bottom: 5%;*/
 		align-self: center;
 		width: 95%;
 		text-decoration: none;
+		border-radius: 2cqw;
 	}
 
 	.menu-toggle-container {
@@ -362,7 +366,9 @@
 		.nav-page {
 			/* li nav page link item. can be top level or under sub-nav ul*/
 			font-size: var(--nav-page-font-size);
+			background-color: var(--light-bg-primary);
 			align-content: center;
+			justify-content: center;
 			height: 100%;
 		}
 
@@ -375,6 +381,8 @@
 		.sub-nav-link {
 			/* li item with a sub-nav ul inside of it*/
 			font-size: var(--nav-page-font-size);
+			background-color: var(--light-bg-primary);
+			justify-content: center;
 		}
 
 		.sub-nav-link:hover .sub-nav {
@@ -387,7 +395,7 @@
 
 		.collapser {
 			flex-direction: column;
-			box-shadow: inset 0 0 0 1000px rgba(154, 165, 222, 0.559);
+			box-shadow: inset 0 0 0 1000px rgba(154, 165, 222, 0.9);
 		}
 		.topNav {
 			/* top level nav item */
@@ -404,12 +412,14 @@
 			/* li nav page link item. can be top level or under sub-nav ul*/
 			font-size: var(--nav-page-vertical-font-size);
 			width: 95%;
+			margin-bottom: 2%;
 		}
 
 		.sub-nav {
 			/* ul sub-level of nav */
-			padding-left: auto;
+			padding-left: revert;
 			margin-top: 5%;
+			width: 90%;
 		}
 
 		.sub-nav-link {
@@ -431,12 +441,24 @@
 			display: flex;
 			align-self: flex-end;
 		}
+		#collapser.hidden .menu-toggle-container .hamburger {
+			box-shadow: inset 0 0 0 1000px rgba(154, 165, 222, 0.9);
+			padding: 30%;
+			border-radius: 2cqh;
+		}
 	}
 
 	.nav-page[aria-current='page'] {
 		background-color: var(--light-bg-secondary);
 	}
 
+	a:hover {
+		text-decoration: none;
+	}
+
+	a {
+		color: var(--light-txt-secondary);
+	}
 	/*-- Theme Switch --*/
 
 	.theme-toggle {
@@ -447,6 +469,12 @@
 		margin: 3%;
 		transition: all var(--transition-length) linear;
 		--webkit-transition: var(--transition-length);
+	}
+
+	@media screen and (max-width: 600px) {
+		.theme-toggle {
+			width: 20%;
+		}
 	}
 
 	.switch {

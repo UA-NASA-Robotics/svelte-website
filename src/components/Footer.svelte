@@ -4,6 +4,7 @@
 	type Route = {
 		name: string;
 		route: string;
+		headerLevel: number;
 	};
 
 	type HeaderLink = {
