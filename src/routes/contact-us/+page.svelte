@@ -17,7 +17,7 @@
 	<div class="flex-columns">
 		<form method="POST" action="/contact-us?/contact_submission" class="wide-input">
 			<div class="thirds">
-				<label for="name">Name</label>
+				<label for="name">Name</label> <br />
 				<input type="text" id="name" name="name" required />
 
 				<div class="vertical-space" />
