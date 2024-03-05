@@ -333,6 +333,7 @@
 	.link-bar {
 		display: flex;
 		width: 100%;
+		justify-content: flex-end;
 	}
 	/*-- Nav --*/
 
@@ -468,6 +469,7 @@
 		/*max-width: 50px;*/
 		align-self: center;
 		margin: 1%;
+		margin-right: 3%;
 		transition: all var(--transition-length) linear;
 		--webkit-transition: var(--transition-length);
 	}
