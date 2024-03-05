@@ -13,6 +13,7 @@
 	type HeaderLink = {
 		name: string;
 		imgSrc: string;
+		headerLevel: number;
 	};
 
 	type HeaderRouteWithoutSubroutes = Route & HeaderLink;
@@ -91,11 +92,11 @@
 
 	onNavigate(() => {
 		headerBackgroundImageUpdate();
-		setMenuCollapsed();
+		//setMenuCollapsed();
 	});
 
 	//Hamgurger Menu
-	let menuExpanded: boolean = false;
+	/*let menuExpanded: boolean = false;
 
 	function setMenuCollapsed() {
 		if (menuExpanded) {
@@ -117,7 +118,7 @@
 		menuExpanded = !menuExpanded;
 		setMenuCollapsed();
 	}
-
+*/
 	function makeLiTextSize() {
 		//Set the text size of the nav links based on the length of the text
 		//This is proportional to the nav link ul container, hence cqw
@@ -129,8 +130,8 @@
 		routes.forEach((route) => {
 			topLevelTextLength += route.name.length;
 		});
-		let percent = 100 / ((topLevelTextLength / RoutesTopLevelLength) * 6); //5.8 is the average length of a word in terms of it's height... yeah this is very hacky
-		let verticalPercent = percent * 2.7; //this just kinda looks right... I don't know why is this so hard
+		let percent = 100 / ((topLevelTextLength / RoutesTopLevelLength) * 7); //5.8 is the average length of a word in terms of it's height... yeah this is very hacky
+		let verticalPercent = percent * 2.4; //this just kinda looks right... I don't know why is this so hard
 		document.documentElement.style.setProperty('--nav-page-font-size', percent + 'cqw');
 		document.documentElement.style.setProperty(
 			'--nav-page-vertical-font-size',
@@ -147,79 +148,134 @@
 			</a>
 		</div>
 
-		<div class="collapser hidden" id="collapser">
-			<!--
-			<div class="menu-toggle-container">
-				<a href="#top" class="menu-toggle" on:click|preventDefault={toggleMenu}>
-					<i class="fa-solid fa-bars hamburger" />
-				</a>
-			</div>-->
-
-			<nav class="topNav">
-				<ul class="nav-contents">
-					{#each routes as route}
-						{#if 'subroutes' in route}
-							<li
-								aria-current={$page.url.pathname === route.route ||
-								route.subroutes.some((sub) => sub.route === $page.url.pathname)
-									? 'page'
-									: undefined}
-								class="sub-nav-link"
-							>
-								<a
-									href={route.route}
+		<div class="link-area">
+			<div class="header-level-0 link-bar" id="level-0">
+				<nav class="topNav">
+					<ul class="nav-contents">
+						{#each routes as route}
+							{#if route.headerLevel !== 0}
+								<!-- Skipped render route on this level-->
+							{:else if 'subroutes' in route}
+								<li
 									aria-current={$page.url.pathname === route.route ||
 									route.subroutes.some((sub) => sub.route === $page.url.pathname)
 										? 'page'
 										: undefined}
-									class="sub-nav-link-a"
+									class="sub-nav-link"
 								>
-									{route.name}
-								</a>
-								<ul class="sub-nav">
-									{#each route.subroutes as sub}
-										<li
-											aria-current={$page.url.pathname === sub.route ? 'page' : undefined}
-											class="nav-page"
-										>
-											<a
-												href={sub.route}
+									<a
+										href={route.route}
+										aria-current={$page.url.pathname === route.route ||
+										route.subroutes.some((sub) => sub.route === $page.url.pathname)
+											? 'page'
+											: undefined}
+										class="sub-nav-link-a"
+									>
+										{route.name}
+									</a>
+									<ul class="sub-nav">
+										{#each route.subroutes as sub}
+											<li
 												aria-current={$page.url.pathname === sub.route ? 'page' : undefined}
+												class="nav-page"
 											>
-												{sub.name}
-											</a>
-										</li>
-									{/each}
-								</ul>
-							</li>
-						{:else}
-							<li
-								aria-current={$page.url.pathname === route.route ? 'page' : undefined}
-								class="nav-page"
-							>
-								<a
-									href={route.route}
+												<a
+													href={sub.route}
+													aria-current={$page.url.pathname === sub.route ? 'page' : undefined}
+												>
+													{sub.name}
+												</a>
+											</li>
+										{/each}
+									</ul>
+								</li>
+							{:else}
+								<li
 									aria-current={$page.url.pathname === route.route ? 'page' : undefined}
+									class="nav-page"
 								>
-									{route.name}
-								</a>
-							</li>
-						{/if}
-					{/each}
-				</ul>
-			</nav>
+									<a
+										href={route.route}
+										aria-current={$page.url.pathname === route.route ? 'page' : undefined}
+									>
+										{route.name}
+									</a>
+								</li>
+							{/if}
+						{/each}
+					</ul>
+				</nav>
+			</div>
 
-			<div class="theme-toggle">
-				<label class="switch">
-					<input type="checkbox" on:change={changeTheme} checked={theme === Themes.Dark} />
-					<span class="slider round">
-						<i
-							class={theme === Themes.Light
-								? 'theme-icon fa-solid fa-sun'
-								: 'theme-icon fa-solid fa-moon'}
-						/>
-					</span>
-				</label>
+			<div class="header-level-1 link-bar" id="level-1">
+				<nav class="topNav">
+					<ul class="nav-contents">
+						{#each routes as route}
+							{#if route.headerLevel !== 1}
+								<!-- Skipped render route on this level-->
+							{:else if 'subroutes' in route}
+								<li
+									aria-current={$page.url.pathname === route.route ||
+									route.subroutes.some((sub) => sub.route === $page.url.pathname)
+										? 'page'
+										: undefined}
+									class="sub-nav-link"
+								>
+									<a
+										href={route.route}
+										aria-current={$page.url.pathname === route.route ||
+										route.subroutes.some((sub) => sub.route === $page.url.pathname)
+											? 'page'
+											: undefined}
+										class="sub-nav-link-a"
+									>
+										{route.name}
+									</a>
+									<ul class="sub-nav">
+										{#each route.subroutes as sub}
+											<li
+												aria-current={$page.url.pathname === sub.route ? 'page' : undefined}
+												class="nav-page"
+											>
+												<a
+													href={sub.route}
+													aria-current={$page.url.pathname === sub.route ? 'page' : undefined}
+												>
+													{sub.name}
+												</a>
+											</li>
+										{/each}
+									</ul>
+								</li>
+							{:else}
+								<li
+									aria-current={$page.url.pathname === route.route ? 'page' : undefined}
+									class="nav-page"
+								>
+									<a
+										href={route.route}
+										aria-current={$page.url.pathname === route.route ? 'page' : undefined}
+									>
+										{route.name}
+									</a>
+								</li>
+							{/if}
+						{/each}
+					</ul>
+				</nav>
+
+				<div class="theme-toggle">
+					<label class="switch">
+						<input type="checkbox" on:change={changeTheme} checked={theme === Themes.Dark} />
+						<span class="slider round">
+							<i
+								class={theme === Themes.Light
+									? 'theme-icon fa-solid fa-sun'
+									: 'theme-icon fa-solid fa-moon'}
+							/>
+						</span>
+					</label>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -245,7 +301,7 @@
 		background-attachment: fixed;
 
 		background-position: center;
-		box-shadow: inset 0 0 0 1000px rgba(25, 44, 139, 0.559);
+		box-shadow: inset 0 0 0 1000px rgba(25, 44, 139, 0.7);
 	}
 
 	.header-container {
@@ -265,15 +321,18 @@
 		width: 100%;
 	}
 
-	.collapser {
+	.link-area {
 		/*max-width: 80%;
 		min-width: 40%;*/
 		width: 85%;
 		display: flex;
-		justify-content: space-between;
+		flex-direction: column;
 		border-radius: 5vh;
-		transition: all var(--transition-length) linear;
-		--webkit-transition: var(--transition-length);
+	}
+
+	.link-bar {
+		display: flex;
+		width: 100%;
 	}
 	/*-- Nav --*/
 
@@ -283,173 +342,98 @@
 		display: flex;
 		transition: all var(--transition-length) linear;
 		--webkit-transition: var(--transition-length);
+		width: 100%;
+	}
+
+	.header-level-1 .topNav {
+		/* Make room for the theme switch */
+		width: 80%;
 	}
 
 	.nav-contents {
 		/* the top level ul in the nav */
 		display: flex;
+		flex-direction: row;
 		width: 100%;
 		padding: 0%;
 		container-type: inline-size;
+		overflow: hidden;
+		justify-content: flex-end;
+		transition: all var(--transition-length) linear;
+		--webkit-transition: var(--transition-length);
 	}
 
 	.nav-page {
 		/* li nav page link item. can be top level or under sub-nav ul*/
 		list-style-type: none;
 		font-family: var(--title-font);
-		width: 95%;
-		/*font-size: var(--nav-page-font-size); moved to media screen*/
+		font-size: var(--nav-page-font-size);
+		/*width: 95%;*/
+		width: fit-content;
 		margin-right: 3%;
 		/*margin-bottom: 5%;*/
 		display: flex;
-		flex-wrap: wrap;
 		align-self: center;
 		border-radius: 2cqw;
-		padding: 1%;
+		padding: 1cqw;
 		text-decoration: none;
+		transition: all var(--transition-length) linear;
+		--webkit-transition: var(--transition-length);
 	}
 
 	.sub-nav {
 		/* ul sub-level of nav */
-		width: 100%;
-		display: flex;
-		flex-direction: column;
+		/*width: 100%;*/
+		display: none;
+		flex-direction: row;
+		padding: 0%;
+		width: fit-content;
+		transition: all var(--transition-length) linear;
+		--webkit-transition: var(--transition-length);
 	}
 
 	.sub-nav-link {
 		/* li item with a sub-nav ul inside of it*/
 		list-style-type: none;
-		/*font-size: var(--nav-page-font-size); moved */
+		font-size: var(--nav-page-font-size);
 		margin-right: 5%;
 		display: flex;
-		flex-wrap: wrap;
 		flex-direction: row;
 		/*margin-bottom: 5%;*/
 		align-self: center;
-		width: 95%;
+		/*width: 95%;*/
+		width: fit-content;
 		text-decoration: none;
 		border-radius: 2cqw;
-	}
-
-	.menu-toggle-container {
-		align-self: end;
-		width: 10%;
-		margin: 10%;
-		container-type: inline-size;
 		transition: all var(--transition-length) linear;
-		--webkit-transition: var(--transition-length);
-	}
-	.hamburger {
-		font-size: 60cqw;
+		--webkit-transition: all var(--transition-length);
+		padding: 1%;
 	}
 
-	@media screen and (min-width: 600px) {
-		/* NAV styles for menu when horizontal */
-
-		.collapser {
-			flex-direction: row;
-		}
-		#collapser .menu-toggle-container {
-			display: none;
-		}
-		.topNav {
-			/* top level nav item */
-			width: 90%;
-		}
-
-		.nav-contents {
-			/* the top level ul in the nav */
-			flex-direction: row;
-			height: 5vh;
-		}
-
-		.nav-page {
-			/* li nav page link item. can be top level or under sub-nav ul*/
-			font-size: var(--nav-page-font-size);
-			background-color: var(--light-bg-primary);
-			align-content: center;
-			justify-content: center;
-			height: 100%;
-		}
-
-		.sub-nav {
-			/* ul sub-level of nav */
-			padding: 0%;
-			display: flex; /*none; */
-		}
-
-		.sub-nav-link {
-			/* li item with a sub-nav ul inside of it*/
-			font-size: var(--nav-page-font-size);
-			background-color: var(--light-bg-primary);
-			justify-content: center;
-		}
-
-		.sub-nav-link:hover .sub-nav {
-			display: flex;
-		}
+	.sub-nav-link:hover .sub-nav {
+		display: flex;
+		width: fit-content;
 	}
-	@media screen and (max-width: 600px) {
-		/* NAV styles for vertical stacking and hiding.*/
-		/* parent div "collapser" if has class "hidden" then hide the nav */
+	.sub-nav-link:hover .sub-nav-link-a {
+		display: none;
+	}
 
-		.collapser {
-			flex-direction: column;
-			box-shadow: inset 0 0 0 1000px rgba(154, 165, 222, 0.9);
-		}
-		.topNav {
-			/* top level nav item */
-			width: 100%;
-		}
-
-		.nav-contents {
-			/* the top level ul in the nav */
-			flex-direction: column;
-		}
-
-		/* adjustments for making the menu vertical */
-		.nav-page {
-			/* li nav page link item. can be top level or under sub-nav ul*/
-			font-size: var(--nav-page-vertical-font-size);
-			width: 95%;
-			margin-bottom: 2%;
-		}
-
-		.sub-nav {
-			/* ul sub-level of nav */
-			padding-left: revert;
-			margin-top: 5%;
-			width: 90%;
-		}
-
-		.sub-nav-link {
-			/* li item with a sub-nav ul inside of it*/
-			font-size: var(--nav-page-vertical-font-size);
-		}
-
-		#collapser.hidden {
-			box-shadow: none;
-		}
-
-		#collapser.hidden .topNav {
-			display: none;
-		}
-		#collapser.hidden .theme-toggle {
-			display: none;
-		}
-		#collapser.hidden .menu-toggle-container {
-			display: flex;
-			align-self: flex-end;
-		}
-		#collapser.hidden .menu-toggle-container .hamburger {
-			box-shadow: inset 0 0 0 1000px rgba(154, 165, 222, 0.9);
-			padding: 30%;
-			border-radius: 2cqh;
-		}
+	.sub-nav-link-a {
+		/* a tag inside of a sub-nav-link li */
+		text-decoration: none;
+		margin-right: 5%;
+		align-self: center;
 	}
 
 	.nav-page[aria-current='page'] {
-		background-color: var(--light-bg-secondary);
+		background-color: var(--dark-accent);
+	}
+
+	.sub-nav-link[aria-current='page'] {
+		background-color: var(--dark-accent);
+	}
+	.sub-nav-link[aria-current='page']:hover {
+		background-color: revert;
 	}
 
 	a:hover {
@@ -457,23 +441,40 @@
 	}
 
 	a {
-		color: var(--light-txt-secondary);
+		color: var(--dark-txt-primary);
+	}
+
+	@media screen and (max-width: 600px) {
+		.nav-page {
+			font-size: var(--nav-page-vertical-font-size);
+		}
+		.sub-nav-link {
+			font-size: var(--nav-page-vertical-font-size);
+		}
+
+		.sub-nav-link:hover .sub-nav-link-a {
+			display: none;
+		}
+
+		.sub-nav-link:hover .sub-nav {
+			flex-direction: column;
+		}
 	}
 	/*-- Theme Switch --*/
 
 	.theme-toggle {
-		width: 10%; /* THIS is the size of the whole theme switch */
+		width: 8%; /* THIS is the size of the whole theme switch */
 		/*min-width: 30px;*/
 		/*max-width: 50px;*/
 		align-self: center;
-		margin: 3%;
+		margin: 1%;
 		transition: all var(--transition-length) linear;
 		--webkit-transition: var(--transition-length);
 	}
 
 	@media screen and (max-width: 600px) {
 		.theme-toggle {
-			width: 20%;
+			width: 15%;
 		}
 	}
 

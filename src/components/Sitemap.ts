@@ -13,6 +13,7 @@ type Route = {
 type HeaderLink = {
 	name: string;
 	imgSrc: string;
+	headerLevel: number;
 };
 
 type HeaderRouteWithoutSubroutes = Route & HeaderLink;
@@ -34,6 +35,7 @@ const routes: HeaderRoute[] = [
 	{
 		name: 'Team',
 		imgSrc: '',
+		headerLevel: 1,
 		subroutes: [
 			{
 				name: 'Competition',

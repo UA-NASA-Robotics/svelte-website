@@ -10,6 +10,7 @@
 	type HeaderLink = {
 		name: string;
 		imgSrc: string;
+		headerLevel: number;
 	};
 
 	type HeaderRouteWithoutSubroutes = Route & HeaderLink;
