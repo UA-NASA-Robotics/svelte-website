@@ -58,6 +58,10 @@
 	}
 
 	onMount(() => {
+		makeLiTextSize(); //set the font size of the nav links
+		//At top of sequence to reduce time before link text size is set
+		//reduce layout shift
+
 		headerBackgroundImageUpdate();
 
 		const value = localStorage.getItem('theme');
@@ -69,8 +73,6 @@
 		}
 
 		updateTheme();
-
-		makeLiTextSize(); //set the font size of the nav links
 	});
 
 	//Header Background Img Load
