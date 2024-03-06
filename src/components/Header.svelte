@@ -144,7 +144,7 @@
 	<div class="header-container">
 		<div class="header-logo">
 			<a href="/">
-				<img src="/src/lib/images/logo.png" alt="logo" class="logo" />
+				<img src="/src/lib/images/Logo.png" alt="logo" class="logo" />
 			</a>
 		</div>
 
