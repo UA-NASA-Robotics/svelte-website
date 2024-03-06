@@ -4,11 +4,13 @@
 	type Route = {
 		name: string;
 		route: string;
+		headerLevel: number;
 	};
 
 	type HeaderLink = {
 		name: string;
 		imgSrc: string;
+		headerLevel: number;
 	};
 
 	type HeaderRouteWithoutSubroutes = Route & HeaderLink;
@@ -47,12 +49,12 @@
 			alt: 'Facebook'
 		},
 		{
-			url: 'https://www.instagram.com/uakronrobotics/',
+			url: 'https://twitter.com/UAkronRobotics',
 			imgSrc: 'src/lib/images/footer-links/logo-x-twitter.webp',
 			alt: 'X (FKA Twitter)'
 		},
 		{
-			url: 'https://twitter.com/UAkronRobotics',
+			url: 'https://www.instagram.com/uakronrobotics/',
 			imgSrc: 'src/lib/images/footer-links/logo-instagram.png',
 			alt: 'Instagram'
 		},

@@ -7,11 +7,13 @@ The routes of the website that should be used for header and footer links
 type Route = {
 	name: string;
 	route: string;
+	headerLevel: number;
 };
 
 type HeaderLink = {
 	name: string;
 	imgSrc: string;
+	headerLevel: number;
 };
 
 type HeaderRouteWithoutSubroutes = Route & HeaderLink;
@@ -27,50 +29,60 @@ const routes: HeaderRoute[] = [
 	{
 		name: 'Home',
 		route: '/',
-		imgSrc: ''
+		imgSrc: '',
+		headerLevel: 1
 	},
 	{
 		name: 'Team',
 		imgSrc: '',
+		headerLevel: 1,
 		subroutes: [
 			{
 				name: 'Competition',
-				route: '/about-competition'
+				route: '/about-competition',
+				headerLevel: 1
 			},
 			{
 				name: 'History',
-				route: '/our-history'
+				route: '/our-history',
+				headerLevel: 1
 			},
 			{
 				name: 'Officers',
-				route: '/officers'
+				route: '/officers',
+				headerLevel: 1
 			}
 		]
 	},
 	{
 		name: 'New Members',
 		route: '/new-members',
-		imgSrc: ''
+		imgSrc: '',
+		headerLevel: 1
 	},
 	{
 		name: 'Sponsors',
 		route: '/sponsors',
-		imgSrc: ''
+		imgSrc: '',
+		headerLevel: 0
 	},
 	{
 		name: 'Outreach',
 		route: '/outreach',
-		imgSrc: ''
+		imgSrc: '',
+		headerLevel: 1
 	},
 	{
 		name: 'Contact Us',
 		route: '/contact-us',
-		imgSrc: ''
+		imgSrc: '',
+		headerLevel: 0
 	},
 	{
 		name: 'Events',
 		route: '/events',
-		imgSrc: ''
+		imgSrc: '',
+		headerLevel: 0
 	}
 ];
 
