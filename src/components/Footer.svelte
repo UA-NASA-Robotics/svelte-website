@@ -40,7 +40,6 @@
 	});
 
 	let footerLinksPerColumn = Math.ceil(flattenedRoutes.length / maxLinksColumns);
-	console.log(footerLinksPerColumn);
 
 	const socialButtons = [
 		{
