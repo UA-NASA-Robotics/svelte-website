@@ -4,9 +4,17 @@
 	let promise = handleFetchEvents();
 
 	async function handleFetchEvents() {
+		let myHeaders = new Headers();
+		myHeaders.append('pragma', 'no-cache');
+		myHeaders.append('cache-control', 'no-cache');
+
+		var fetchMeta = {
+			method: 'GET',
+			headers: myHeaders
+		};
 		const response = await fetch(
 			'https://corsproxy.io//?https://leboeuflasing.ddns.net/uaEvents.json',
-			{ method: 'GET' }
+			fetchMeta
 		);
 		return await response.json();
 	}
