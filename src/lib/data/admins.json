@@ -8,6 +8,15 @@
 			"biography": "Callie Lewis is the president of the NASA Robotics Team and she is a 4th year Chemical Engineering major with a minor in Spanish. Callie's favorite memory within this club was going to NASA Kennedy Space Center her Freshman year!"
 		}
 	],
+	"vice_presidents": [
+		{
+			"name": "Faith Stewart",
+			"image": "/src/lib/images/officers/Faith.png",
+			"team_title": "Electrical Officer",
+			"degree": ["Electrical Engineering", "Classics"],
+			"biography": "Faith Stewart is the Electrical Officer of the NASA Robotics Team and she is a third-year Electrical Engineering major and pursuing a minor in Classical Studies. Faith’s favorite memories within this club include the many of design reviews and being able to connect to the entire team as well as alumni!"
+		}
+	],
 	"project_managers": [
 		{
 			"name": "Brandon McCune",
@@ -34,7 +43,6 @@
 			"degree": ["Mechanical Engineering"],
 			"biography": "Jacob Lewis is the Mechanical Officer of the NASA Robotics Team and he is a third-year Mechanical Engineering major. Jacob's favorite memory within this club was leading the Mechanical Team in Alabama at the 2022/2023 NASA Robotics Mining Competition along with that he enjoyed to trip to Florida for the 2021/2022 Competition at NASA Kennedy Space Center!"
 		},
-
 		{
 			"name": "Faith Stewart",
 			"image": "/src/lib/images/officers/Faith.png",
