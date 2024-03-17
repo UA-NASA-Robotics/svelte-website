@@ -267,7 +267,7 @@
 				</nav>
 
 				<div class="theme-toggle">
-					<label class="switch">
+					<label class="switch" aria-label="Dark mode switch">
 						<input type="checkbox" on:change={changeTheme} checked={theme === Themes.Dark} />
 						<span class="slider round">
 							<i
