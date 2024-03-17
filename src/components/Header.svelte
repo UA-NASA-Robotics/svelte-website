@@ -267,7 +267,7 @@
 				</nav>
 
 				<div class="theme-toggle">
-					<label class="switch">
+					<label class="switch" aria-label="Dark mode switch">
 						<input type="checkbox" on:change={changeTheme} checked={theme === Themes.Dark} />
 						<span class="slider round">
 							<i
@@ -303,7 +303,7 @@
 		background-attachment: fixed;
 
 		background-position: center;
-		box-shadow: inset 0 0 0 1000px rgba(25, 44, 139, 0.7);
+		box-shadow: inset 0 0 0 1000px rgba(25, 44, 139, 0.8);
 	}
 
 	.header-container {
