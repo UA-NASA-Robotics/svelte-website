@@ -77,7 +77,7 @@ for img in images:
                 ratio = maxImgHeight / height
                 newWidth = int(width * ratio)
                 image = image.resize((newWidth, maxImgHeight))
-            image.save(os.path.join(CWD, img), optimize=True, quality=30, progressive=True)
+            image.save(os.path.join(CWD, img), optimize=True, quality=65, progressive=True)
     except Exception as e:
         print(e)
         print("Error with image: ", img)
