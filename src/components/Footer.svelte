@@ -85,7 +85,7 @@
 						style="display=:flex; align-items:flex-start;"
 					>
 						{#each flattenedRoutes.slice(i * footerLinksPerColumn, (i + 1) * footerLinksPerColumn) as route}
-							<a href={route.route}>{route.name}</a>
+							<a href={route.route} class="footer-link">{route.name}</a>
 						{/each}
 					</div>
 				{/each}
@@ -103,10 +103,17 @@
 	.match-footer {
 		background-color: var(--light-bg-secondary);
 		border-color: var(--light-bg-secondary);
+		font-size: medium;
 	}
 	:global(body.dark) .match-footer {
 		background-color: var(--dark-bg-secondary);
 		border-color: var(--dark-bg-secondary);
+	}
+
+	@media screen and (max-width: 600px) {
+		.match-footer {
+			font-size: large;
+		}
 	}
 	footer {
 		display: flex;
@@ -159,5 +166,15 @@
 	:global(body.dark) .bar {
 		color: var(--dark-txt-primary);
 		background-color: var(--dark-accent);
+	}
+
+	.footer-link {
+		padding: 1%;
+	}
+
+	@media screen and (max-width: 600px) {
+		.footer-link {
+			padding: 5%;
+		}
 	}
 </style>
