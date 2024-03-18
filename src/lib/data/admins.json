@@ -44,11 +44,11 @@
 			"biography": "Jacob Lewis is the Mechanical Officer of the NASA Robotics Team and he is a third-year Mechanical Engineering major. Jacob's favorite memory within this club was leading the Mechanical Team in Alabama at the 2022/2023 NASA Robotics Mining Competition along with that he enjoyed to trip to Florida for the 2021/2022 Competition at NASA Kennedy Space Center!"
 		},
 		{
-			"name": "Faith Stewart",
-			"image": "/src/lib/images/officers/Faith.png",
-			"team_title": "Electrical Officer",
-			"degree": ["Electrical Engineering", "Classics"],
-			"biography": "Faith Stewart is the Electrical Officer of the NASA Robotics Team and she is a third-year Electrical Engineering major and pursuing a minor in Classical Studies. Faith’s favorite memories within this club include the many of design reviews and being able to connect to the entire team as well as alumni!"
+			"name": "Lane Cline",
+			"image": "/src/lib/images/officers/Lane.png",
+			"team_title": "Electrical Lead",
+			"degree": ["Electrical Engineering", "History"],
+			"biography": "Lane Cline is the Electrical Lead of the NASA Robotics Team and he is a third-year Electrical Engineering major and pursing a minor in history. Lane’s favorite memory within this club was wiring the electrical system while at the University of Alabama and getting to participate at the 2022/2023 NASA Robotics Mining Competition!"
 		},
 		{
 			"name": "James Nestor",
@@ -66,13 +66,6 @@
 			"team_title": "Mechanical Lead",
 			"degree": ["Mechanical Engineering", "Mathematics"],
 			"biography": "Nick Seiler is the new Mechanical Lead of the NASA Robotics Team and he is a second-year Mechanical Engineering major and pursing a minor in Mathematics. Nick’s favorite memory within this club was being able to volunteer and be a judge at multiple VEX Robotics Events!🚀"
-		},
-		{
-			"name": "Lane Cline",
-			"image": "/src/lib/images/officers/Lane.png",
-			"team_title": "Electrical Lead",
-			"degree": ["Electrical Engineering", "History"],
-			"biography": "Lane Cline is the Electrical Lead of the NASA Robotics Team and he is a third-year Electrical Engineering major and pursing a minor in history. Lane’s favorite memory within this club was wiring the electrical system while at the University of Alabama and getting to participate at the 2022/2023 NASA Robotics Mining Competition!"
 		},
 		{
 			"name": "Jackson Stillwagon",
