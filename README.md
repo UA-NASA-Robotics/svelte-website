@@ -13,6 +13,14 @@ npm run dev
 npm run dev -- --open
 ```
 
+### Images
+
+Images are stored in the `src/lib/images` directory. When adding images, please ensure that they are compressed and optimized for the web. You can run the program `src/lib/images/0ImgResize.py` to compress and resize images. This program uses the `Pillow` library, which can be installed with `pip install Pillow`.
+
+Images are resized to 1800x* and compressed to 1/2 of their original size. The program will overwrite the original images, so be sure to make a backup if you need to keep the original images.
+
+Images can be excluded from the resizing and compression by adding them to the `excluded` list in the `0ResizeProperties.csv` file.
+
 ## NOTICE: Production Auto-Deploy
 
 **_ DO NOT PUSH TO `master` UNLESS YOU ARE READY TO DEPLOY TO PRODUCTION. _**
