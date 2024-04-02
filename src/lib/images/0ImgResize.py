@@ -69,15 +69,21 @@ for img in images:
     try:
         with Image.open(os.path.join(CWD, img)) as image:
             width, height = image.size
+            doSave = False
             if maxImgWidth and width > maxImgWidth:
                 ratio = maxImgWidth / width
                 newHeight = int(height * ratio)
                 image = image.resize((maxImgWidth, newHeight))
+                doSave = True
             elif maxImgHeight and height > maxImgHeight:
                 ratio = maxImgHeight / height
                 newWidth = int(width * ratio)
                 image = image.resize((newWidth, maxImgHeight))
-            image.save(os.path.join(CWD, img), optimize=True, quality=70, progressive=True)
+                doSave = True
+            if doSave:
+                image.save(os.path.join(CWD, img), optimize=True, quality=70, progressive=True)
+            else:
+                print("No resizing needed for: ", img)
     except Exception as e:
         print(e)
         print("Error with image: ", img)
