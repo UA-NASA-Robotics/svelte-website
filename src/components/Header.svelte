@@ -331,19 +331,22 @@
 		border-radius: 5vh;
 	}
 
-	@media screen and (max-width: 1024px) { /* Biggest menu possible until 1024px */
+	@media screen and (max-width: 1024px) {
+		/* Biggest menu possible until 1024px */
 		.link-area {
 			width: 85%;
 		}
 	}
 
-	@media screen and (min-width: 1024px) and (max-width: 1440px) { /* Medium menu size */
+	@media screen and (min-width: 1024px) and (max-width: 1440px) {
+		/* Medium menu size */
 		.link-area {
 			width: 75%;
 		}
 	}
 
-	@media screen and (min-width: 1440px) and (max-width: 2560px) { /* Smaller menu size */
+	@media screen and (min-width: 1440px) and (max-width: 2560px) {
+		/* Smaller menu size */
 		.link-area {
 			width: 65%;
 		}
@@ -352,7 +355,8 @@
 		}
 	}
 
-	@media screen and (min-width: 2560px) { /* Smallest menu size */
+	@media screen and (min-width: 2560px) {
+		/* Smallest menu size */
 		.link-area {
 			width: 55%;
 		}
@@ -461,8 +465,16 @@
 		background-color: var(--dark-accent);
 	}
 
+	:global(body.dark) .nav-page[aria-current='page'] {
+		background-color: var(--ua-dark-blue);
+	}
+
 	.sub-nav-link[aria-current='page'] {
 		background-color: var(--dark-accent);
+	}
+
+	:global(body.dark) .sub-nav-link[aria-current='page'] {
+		background-color: var(--ua-dark-blue);
 	}
 	.sub-nav-link[aria-current='page']:hover {
 		background-color: revert;
