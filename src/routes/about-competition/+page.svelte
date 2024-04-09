@@ -140,7 +140,11 @@
 			</ul>
 		</div>
 		<div class="two-thirds">
-			<img src="/src/lib/images/robot-in-field.jpg" width="85%" alt="Robot in competition field." />
+			<img
+				src="/src/lib/images/2019-competition7.jpg"
+				width="85%"
+				alt="Robot in competition field."
+			/>
 		</div>
 	</div>
 </div>
