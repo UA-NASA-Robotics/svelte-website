@@ -76,7 +76,7 @@
 		},
 		{
 			"name": "Jonathan Roth",
-			"image": "/src/lib/images/officers/JonR.png",
+			"image": "",
 			"team_title": "Electrical Lead",
 			"degree": ["Electrical Engineering"],
 			"biography": "Jonathan Roth is the signalling electrical lead of the NASA Robotics Team and he is a first-year Electrical Engineering major. Jonathan’s favorite memory within this club was being able to work with the team to create the electrical system for the robot! Fun fact about Jonathan, he loves to play the guitar!"
@@ -86,14 +86,14 @@
 			"image": "/src/lib/images/officers/Jackson.png",
 			"team_title": "Software Lead",
 			"degree": ["Electrical Engineering"],
-			"biography": "Jackson Stillwagon is one of the new Software Leads of the NASA Robotics Team and he is a second-year Electrical Engineering major. Jackson's favorite memory within this club was attending Robsgiving this year with the entire Software Team!"
+			"biography": "Jackson Stillwagon is the motor control Software Lead of the NASA Robotics Team and he is a second-year Electrical Engineering major. Jackson's favorite memory within this club was attending Robsgiving this year with the entire Software Team!"
 		},
 		{
 			"name": "Nathan O’Brien",
 			"image": "/src/lib/images/officers/Nate.png",
 			"team_title": "Software Lead",
 			"degree": ["Computer Engineering", "Computer Science"],
-			"biography": "Nathan O’Brien is one of the new Software Leads of the NASA Robotics Team and he is a second-year Computer Engineering major and pursing a minor in Computer Science. Nathan’s favorite memory within this club was programming RoboFett to dance and play a Billie Joel song!"
+			"biography": "Nathan O’Brien is the communications Software Lead of the NASA Robotics Team and he is a second-year Computer Engineering major and pursing a minor in Computer Science. Nathan’s favorite memory within this club was programming RoboFett to dance and play a Billie Joel song!"
 		}
 	],
 	"members": []
