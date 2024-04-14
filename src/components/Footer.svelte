@@ -96,6 +96,9 @@
 </footer>
 
 <style>
+	.flex-columns {
+		width: 100%;
+	}
 	.align-left {
 		display: flex;
 		flex-direction: row;
