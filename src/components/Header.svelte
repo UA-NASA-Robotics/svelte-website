@@ -480,6 +480,10 @@
 		background-color: revert;
 	}
 
+	:global(body.dark) .sub-nav-link[aria-current='page']:hover {
+		background-color: revert;
+	}
+
 	a:hover {
 		text-decoration: none;
 	}
