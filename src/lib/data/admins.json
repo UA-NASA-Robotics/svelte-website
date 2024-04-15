@@ -20,10 +20,10 @@
 	"project_managers": [
 		{
 			"name": "Brandon McCune",
-			"image": "/src/lib/images/officers/Brandon.png",
+			"image": "/src/lib/images/officers/Brandon.jpeg",
 			"team_title": "Project Manager",
-			"degree": ["Mechanical Engineering", "Mathematics"],
-			"biography": "Brandon McCune is the Project Manager of the NASA Robotics Team and he is a second-year Mechanical Engineering major with a minor in Mathematics. Brandon's favorite memory within this club was being able to utilize CAD outside of the classroom on 22/23 bot DAISEE!"
+			"degree": ["Mechanical Engineering", "Applied Mathematics"],
+			"biography": "Brandon McCune is the Project Manager of the NASA Robotics Team and he is a second-year Mechanical Engineering major with a minor in Mathematics. Brandon's favorite memory within this club was late night talks (somewhat regrettably after midnight sometimes) after a hard day's work. Fun fact about Brandon, he plays piano and was very temporarily in a cover band."
 		}
 	],
 	"treasurers": [
@@ -45,15 +45,14 @@
 		},
 		{
 			"name": "Lane Cline",
-			"image": "/src/lib/images/officers/Lane.png",
+			"image": "/src/lib/images/officers/Lane.jpg",
 			"team_title": "Electrical Officer",
 			"degree": ["Electrical Engineering", "History"],
-			"biography": "Lane Cline is the Electrical Officer of the NASA Robotics Team and he is a third-year Electrical Engineering major and pursing a minor in history. Lane’s favorite memory within this club was wiring the electrical system while at the University of Alabama and getting to participate at the 2022/2023 NASA Robotics Mining Competition!"
+			"biography": "Lane Cline is the Electrical Officer of the NASA Robotics Team and he is a third-year Electrical Engineering major and pursing a minor in history. Lane’s favorite memory within this club was staying up late wiring the robot with the team! Fun fact about Lane, he loves making salsa!"
 		},
 		{
 			"name": "James Nestor",
-			"image": "",
-			"placeholder": "/src/lib/images/officers/James.png",
+			"image": "/src/lib/images/officers/James.png",
 			"team_title": "Software Officer",
 			"degree": ["Computer Science", "Applied Mathematics"],
 			"biography": "James Nestor is the Software Officer of the NASA Robotics Team and he is a Computer Science major and pursing a minor in Applied Mathematics. James’s favorite memory within this club was being able to work with the entire team and alumni to create the software for BRANDEE!"
@@ -68,19 +67,49 @@
 			"biography": "Nick Seiler is the new Mechanical Lead of the NASA Robotics Team and he is a second-year Mechanical Engineering major and pursing a minor in Mathematics. Nick’s favorite memory within this club was being able to volunteer and be a judge at multiple VEX Robotics Events!🚀"
 		},
 		{
+			"name": "Eli Bukoski",
+			"image": "/src/lib/images/officers/Eli.jpg",
+			"team_title": "Electrical Lead",
+			"degree": ["Electrical Engineering", "Computer Science Minor"],
+			"biography": "Eli Bukoski is the power distribution electrical lead of the NASA Robotics Team and he is a first-year Electrical Engineering major and pursing a minor in Computer Science. Eli’s favorite memory within this club was helping at outreach events with the team, and designing PCBs for the robot! Fun fact about Eli, during high school his team competed in the 2021 Vex Robotics Worlds Competition."
+		},
+		{
+			"name": "Jonathan Roth",
+			"image": "/src/lib/images/officers/JonR.jpg",
+			"team_title": "Electrical Lead",
+			"degree": ["Electrical Engineering", "Mathematics Major"],
+			"biography": "Jonathan Roth is the signalling electrical lead of the NASA Robotics Team and he is a first-year Electrical Engineering and Mathematics double major. His favorite memory within this club was anodizing titanium parts for the robot and the unexpected chemistry behind it! Fun fact about Jon, he can solve 22 types of rubik's cubes!"
+		},
+		{
 			"name": "Jackson Stillwagon",
 			"image": "/src/lib/images/officers/Jackson.png",
 			"team_title": "Software Lead",
 			"degree": ["Electrical Engineering"],
-			"biography": "Jackson Stillwagon is one of the new Software Leads of the NASA Robotics Team and he is a second-year Electrical Engineering major. Jackson's favorite memory within this club was attending Robsgiving this year with the entire Software Team!"
+			"biography": "Jackson Stillwagon is the motor control Software Lead of the NASA Robotics Team and he is a second-year Electrical Engineering major. Jackson's favorite memory within this club was attending Robsgiving this year with the entire Software Team!"
 		},
 		{
 			"name": "Nathan O’Brien",
 			"image": "/src/lib/images/officers/Nate.png",
 			"team_title": "Software Lead",
 			"degree": ["Computer Engineering", "Computer Science"],
-			"biography": "Nathan O’Brien is one of the new Software Leads of the NASA Robotics Team and he is a second-year Computer Engineering major and pursing a minor in Computer Science. Nathan’s favorite memory within this club was programming RoboFett to dance and play a Billie Joel song!"
+			"biography": "Nathan O’Brien is the communications Software Lead of the NASA Robotics Team and he is a second-year Computer Engineering major and pursing a minor in Computer Science. Nathan’s favorite memory within this club was programming RoboFett to dance and play a Billie Joel song!"
 		}
 	],
-	"members": []
+	"members": [
+		{
+			"name": "Metal Zippy",
+			"image": "/src/lib/images/officers/Lane.jpg",
+			"team_title": "Mascot",
+			"degree": [
+				"Economics",
+				"Applied Mathematics",
+				"Chemical Engineering",
+				"Classics",
+				"Computer Engineering",
+				"Computer Science",
+				"Spanish"
+			],
+			"biography": "Metal Zippy is the mascot of the NASA Robotics Team and he is a 4th year Economics major with a minor in Applied Mathematics. Zippy's favorite memory within this club was going to NASA Kennedy Space Center her Freshman year!"
+		}
+	]
 }

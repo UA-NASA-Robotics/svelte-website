@@ -48,7 +48,7 @@ const routes: HeaderRoute[] = [
 				headerLevel: 1
 			},
 			{
-				name: 'Officers',
+				name: 'Leadership',
 				route: '/officers',
 				headerLevel: 1
 			}
