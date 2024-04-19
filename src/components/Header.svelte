@@ -79,6 +79,7 @@
 	function headerBackgroundImageUpdate() {
 		let currentUrl = window.location.href; //split the url at the slashes
 		currentUrl = currentUrl.split('?')[0]; //remove any query params
+		currentUrl = currentUrl.split('#')[0]; //remove any link refs
 		let currentUrllist = currentUrl.split('/'); //split the url at the slashes
 		let headerImgLink = currentUrllist[currentUrllist.length - 1]; //get the last item in the array the base page name
 
@@ -441,9 +442,13 @@
 		width: fit-content;
 		text-decoration: none;
 		border-radius: 2cqw;
-		transition: all var(--transition-length) linear;
-		--webkit-transition: all var(--transition-length);
-		padding: 1%;
+		transition: all var(--transition-length) linear, padding;
+		--webkit-transition: all var(--transition-length), padding: none;
+		padding: 1%; /* This padding got pushed on top of a nav-page li padding moving the header around*/
+	}
+
+	.sub-nav-link:hover {
+		padding: 0%; /* remove padding when hovered */
 	}
 
 	.sub-nav-link:hover .sub-nav {
