@@ -24,7 +24,7 @@
 			</p>
 		</div>
 		<div class="seconds">
-			<img src="/src/lib/images/outreach2.jpg" alt="Lane working on a toy car" width="100%" />
+			<img src="/src/lib/images/outreach2.JPG" alt="Lane working on a toy car" width="100%" />
 		</div>
 	</div>
 	<div style="height: 100px;" />
