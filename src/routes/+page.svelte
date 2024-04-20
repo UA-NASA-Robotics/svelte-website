@@ -3,7 +3,15 @@
 
 <svelte:head>
 	<title>Home</title>
-	<meta name="description" content="UA Nasa Robotics Homepage" />
+	<meta
+		name="description"
+		content="UA Nasa Robotic Mining Competition Team, University of Akron Design Team"
+	/>
+	<meta
+		name="keywords"
+		content="NASA, Robotic Mining Competition, Lunabotics, Artemis, Moon to Mars, design team"
+	/>
+	<meta name="author" content="UA NASA Robotic Mining Competition Team" />
 </svelte:head>
 
 <section>

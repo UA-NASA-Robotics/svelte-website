@@ -11,7 +11,15 @@
 
 <svelte:head>
 	<title>Team Sponsors</title>
-	<meta name="description" content="The current sponsors of our the team." />
+	<meta
+		name="description"
+		content="The sponsors of the UA NASA Robotics Mining Competition Team."
+	/>
+	<meta
+		name="keywords"
+		content="NASA, Robotic Mining Competition, Lunabotics, Artemis, Moon to Mars, sponsors, funding, contact, support, help"
+	/>
+	<meta name="author" content="UA NASA Robotic Mining Competition Team" />
 </svelte:head>
 
 <div class="text-column">

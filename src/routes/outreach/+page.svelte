@@ -1,6 +1,14 @@
 <svelte:head>
 	<title>Outreach</title>
-	<meta name="description" content="About our outreach efforts." />
+	<meta
+		name="description"
+		content="The outreach events of the UA Nasa Robotics Mining Team. Helping and teaching out in the community of Akron"
+	/>
+	<meta
+		name="keywords"
+		content="NASA, Robotic Mining Competition, Lunabotics, Artemis, Moon to Mars, outreach, community, events, help, teach, volunteer"
+	/>
+	<meta name="author" content="uA NASA Robotic Mining Competition Team" />
 </svelte:head>
 
 <div class="text-column">
