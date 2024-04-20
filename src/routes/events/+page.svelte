@@ -1,5 +1,6 @@
 <script lang="ts">
 	import './style.css';
+	import ExpressMap from '../../components/ExpressMap.svelte';
 
 	let promise = handleFetchEvents();
 
@@ -90,4 +91,11 @@
 			</div>
 		{/await}
 	</div>
+
+	<h2>Want to join the group?</h2>
+	<p>
+		All sub-team meetings and general meetings are held in the campus building known as the Express
+		Building.
+	</p>
+	<ExpressMap />
 </div>

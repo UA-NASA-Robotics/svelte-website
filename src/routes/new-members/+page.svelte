@@ -1,3 +1,7 @@
+<script>
+	import ExpressMap from '../../components/ExpressMap.svelte';
+</script>
+
 <svelte:head>
 	<title>New Members Info</title>
 	<meta
@@ -125,6 +129,8 @@
 		schedule
 		<a href="/events">here</a>. We look forward to meeting you!
 	</p>
+	<ExpressMap />
+	<p>Most of our meeting take place is the Express Building, which can be found above!</p>
 </div>
 
 <style>
