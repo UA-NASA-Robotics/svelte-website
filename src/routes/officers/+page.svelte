@@ -1,5 +1,4 @@
 <script lang="ts">
-	import './style.css';
 	import PersonnelBio from '../../components/PersonnelBio.svelte';
 
 	let promise = handleFetchOfficers();
@@ -12,7 +11,15 @@
 
 <svelte:head>
 	<title>Team Leadership</title>
-	<meta name="description" content="The current leadership on the team." />
+	<meta
+		name="description"
+		content="The current leadership on the team. See the members leading the UA Nasa Robotics Mining Competition Team."
+	/>
+	<meta
+		name="keywords"
+		content="NASA, Robotic Mining Competition, Lunabotics, Artemis, Moon to Mars, team, leadership, president, vice president, project manager, treasurer, officers, leads"
+	/>
+	<meta name="author" content="UA NASA Robotic Mining Competition Team" />
 </svelte:head>
 
 <div class="text-column">

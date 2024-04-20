@@ -3,7 +3,15 @@
 
 <svelte:head>
 	<title>Contact Us</title>
-	<meta name="description" content="Get in touch with us..." />
+	<meta
+		name="description"
+		content="Get in touch with us. Send a message, and we will get back to you as soon as possible!"
+	/>
+	<meta
+		name="keywords"
+		content="contact, message, sponsor, presentation, team, robotics, engineering, email, form"
+	/>
+	<meta name="author" content="uA NASA Robotic Mining Competition Team" />
 </svelte:head>
 
 <div class="text-column">

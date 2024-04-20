@@ -1,6 +1,14 @@
 <svelte:head>
 	<title>About the Competition</title>
-	<meta name="description" content="About the competition." />
+	<meta
+		name="description"
+		content="About the Nasa RMC competition and UA Nasa Robotics team process."
+	/>
+	<meta
+		name="keywords"
+		content="NASA, Robotic Mining Competition, Lunabotics, Artemis, Moon to Mars"
+	/>
+	<meta name="author" content="uA NASA Robotic Mining Competition Team" />
 </svelte:head>
 
 <div class="text-column">

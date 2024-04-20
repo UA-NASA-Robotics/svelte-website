@@ -1,4 +1,5 @@
 <script>
+	import './PersonnelBio.css';
 	/**
 	 * @type {string | any[]}
 	 * @description The list of personnel to display.

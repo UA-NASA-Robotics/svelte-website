@@ -1,5 +1,6 @@
 <script lang="ts">
 	import './style.css';
+	import ExpressMap from '../../components/ExpressMap.svelte';
 
 	let promise = handleFetchEvents();
 
@@ -22,7 +23,15 @@
 
 <svelte:head>
 	<title>Current Events</title>
-	<meta name="description" content="The current events happening for UA Robotics." />
+	<meta
+		name="description"
+		content="The current events of the UA Nasa Robotics Mining Team. See events, locations, times, and schedules."
+	/>
+	<meta
+		name="keywords"
+		content="NASA, Robotic Mining Competition, Lunabotics, Artemis, Moon to Mars, event, live, schedule, meet, in-person, calender"
+	/>
+	<meta name="author" content="uA NASA Robotic Mining Competition Team" />
 </svelte:head>
 
 <div class="text-column">
@@ -82,4 +91,11 @@
 			</div>
 		{/await}
 	</div>
+
+	<h2>Want to join the group?</h2>
+	<p>
+		All sub-team meetings and general meetings are held in the campus building known as the Express
+		Building.
+	</p>
+	<ExpressMap />
 </div>

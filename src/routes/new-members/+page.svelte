@@ -1,6 +1,18 @@
+<script>
+	import ExpressMap from '../../components/ExpressMap.svelte';
+</script>
+
 <svelte:head>
 	<title>New Members Info</title>
-	<meta name="description" content="What new members will get to experience." />
+	<meta
+		name="description"
+		content="Learn more about UA Nasa Robotics team, and what members do daily!"
+	/>
+	<meta
+		name="keywords"
+		content="NASA, Robotic Mining Competition, Lunabotics, Artemis, Moon to Mars, member, team, join, people, electrical, mechanical, software, new, express"
+	/>
+	<meta name="author" content="uA NASA Robotic Mining Competition Team" />
 </svelte:head>
 
 <div class="text-column">
@@ -117,6 +129,8 @@
 		schedule
 		<a href="/events">here</a>. We look forward to meeting you!
 	</p>
+	<ExpressMap />
+	<p>Most of our meeting take place is the Express Building, which can be found above!</p>
 </div>
 
 <style>
