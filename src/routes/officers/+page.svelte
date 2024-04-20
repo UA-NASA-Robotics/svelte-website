@@ -1,5 +1,4 @@
 <script lang="ts">
-	import './style.css';
 	import PersonnelBio from '../../components/PersonnelBio.svelte';
 
 	let promise = handleFetchOfficers();
