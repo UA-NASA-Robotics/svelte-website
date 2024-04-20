@@ -12,10 +12,12 @@
 </svelte:head>
 
 <div class="text-column">
-	<p>This year (2023), we helped out with a variety of outreach events, including:</p>
+	<p>This year [2023-2024], we helped out with a variety of outreach events, including:</p>
 	<ul>
 		<li>Make a Difference Day</li>
 		<li>Firestone High School VEX VRC Competition</li>
+		<li>B-STEM Club Electronics Experiment</li>
+		<li>Kids Career Day</li>
 	</ul>
 	<p>
 		To get up to date information about upcoming events goto our <a href="/events">
@@ -38,11 +40,7 @@
 	<div style="height: 100px;" />
 	<div class="flex-columns">
 		<div class="seconds">
-			<img
-				src="/src/lib/images/jon-soldering.jpg"
-				alt="John helping students solder."
-				width="100%"
-			/>
+			<img src="/src/lib/images/outreach3.JPG" alt="Team members working on toys." width="100%" />
 		</div>
 		<div class="seconds">
 			<p>
@@ -75,4 +73,35 @@
 			<img src="/src/lib/images/outreach-team.jpg" alt="Group in-front of table" width="100%" />
 		</div>
 	</div>
+
+	<h3>B-STEM Club Electronics Experiment</h3>
+	<div class="flex-columns">
+		<div class="seconds">
+			<img src="/src/lib/images/jon-soldering.jpg" alt="B-STEM Club" width="100%" />
+		</div>
+		<div class="seconds">
+			<p>
+				The B-STEM club is a group of students from in Akron who are interested in STEM. We went to
+				their school to help teach them about electronics, and how to solder circuits. We helped
+				them put together a simple circuit that they could take home and use.
+			</p>
+		</div>
+	</div>
+
+	<h3>Kids Career Day</h3>
+	<div class="flex-columns">
+		<div class="seconds">
+			<p>
+				The team went to a local elementary school to talk to the kids about what we do in
+				engineering and robotics. We talked about careers related to engineering, and how they can
+				get involved in STEM. We also showed them how to make their own vibratory-movement robots at
+				home and trace their paths over paper with markers.
+			</p>
+		</div>
+		<div class="seconds">
+			<img src="/src/lib/images/kids-careerday.jpg" alt="Kids with robots" width="100%" />
+		</div>
+	</div>
+
+	<img src="/src/lib/images/markerrobots.jpg" alt="mark robots on a table." width="100%" />
 </div>
