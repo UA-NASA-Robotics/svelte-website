@@ -17,6 +17,9 @@ const config = {
 			handleHttpError: 'ignore',
 			handleMissingId: 'ignore',
 			handleEntryGeneratorMismatch: 'ignore'
+		},
+		files: {
+			assets: '/src/lib'
 		}
 	}
 };

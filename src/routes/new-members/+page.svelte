@@ -34,7 +34,7 @@
 	</p>
 	<p>
 		<em
-			>As a member of the team you’ll have the opportunity to learn valuable design and hands-on
+			>As a member of the team you'll have the opportunity to learn valuable design and hands-on
 			skills that are highly desired by employers!</em
 		>
 	</p>
@@ -98,7 +98,7 @@
 
 	<h2>Software</h2>
 	<p>
-		The software team is responsible for the “brains” of the robot: all the code that makes it run!
+		The software team is responsible for the "brains" of the robot: all the code that makes it run!
 		On the software team, we will teach you how to code in C and C++. Once you have an understanding
 		of coding, you will learn how to use C++ to program the microprocessors on our circuit boards
 		designed by the electrical team. We will also teach you algorithm design and implementation, as
