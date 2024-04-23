@@ -41,25 +41,30 @@
 
 	let footerLinksPerColumn = Math.ceil(flattenedRoutes.length / maxLinksColumns);
 
+	import facebook from '$lib/images/footer-links/logo-facebook.png';
+	import instagram from '$lib/images/footer-links/logo-instagram.png';
+	import youtube from '$lib/images/footer-links/logo-youtube.png';
+	import twitter from '$lib/images/footer-links/logo-x-twitter.webp';
+
 	const socialButtons = [
 		{
 			url: 'https://www.facebook.com/UANASArobotics/',
-			imgSrc: 'src/lib/images/footer-links/logo-facebook.png',
+			imgSrc: facebook,
 			alt: 'Facebook'
 		},
 		{
 			url: 'https://twitter.com/UAkronRobotics',
-			imgSrc: 'src/lib/images/footer-links/logo-x-twitter.webp',
+			imgSrc: twitter,
 			alt: 'X (FKA Twitter)'
 		},
 		{
 			url: 'https://www.instagram.com/uakronrobotics/',
-			imgSrc: 'src/lib/images/footer-links/logo-instagram.png',
+			imgSrc: instagram,
 			alt: 'Instagram'
 		},
 		{
 			url: 'https://www.youtube.com/@uanasaroboticsteam',
-			imgSrc: 'src/lib/images/footer-links/logo-youtube.png',
+			imgSrc: youtube,
 			alt: 'Youtube'
 		}
 	];
