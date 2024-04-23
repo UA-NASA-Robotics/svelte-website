@@ -1,5 +1,8 @@
 <script>
 	import ExpressMap from '../../components/ExpressMap.svelte';
+	import waterjetcutter from '$lib/images/waterjet-cutter.jpg';
+	import jonandeli from '$lib/images/jon-and-eli.jpg';
+	import lidar from '$lib/images/lidar.jpg';
 </script>
 
 <svelte:head>
@@ -60,11 +63,7 @@
 			</ul>
 		</div>
 		<div class="two-thirds">
-			<img
-				src="/src/lib/images/waterjet-cutter.jpg"
-				width="100%"
-				alt="Mechanical Sub-team Working"
-			/>
+			<img src={waterjetcutter} width="100%" alt="Mechanical Sub-team Working" />
 		</div>
 	</div>
 
@@ -80,7 +79,7 @@
 	</p>
 	<div class="flex-columns">
 		<div class="two-thirds">
-			<img src="/src/lib/images/jon-and-eli.jpg" width="100%" alt="Electrical Sub-team Working" />
+			<img src={jonandeli} width="100%" alt="Electrical Sub-team Working" />
 		</div>
 		<div class="thirds">
 			<ul>
@@ -118,7 +117,7 @@
 			</ul>
 		</div>
 		<div class="two-thirds">
-			<img src="/src/lib/images/lidar.JPG" width="100%" alt="Software Sub-team Working" />
+			<img src={lidar} width="100%" alt="Software Sub-team Working" />
 		</div>
 	</div>
 

@@ -7,6 +7,7 @@
 		let response = await fetch('/src/lib/data/sponsors.json', { method: 'GET' });
 		return await response.json();
 	}
+
 </script>
 
 <svelte:head>
