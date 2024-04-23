@@ -35,6 +35,8 @@ The `src/lib/images` folder is not directly accessible by the website. To use th
 <img src="{image2}" alt="Image 2" />
 ```
 
+Images in the header are an anomalous, they must be placed in the /static/headerImages folder. They aren't preprocessed by svelte, so with the way dynamic requests work, they must be placed in the static folder.
+
 ## NOTICE: Production Auto-Deploy
 
 **_ DO NOT PUSH TO `master` UNLESS YOU ARE READY TO DEPLOY TO PRODUCTION. _**
