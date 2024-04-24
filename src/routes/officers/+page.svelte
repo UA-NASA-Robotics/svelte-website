@@ -24,7 +24,8 @@
 		Our team is led by a group of dedicated students who are passionate about robotics and
 		engineering. These students are responsible for the day-to-day operations of the team, as well
 		as the long-term planning and strategy. They are also responsible for the team's finances, and
-		for ensuring that the team is in compliance with all applicable laws and regulations.
+		for ensuring that the team is in compliance with all applicable rules and constraints set by the
+		competition.
 	</p>
 	<Leadership />
 </div>
