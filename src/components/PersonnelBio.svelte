@@ -1,5 +1,6 @@
 <script>
 	import './PersonnelBio.css';
+	import logo from '$lib/images/Logo.png';
 	/**
 	 * @type {string | any[]}
 	 * @description The list of personnel to display.
@@ -20,14 +21,14 @@
 	{:else}
 		{#each Personnel as officer, index}
 			<div class={index % 2 == 0 ? 'officerCard' : 'officerCard officerCardReverse'}>
-				{#if officer.image && officer.image.length > 0}
+				{#if officer.image != undefined && officer.image != ''}
 					<div class="officerImageDiv">
 						<img src={officer.image} alt="officer Thumbnail" class="officerImg" />
 					</div>
 				{:else}
 					<!-- Placeholder -->
 					<div class="officerImageDiv">
-						<img src="/src/lib/images/Logo.png" alt="officer Thumbnail" class="officerImg" />
+						<img src={logo} alt="officer placeholder" class="officerImg" />
 					</div>
 				{/if}
 

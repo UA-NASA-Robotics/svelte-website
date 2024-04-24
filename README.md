@@ -39,7 +39,7 @@ Images in the header are an anomalous, they must be placed in the /static/header
 
 ## NOTICE: Production Auto-Deploy
 
-**_ DO NOT PUSH TO `master` UNLESS YOU ARE READY TO DEPLOY TO PRODUCTION. _**
+** DO NOT PUSH TO `master` UNLESS YOU ARE READY TO DEPLOY TO PRODUCTION. **
 
 This repository is set up to auto-deploy to the production server on push to the `master` branch. Please be careful when pushing to `master` as it will immediately deploy to the production server.
 
