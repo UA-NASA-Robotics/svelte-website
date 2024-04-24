@@ -24,5 +24,5 @@
 		the robots of the Akron RMC team career!
 	</p>
 
-	<Robots input="a" />
+	<Robots />
 </div>

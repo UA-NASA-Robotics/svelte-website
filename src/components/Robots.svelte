@@ -9,8 +9,6 @@
 	import daisee from '/src/lib/images/DAISEE.png';
 	import brandee from '/src/lib/images/BRANDEE.jpg';
 
-	export let input: string = '';
-
 	const robotsList = [
 		{
 			image: pirate,
