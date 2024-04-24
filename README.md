@@ -13,6 +13,21 @@ npm run dev
 npm run dev -- --open
 ```
 
+## NOTICE: Production Auto-Deploy
+
+** DO NOT PUSH TO `master` UNLESS YOU ARE READY TO DEPLOY TO PRODUCTION. **
+
+This repository is set up to auto-deploy to the production server on push to the `master` branch. Please be careful when pushing to `master` as it will immediately deploy to the production server.
+
+Please branch off of `dev` and submit a pull request to merge into `dev` when you are ready to merge your changes into the development branch. Once the changes are tested and ready to go live, the team lead will merge `dev` into `master` to deploy to the production server.
+
+### Testing
+
+Please tes your changes visually and functionally before submitting a pull request. The website should look and function as expected. If you are adding new features, please test them thoroughly to ensure they work as expected.
+
+Once a pull request has been submitted, the team should test building the website for production. Every page is pre-rendered and minified by svelte, ensure this process works locally before merging into `master`.
+Run the command with `npm run build` to build the website for production. If the build fails, the website will not deploy to production successfully.
+
 ### Images
 
 Images are stored in the `src/lib/images` directory. When adding images, please ensure that they are compressed and optimized for the web. You can run the program `src/lib/images/0ImgResize.py` to compress and resize images. This program uses the `Pillow` library, which can be installed with `pip install Pillow`.
@@ -37,20 +52,27 @@ The `src/lib/images` folder is not directly accessible by the website. To use th
 
 Images in the header are an anomalous, they must be placed in the /static/headerImages folder. They aren't preprocessed by svelte, so with the way dynamic requests work, they must be placed in the static folder.
 
-## NOTICE: Production Auto-Deploy
+## Data Based Components (Cards)
 
-** DO NOT PUSH TO `master` UNLESS YOU ARE READY TO DEPLOY TO PRODUCTION. **
+The website uses data based components to generate cards for events and team members, and robot descriptions. The data is stored in JSON variables in components, and should be updated there. The data is then passed to the card component, which generates the cards based on the data in some cases. Note images must be imported like usual, and the image path is passed to the card component via JSON.
 
-This repository is set up to auto-deploy to the production server on push to the `master` branch. Please be careful when pushing to `master` as it will immediately deploy to the production server.
+```html
+<script>
+	import UALogo from '$lib/images/ua-logo.png';
 
-Please branch off of `dev` and submit a pull request to merge into `dev` when you are ready to merge your changes into the development branch. Once the changes are tested and ready to go live, the team lead will merge `dev` into `master` to deploy to the production server.
+	const Sponsors = [
+		{
+			name: 'UA',
+			image: UALogo,
+			link: 'https://www.uakron.edu/'
+		}
+	];
+</script>
 
-### Testing
-
-Please tes your changes visually and functionally before submitting a pull request. The website should look and function as expected. If you are adding new features, please test them thoroughly to ensure they work as expected.
-
-Once a pull request has been submitted, the team should test building the website for production. Every page is pre-rendered and minified by svelte, ensure this process works locally before merging into `master`.
-Run the command with `npm run build` to build the website for production. If the build fails, the website will not deploy to production successfully.
+<!--
+		Card Component
+	 -->
+```
 
 ## Backend Integration Information
 
