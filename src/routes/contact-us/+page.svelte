@@ -28,7 +28,7 @@
 				<div class="vertical-space" />
 
 				<label for="email">Email or Phone Number</label><br />
-				<input type="email" id="email" name="email" required />
+				<input type="text" id="email" name="email" required />
 			</div>
 
 			<div class="two-thirds">
