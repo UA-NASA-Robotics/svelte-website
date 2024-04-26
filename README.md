@@ -94,3 +94,10 @@ Remove the `node_modules` folder and the `package-lock.json` file. Then run `npx
 ### Installing the node server adapter
 
 The node server adapter is required to run the website in production. To install the node server adapter, run `npm i -D @sveltejs/adapter-node@next`. Running `npm run build` will build the website with the node server adapter. Ensure the website builds and runs correctly before deploying to production.
+
+## SSR and CSR
+Server side rendering is used to pre-render the website for faster load times. This is done by running `npm run build` and then `npm run preview` to preview the website. This will build the website and run it on a local server. The website is pre-rendered and minified by svelte, and the server side adapter is used to serve the website. This is the same process used to build the website for production.
+
+Client side rendering is used for dynamic content and interactivity. Each page can be either prerendered and or client side rendered. This is with setting `csr: true` and `prerender: true` in the +page.ts file in the route. In general, if a page has dynamic/complex content like a form it should not be prerendered. If a page is static and does not change, it should be prerendered. If a page has a mix of static and dynamic content, it should be prerendered and then the dynamic content should be loaded client side.
+
+All pages should have client side rendering, and js hydration by proxy, because the header is rendered on the client side. Otherwise, the header will not render correctly.
