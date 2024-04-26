@@ -499,6 +499,11 @@
 		color: var(--dark-txt-primary);
 	}
 
+	.nav-page:hover{
+		background-color: var(--ua-dark-grey);
+	
+	}
+
 	@media screen and (max-width: 600px) {
 		.nav-page {
 			font-size: var(--nav-page-vertical-font-size);
