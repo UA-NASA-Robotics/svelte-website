@@ -48,8 +48,8 @@
 		recruitment tool to attract the next generation of engineers to your company.
 	</p>
 	<p>
-		Thank you for your consideration to learn more about the NASA Robotics Team and interest to help
-		drive our success.
+		Thank you for your consideration of the NASA Robotics Team and interest in helping
+		drive our success!
 	</p>
 	<p>
 		<a href="/our-history">Click here</a> to read some of our team's accomplishments! For more
