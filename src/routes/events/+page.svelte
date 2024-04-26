@@ -19,6 +19,7 @@
 		);
 		return await response.json();
 	}
+
 </script>
 
 <svelte:head>

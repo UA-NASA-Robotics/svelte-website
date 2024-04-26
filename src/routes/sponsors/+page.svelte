@@ -1,12 +1,5 @@
 <script lang="ts">
-	import './style.css';
-
-	let promise = handleFetchSponsors();
-
-	async function handleFetchSponsors() {
-		let response = await fetch('/src/lib/data/sponsors.json', { method: 'GET' });
-		return await response.json();
-	}
+	import Sponsors from '../../components/Sponsors.svelte';
 </script>
 
 <svelte:head>
@@ -25,44 +18,7 @@
 <div class="text-column">
 	<h1>Team Sponsors</h1>
 
-	<div class="sponsorContent">
-		{#await promise}
-			<p>Loading...</p>
-		{:then sponsors}
-			{#if sponsors.length <= 0}
-				<div class="sponsorCard"><p>There are no sponsor biographies at this time.</p></div>
-			{:else}
-				{#each sponsors as sponsor, index}
-					<div
-						class={sponsor.majorSponsor
-							? 'sponsorCard majorSponsor'
-							: index % 2 == 0
-							? 'sponsorCard'
-							: 'sponsorCard sponsorCardReverse'}
-					>
-						{#if sponsor.logo && sponsor.logo.length > 0}
-							<div class={!sponsor.majorSponsor ? 'sponsorImageDiv' : 'sponsorImageDivMajor'}>
-								<img src={sponsor.logo} alt="sponsor Thumbnail" class="sponsorImg" />
-							</div>
-						{:else}
-							<!-- No image -->
-						{/if}
-
-						<div class={!sponsor.majorSponsor ? 'sponsorText' : 'sponsorTextMajor'}>
-							<h2>{sponsor.name}</h2>
-							<hr class="bar" />
-							<p><a href={sponsor.link}>Visit {sponsor.name}.</a></p>
-						</div>
-					</div>
-				{/each}
-			{/if}
-		{:catch error}
-			<div class="sponsorCard">
-				<p>There was an error loading the sponsors. Please try again later.</p>
-				<br /><button on:click={window.location.reload}>Refresh</button>
-			</div>
-		{/await}
-	</div>
+	<Sponsors />
 
 	<p>
 		We would like to thank our sponsors for their generous support of our team. Without their help,

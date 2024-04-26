@@ -1,3 +1,11 @@
+<script>
+	import cad from '$lib/images/cad.png';
+	import buildingbrandee from '$lib/images/building-brandee.jpg';
+	import audreepic from '$lib/images/audree-pic.jpg';
+	import outreach from '$lib/images/outreach.jpg';
+	import competition7 from '$lib/images/2019-competition7.jpg';
+</script>
+
 <svelte:head>
 	<title>About the Competition</title>
 	<meta
@@ -50,7 +58,7 @@
 				</li>
 				<li>Includes a 3D CAD model of our robot design</li>
 			</ul>
-			<img src="/src/lib/images/cad.png" width="85%" alt="Inventor Screenshot" />
+			<img src={cad} width="85%" alt="Inventor Screenshot" />
 		</div>
 	</div>
 
@@ -59,7 +67,7 @@
 		In Phase II, we actually get to build our robot! This is where much of our hard work is put in,
 		from machining parts and assembling the frame, to soldering and wiring, to writing code!
 	</p>
-	<img src="/src/lib/images/building-brandee.jpg" alt="Building the robot." width="40%" />
+	<img src={buildingbrandee} alt="Building the robot." width="40%" />
 	<div class="two-thirds" />
 	<p>
 		Key deliverables for this phase include the Systems Engineering Paper, Slide Presentation, and
@@ -81,7 +89,7 @@
 					action performing two digging cycles.
 				</li>
 			</ul>
-			<img src="/src/lib/images/audree-pic.JPG" width="85%" alt="Previous Robot Design" />
+			<img src={audreepic} width="85%" alt="Previous Robot Design" />
 		</div>
 		<div class="thirds">
 			<h4>Public Outreach Project Report:</h4>
@@ -96,12 +104,8 @@
 				<li>What demographic was reached</li>
 			</ul>
 			<p>
-				<a href="/src/lib/images/outreach.jpg"
-					><img
-						src="/src/lib/images/outreach.jpg"
-						width="85%"
-						alt="Teammates helping at a VRC Competition."
-					/></a
+				<a href={outreach}
+					><img src={outreach} width="85%" alt="Teammates helping at a VRC Competition." /></a
 				>
 			</p>
 		</div>
@@ -148,11 +152,7 @@
 			</ul>
 		</div>
 		<div class="two-thirds">
-			<img
-				src="/src/lib/images/2019-competition7.jpg"
-				width="85%"
-				alt="Robot in competition field."
-			/>
+			<img src={competition7} width="85%" alt="Robot in competition field." />
 		</div>
 	</div>
 </div>

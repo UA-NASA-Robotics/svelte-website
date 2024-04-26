@@ -4,6 +4,8 @@
 	import { onNavigate } from '$app/navigation';
 	import { getRoutes } from './Sitemap';
 
+	import logo from '$lib/images/Logo.png';
+
 	type Route = {
 		name: string;
 		route: string;
@@ -87,7 +89,7 @@
 			//fix / index page
 			headerImgLink = 'home';
 		}
-		let headerImgLinkPath = '/src/lib/images/' + headerImgLink + '.jpg'; //create the path to the image
+		let headerImgLinkPath = '/headerImages/' + headerImgLink + '.jpg'; //create the path to the image
 
 		const header = document.querySelector('header'); //get the header element
 		if (header) header.style.backgroundImage = 'url(' + headerImgLinkPath + ')'; //set the background image
@@ -147,7 +149,7 @@
 	<div class="header-container">
 		<div class="header-logo">
 			<a href="/">
-				<img src="/src/lib/images/Logo.png" alt="logo" class="logo" />
+				<img src={logo} alt="logo" class="logo" />
 			</a>
 		</div>
 

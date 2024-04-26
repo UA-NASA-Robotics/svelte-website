@@ -1,3 +1,12 @@
+<script>
+	import outreach2 from '$lib/images/outreach2.jpg';
+	import outreach3 from '$lib/images/outreach3.jpg';
+	import outreachteam from '$lib/images/outreach-team.jpg';
+	import jonsoldering from '$lib/images/jon-soldering.jpg';
+	import kidscareerday from '$lib/images/kids-careerday.jpg';
+	import markerrobots from '$lib/images/markerrobots.jpg';
+</script>
+
 <svelte:head>
 	<title>Outreach</title>
 	<meta
@@ -34,13 +43,13 @@
 			</p>
 		</div>
 		<div class="seconds">
-			<img src="/src/lib/images/outreach2.JPG" alt="Lane working on a toy car" width="100%" />
+			<img src={outreach2} alt="Lane working on a toy car" width="100%" />
 		</div>
 	</div>
 	<div style="height: 100px;" />
 	<div class="flex-columns">
 		<div class="seconds">
-			<img src="/src/lib/images/outreach3.JPG" alt="Team members working on toys." width="100%" />
+			<img src={outreach3} alt="Team members working on toys." width="100%" />
 		</div>
 		<div class="seconds">
 			<p>
@@ -70,14 +79,14 @@
 			</p>
 		</div>
 		<div class="seconds">
-			<img src="/src/lib/images/outreach-team.jpg" alt="Group in-front of table" width="100%" />
+			<img src={outreachteam} alt="Group in-front of table" width="100%" />
 		</div>
 	</div>
 
 	<h3>B-STEM Club Electronics Experiment</h3>
 	<div class="flex-columns">
 		<div class="seconds">
-			<img src="/src/lib/images/jon-soldering.jpg" alt="B-STEM Club" width="100%" />
+			<img src={jonsoldering} alt="B-STEM Club" width="100%" />
 		</div>
 		<div class="seconds">
 			<p>
@@ -99,9 +108,9 @@
 			</p>
 		</div>
 		<div class="seconds">
-			<img src="/src/lib/images/kids-careerday.jpg" alt="Kids with robots" width="100%" />
+			<img src={kidscareerday} alt="Kids with robots" width="100%" />
 		</div>
 	</div>
 
-	<img src="/src/lib/images/markerrobots.jpg" alt="mark robots on a table." width="100%" />
+	<img src={markerrobots} alt="mark robots on a table." width="100%" />
 </div>

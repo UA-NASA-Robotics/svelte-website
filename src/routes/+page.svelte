@@ -1,4 +1,6 @@
 <script>
+import home3 from '$lib/images/home3.jpg';
+import welcomeback from '$lib/images/welcome-back.jpg';
 </script>
 
 <svelte:head>
@@ -15,7 +17,7 @@
 </svelte:head>
 
 <section>
-	<img alt="2023-2024 Team at Competition" src="/src/lib/images/home3.jpg" width="90%" />
+	<img alt="2023-2024 Team at Competition" src={home3} width="90%" />
 	<h1>Who We Are</h1>
 	<p>
 		The NASA Robotic Mining Team is a student-led engineering design team that designs and builds an
@@ -50,7 +52,7 @@
 		</div>
 	</div>
 
-	<img src="/src/lib/images/welcome-back.jpg" width="75%" alt="The team in the design building." />
+	<img src={welcomeback} width="75%" alt="The team in the design building." />
 	<!-- How high is jacob lmao??-->
 </section>
 
