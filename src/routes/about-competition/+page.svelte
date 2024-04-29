@@ -67,7 +67,7 @@
 		In Phase II, we actually get to build our robot! This is where much of our hard work is put in,
 		from machining parts and assembling the frame, to soldering and wiring, to writing code!
 	</p>
-	<img src={brandeeinee} alt="Building the robot." width="40%" />
+	<img src={brandeeinee} alt="Building the robot." width="80%" />
 	<div class="two-thirds" />
 	<p>
 		Key deliverables for this phase include the Systems Engineering Paper, Slide Presentation, and
