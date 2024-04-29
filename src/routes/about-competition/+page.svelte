@@ -1,6 +1,6 @@
 <script>
 	import cad from '$lib/images/cad.png';
-	import buildingbrandee from '$lib/images/building-brandee.jpg';
+	import brandeeinee from '$lib/images/brandeeinee.jpg';
 	import audreepic from '$lib/images/audree-pic.jpg';
 	import outreach from '$lib/images/outreach.jpg';
 	import competition7 from '$lib/images/2019-competition7.jpg';
@@ -67,7 +67,7 @@
 		In Phase II, we actually get to build our robot! This is where much of our hard work is put in,
 		from machining parts and assembling the frame, to soldering and wiring, to writing code!
 	</p>
-	<img src={buildingbrandee} alt="Building the robot." width="40%" />
+	<img src={brandeeinee} alt="Building the robot." width="40%" />
 	<div class="two-thirds" />
 	<p>
 		Key deliverables for this phase include the Systems Engineering Paper, Slide Presentation, and
