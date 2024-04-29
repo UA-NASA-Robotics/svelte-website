@@ -165,7 +165,7 @@
 									aria-current={$page.url.pathname === route.route ||
 									route.subroutes.some((sub) => sub.route === $page.url.pathname)
 										? 'page'
-										: undefined}
+										: 'false'}
 									class="sub-nav-link"
 								>
 									<a
@@ -173,7 +173,7 @@
 										aria-current={$page.url.pathname === route.route ||
 										route.subroutes.some((sub) => sub.route === $page.url.pathname)
 											? 'page'
-											: undefined}
+											: 'false'}
 										class="sub-nav-link-a"
 									>
 										{route.name}
@@ -181,12 +181,12 @@
 									<ul class="sub-nav">
 										{#each route.subroutes as sub}
 											<li
-												aria-current={$page.url.pathname === sub.route ? 'page' : undefined}
+												aria-current={$page.url.pathname === sub.route ? 'page' : 'false'}
 												class="nav-page"
 											>
 												<a
 													href={sub.route}
-													aria-current={$page.url.pathname === sub.route ? 'page' : undefined}
+													aria-current={$page.url.pathname === sub.route ? 'page' : 'false'}
 												>
 													{sub.name}
 												</a>
@@ -196,12 +196,12 @@
 								</li>
 							{:else}
 								<li
-									aria-current={$page.url.pathname === route.route ? 'page' : undefined}
+									aria-current={$page.url.pathname === route.route ? 'page' : 'false'}
 									class="nav-page"
 								>
 									<a
 										href={route.route}
-										aria-current={$page.url.pathname === route.route ? 'page' : undefined}
+										aria-current={$page.url.pathname === route.route ? 'page' : 'false'}
 									>
 										{route.name}
 									</a>
@@ -223,7 +223,7 @@
 									aria-current={$page.url.pathname === route.route ||
 									route.subroutes.some((sub) => sub.route === $page.url.pathname)
 										? 'page'
-										: undefined}
+										: 'false'}
 									class="sub-nav-link"
 								>
 									<a
@@ -231,7 +231,7 @@
 										aria-current={$page.url.pathname === route.route ||
 										route.subroutes.some((sub) => sub.route === $page.url.pathname)
 											? 'page'
-											: undefined}
+											: 'false'}
 										class="sub-nav-link-a"
 									>
 										{route.name}
@@ -239,12 +239,12 @@
 									<ul class="sub-nav">
 										{#each route.subroutes as sub}
 											<li
-												aria-current={$page.url.pathname === sub.route ? 'page' : undefined}
+												aria-current={$page.url.pathname === sub.route ? 'page' : 'false'}
 												class="nav-page"
 											>
 												<a
 													href={sub.route}
-													aria-current={$page.url.pathname === sub.route ? 'page' : undefined}
+													aria-current={$page.url.pathname === sub.route ? 'page' : 'false'}
 												>
 													{sub.name}
 												</a>
@@ -254,12 +254,12 @@
 								</li>
 							{:else}
 								<li
-									aria-current={$page.url.pathname === route.route ? 'page' : undefined}
+									aria-current={$page.url.pathname === route.route ? 'page' : 'false'}
 									class="nav-page"
 								>
 									<a
 										href={route.route}
-										aria-current={$page.url.pathname === route.route ? 'page' : undefined}
+										aria-current={$page.url.pathname === route.route ? 'page' : 'false'}
 									>
 										{route.name}
 									</a>
@@ -271,7 +271,7 @@
 
 				<div class="theme-toggle">
 					<label class="switch" aria-label="Dark mode switch">
-						<input type="checkbox" on:change={changeTheme} checked={theme === Themes.Dark} />
+						<input type="checkbox" on:change={changeTheme} checked={theme === Themes.Dark} name="dark-mode toggle"/>
 						<span class="slider round">
 							<i
 								class={theme === Themes.Light
@@ -499,7 +499,7 @@
 		color: var(--dark-txt-primary);
 	}
 
-	.nav-page:hover{
+	.nav-page[aria-current='false']:hover{
 		background-color: var(--ua-dark-grey);
 	
 	}
