@@ -45,17 +45,13 @@
 	import instagram from '$lib/images/footer-links/logo-instagram.png';
 	import youtube from '$lib/images/footer-links/logo-youtube.png';
 	import twitter from '$lib/images/footer-links/logo-x-twitter.webp';
+	import discord from '$lib/images/footer-links/logo-discord.png';
 
 	const socialButtons = [
 		{
-			url: 'https://www.facebook.com/UANASArobotics/',
-			imgSrc: facebook,
-			alt: 'Facebook'
-		},
-		{
-			url: 'https://twitter.com/UAkronRobotics',
-			imgSrc: twitter,
-			alt: 'X (FKA Twitter)'
+			url: "https://discord.gg/WH3zCN3JSd",
+			imgSrc: discord,
+			alt: 'Discord'
 		},
 		{
 			url: 'https://www.instagram.com/uakronrobotics/',
@@ -66,6 +62,16 @@
 			url: 'https://www.youtube.com/@uanasaroboticsteam',
 			imgSrc: youtube,
 			alt: 'Youtube'
+		},
+		{
+			url: 'https://www.facebook.com/UANASArobotics/',
+			imgSrc: facebook,
+			alt: 'Facebook'
+		},
+		{
+			url: 'https://twitter.com/UAkronRobotics',
+			imgSrc: twitter,
+			alt: 'X (FKA Twitter)'
 		}
 	];
 </script>
@@ -73,12 +79,14 @@
 <footer>
 	<div class="flex-columns" style="width:85%;">
 		<div class="match-footer seconds align-left">
-			<p>Social</p>
+			<p>Social</p><br/>
+			<div class="img-container" style="display:flex; align-items:left;">
 			{#each socialButtons as { url, imgSrc, alt }}
 				<a href={url}>
 					<img src={imgSrc} {alt} />
 				</a>
 			{/each}
+			</div>	
 		</div>
 		<div class="match-footer seconds" style="display=flex; align-items:flex-start;">
 			<p>Pages</p>
@@ -107,6 +115,15 @@
 	.align-left {
 		display: flex;
 		flex-direction: row;
+	}
+
+	.img-container {
+		column-gap: 10px;
+	}
+	@media screen and (max-width: 800px) {
+		.align-left {
+			flex-direction: column;
+		}
 	}
 	.match-footer {
 		background-color: var(--light-bg-secondary);
@@ -142,7 +159,6 @@
 
 	footer div {
 		display: flex;
-		column-gap: 10px;
 		align-items: center;
 	}
 
@@ -182,7 +198,7 @@
 
 	@media screen and (max-width: 600px) {
 		.footer-link {
-			padding: 5%;
+			padding: 2%;
 		}
 	}
 </style>
