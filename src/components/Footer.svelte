@@ -5,12 +5,16 @@
 		name: string;
 		route: string;
 		headerLevel: number;
+		headerHide?: boolean;
+		footerHide?: boolean;
 	};
 
 	type HeaderLink = {
 		name: string;
 		imgSrc: string;
 		headerLevel: number;
+		headerHide?: boolean;
+		footerHide?: boolean;
 	};
 
 	type HeaderRouteWithoutSubroutes = Route & HeaderLink;
@@ -26,17 +30,21 @@
 
 	let maxLinksColumns = 3; //The maximum number of columns for footer links
 
-	let flattenedRoutes: Route[] = [];
+	let flattenedRoutes: Route[] = []; //The flattened array of routes- without footerHide routes
 
 	//Flatten the routes array
 	routes.forEach((route) => {
 		if ('subroutes' in route) {
 			route.subroutes.forEach((subroute) => {
+				if(!subroute.footerHide){
 				flattenedRoutes.push(subroute);
+				}
 			});
 		} else {
+			if(!route.footerHide){
 			flattenedRoutes.push(route);
 		}
+	}
 	});
 
 	let footerLinksPerColumn = Math.ceil(flattenedRoutes.length / maxLinksColumns);

@@ -10,12 +10,16 @@
 		name: string;
 		route: string;
 		headerLevel: number;
+		headerHide?: boolean;
+		footerHide?: boolean;
 	};
 
 	type HeaderLink = {
 		name: string;
 		imgSrc: string;
 		headerLevel: number;
+		headerHide?: boolean;
+		footerHide?: boolean;
 	};
 
 	type HeaderRouteWithoutSubroutes = Route & HeaderLink;
@@ -158,7 +162,7 @@
 				<nav class="topNav">
 					<ul class="nav-contents">
 						{#each routes as route}
-							{#if route.headerLevel !== 0}
+							{#if route.headerLevel !== 0 || route.headerHide === true}
 								<!-- Skipped render route on this level-->
 							{:else if 'subroutes' in route}
 								<li
@@ -216,7 +220,7 @@
 				<nav class="topNav">
 					<ul class="nav-contents">
 						{#each routes as route}
-							{#if route.headerLevel !== 1}
+							{#if route.headerLevel !== 1 || route.headerHide === true}
 								<!-- Skipped render route on this level-->
 							{:else if 'subroutes' in route}
 								<li
