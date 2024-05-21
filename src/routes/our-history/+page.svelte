@@ -1,7 +1,7 @@
 <script lang="ts">
 	import './style.css';
 
-	import Robots from '../../components/Robots.svelte';
+	import Robots from './Robots.svelte';
 </script>
 
 <svelte:head>
