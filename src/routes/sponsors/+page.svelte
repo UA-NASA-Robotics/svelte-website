@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Sponsors from '../../components/Sponsors.svelte';
+	import Sponsors from './Sponsors.svelte';
 </script>
 
 <svelte:head>

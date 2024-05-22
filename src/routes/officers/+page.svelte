@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Leadership from '../../components/Leadership.svelte';
+	import Leadership from './Leadership.svelte';
 </script>
 
 <svelte:head>

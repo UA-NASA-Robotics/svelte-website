@@ -8,12 +8,15 @@ type Route = {
 	name: string;
 	route: string;
 	headerLevel: number;
+	headerHide?: boolean;
+	footerHide?: boolean;
 };
 
 type HeaderLink = {
 	name: string;
 	imgSrc: string;
 	headerLevel: number;
+	route?: string;
 };
 
 type HeaderRouteWithoutSubroutes = Route & HeaderLink;
@@ -30,12 +33,16 @@ const routes: HeaderRoute[] = [
 		name: 'Home',
 		route: '/',
 		imgSrc: '',
-		headerLevel: 1
+		headerLevel: 1,
+		headerHide: false,
+		footerHide: false
 	},
 	{
 		name: 'Team',
 		imgSrc: '',
 		headerLevel: 1,
+		headerHide: false,
+		footerHide: false,
 		subroutes: [
 			{
 				name: 'Competition',
@@ -58,31 +65,50 @@ const routes: HeaderRoute[] = [
 		name: 'New Members',
 		route: '/new-members',
 		imgSrc: '',
-		headerLevel: 1
+		headerLevel: 1,
+		headerHide: false,
+		footerHide: false
 	},
 	{
 		name: 'Sponsors',
 		route: '/sponsors',
 		imgSrc: '',
-		headerLevel: 0
+		headerLevel: 0,
+		headerHide: false,
+		footerHide: false
 	},
 	{
 		name: 'Outreach',
 		route: '/outreach',
 		imgSrc: '',
-		headerLevel: 1
+		headerLevel: 1,
+		headerHide: false,
+		footerHide: false
 	},
 	{
 		name: 'Contact Us',
 		route: '/contact-us',
 		imgSrc: '',
-		headerLevel: 0
+		headerLevel: 0,
+		headerHide: false,
+		footerHide: false
 	},
 	{
 		name: 'Events',
 		route: '/events',
 		imgSrc: '',
-		headerLevel: 0
+		headerLevel: 0,
+		headerHide: false,
+		footerHide: false
+	},
+	{
+		name: 'Documents',
+		route: '/documents',
+		imgSrc: '',
+		headerLevel: 0,
+		headerHide: true,
+		footerHide: false
+
 	}
 ];
 
