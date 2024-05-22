@@ -83,7 +83,8 @@ for img in images:
             if doSave:
                 image.save(os.path.join(CWD, img), optimize=True, quality=70, progressive=True)
             else:
-                print("No resizing needed for: ", img)
+                # print("No resizing needed for: ", img)
+                pass
     except Exception as e:
         print(e)
         print("Error with image: ", img)
