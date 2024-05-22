@@ -292,3 +292,27 @@ body.dark .two-thirds:hover {
 img {
 	border-radius: 15px;
 }
+
+.download{
+	background-color: var(--ua-dark-blue);
+	color: var(--ua-light-grey);
+	border: none;
+	border-radius: 5vw;
+	padding: 10px;
+	margin: 10px;
+	transition: all --transition-length linear;
+	-webkit-transition: var(--transition-length);
+}
+
+.download:hover{
+	background-color: var(--ua-blue);
+}
+
+body.dark .download{
+	background-color: var(--ua-dark-grey);
+	color: var(--ua-light-grey);
+}
+
+body.dark .download:hover{
+	background-color: var(--dark-accent);
+}
