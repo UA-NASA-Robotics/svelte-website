@@ -36,15 +36,15 @@
 	routes.forEach((route) => {
 		if ('subroutes' in route) {
 			route.subroutes.forEach((subroute) => {
-				if(!subroute.footerHide){
-				flattenedRoutes.push(subroute);
+				if (!subroute.footerHide) {
+					flattenedRoutes.push(subroute);
 				}
 			});
 		} else {
-			if(!route.footerHide){
-			flattenedRoutes.push(route);
+			if (!route.footerHide) {
+				flattenedRoutes.push(route);
+			}
 		}
-	}
 	});
 
 	let footerLinksPerColumn = Math.ceil(flattenedRoutes.length / maxLinksColumns);
@@ -57,7 +57,7 @@
 
 	const socialButtons = [
 		{
-			url: "https://discord.gg/WH3zCN3JSd",
+			url: 'https://discord.gg/WH3zCN3JSd',
 			imgSrc: discord,
 			alt: 'Discord'
 		},
@@ -87,14 +87,15 @@
 <footer>
 	<div class="flex-columns" style="width:85%;">
 		<div class="match-footer seconds align-left">
-			<p>Social</p><br/>
+			<p style="padding-right: 3%">Social</p>
+			<br />
 			<div class="img-container" style="display:flex; align-items:left;">
-			{#each socialButtons as { url, imgSrc, alt }}
-				<a href={url}>
-					<img src={imgSrc} {alt} />
-				</a>
-			{/each}
-			</div>	
+				{#each socialButtons as { url, imgSrc, alt }}
+					<a href={url}>
+						<img src={imgSrc} {alt} />
+					</a>
+				{/each}
+			</div>
 		</div>
 		<div class="match-footer seconds" style="display=flex; align-items:flex-start;">
 			<p>Pages</p>
