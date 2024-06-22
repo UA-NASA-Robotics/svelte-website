@@ -52,7 +52,7 @@
 			year: '2017-2018'
 		},
 		{
-			image: rockee,
+			image: audree,
 			acronym: 'Autonomous Drum Rotating Extraterrestrial Excavator',
 			name: 'AUDREE',
 			description:
@@ -80,7 +80,7 @@
 			acronym: 'Building Robot Autonomously Navigated to Dig, Elevate, and Erect',
 			name: 'BRANDEE',
 			description:
-				'Brandee is our 2023-2024 robot, using quite a few new features and designs. We are excited to see how she performs in the competition!',
+				'Brandee was the 2023-2024 robot, and we are proud of the success we had with this robot. She was a 4 wheel front loader design who will continue to support the team as an outreach robot.',
 			year: '2023-2024'
 		}
 	];
