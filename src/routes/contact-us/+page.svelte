@@ -11,6 +11,11 @@
 	<meta name="author" content="uA NASA Robotic Mining Competition Team" />
 </svelte:head>
 
+<script>
+/** @type {import('./$types').ActionData}*/
+export let form;
+</script>
+
 <div class="text-column">
 	<h1>Contact Us</h1>
 	<p>
@@ -18,6 +23,14 @@
 		invite us to present to your group? Please reach out to us here. We will get back to you as soon
 		as we can!
 	</p>
+
+	{#if form}
+		{#if form.success}
+			<p>Your message has been sent! Thanks for reaching out, {form.data.name}. We will get back to you as soon as we can!</p>
+		{:else if form.error}
+			<p>There was an error sending your message: {form.error}. Please try again.</p>
+		{/if}
+	{/if}
 
 	<div class="flex-columns">
 		<form method="POST" action="/contact-us?/contact_submission" class="wide-input">
