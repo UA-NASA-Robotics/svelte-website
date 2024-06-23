@@ -21,7 +21,7 @@ export const actions = {
 		}
 
 		let db = new Database('leboeuflasing.ddns.net:5984', 'contact', 'lunaboticswebsitecontact');
-		let response = await db.append('contact', { name: name, email: email, message: message });
+		let response = await db.append('contact', { name: name, email: email, message: message, time: new Date().toISOString()});
 
 		if (response.ok) {
 			return { success: true , data: { name }};
