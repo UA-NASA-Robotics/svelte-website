@@ -11,23 +11,22 @@ export const actions = {
 		const message = data.get('message');
 
 		if (!name) {
-			return fail(400, { name, missing: true });
+			return fail(400, {error: "Missing Name" });
 		}
 		if (!email) {
-			return fail(400, { email, missing: true });
+			return fail(400, { error: "Missing Email"});
 		}
 		if (!message) {
-			return fail(400, { message, missing: true });
+			return fail(400, { error: "Missing Message"});
 		}
 
 		let db = new Database('leboeuflasing.ddns.net:5984', 'contact', 'lunaboticswebsitecontact');
 		let response = await db.append('contact', { name: name, email: email, message: message });
-		console.log(response);
 
 		if (response.ok) {
-			return { success: true };
+			return { success: true , data: { name }};
 		} else {
-			return fail(400, { error: response });
+			return fail(400, { error: "Database Connection Error" });
 		}
 	}
 };
