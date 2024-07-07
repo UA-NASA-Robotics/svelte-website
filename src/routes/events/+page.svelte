@@ -54,7 +54,9 @@
 								{new Date(parseInt(event.event_date) * 1000).toDateString()}
 								{new Date(parseInt(event.event_date) * 1000).toLocaleTimeString()}
 							</p>
+                                                        {#if event.event_location}
 							<p>{event.event_location}</p>
+                                                        {/if}
 							<p>{event.event_description}</p>
 							<div class="attendanceMessage">
 								<p>
