@@ -62,8 +62,9 @@
 				<li>Robot Manufacturing and Assembly</li>
 			</ul>
 		</div>
-		<div class="two-thirds">
+		<div class="two-thirds" style="align-items: center;">
 			<img src={waterjetcutter} width="100%" alt="Mechanical Sub-team Working" />
+			<p>BRANDEE's brackets being cut with the collaboration of <a href="/sponsors">WardJet</a>.</p>
 		</div>
 	</div>
 
