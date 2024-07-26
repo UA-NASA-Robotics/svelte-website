@@ -11,7 +11,7 @@ export async function GET() {
 			method: 'GET',
 			headers: myHeaders
 		};
-    const res = await fetch("https://leboeuflasing.ddns.net/uaEvents.json", fetchMeta);
+    const res = await fetch("https://leboeuflasing.com/uaEvents.json", fetchMeta);
     const eventContent = await res.json();
 
     return json(eventContent) ;    

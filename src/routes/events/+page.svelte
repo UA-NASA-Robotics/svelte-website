@@ -6,7 +6,7 @@
 
 	async function handleFetchEvents() {
 		const response = await fetch('/api/events');
-		return await response.json();
+		return await response.ok? response.json() : {"length": 0}; // Return empty array if error
 	}
 
 </script>
