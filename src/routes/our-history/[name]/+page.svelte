@@ -1,7 +1,6 @@
 <script>
 	// @ts-nocheck
 
-	import { onMount } from 'svelte';
 	import MarkdownParser from '../../../components/MarkdownParser.svelte';
 	import '/src/components/markDown.css';
 
@@ -20,3 +19,7 @@
 </script>
 
 <MarkdownParser markDown={data.props?.robotContent} {imageModules} />
+
+<div style="height: 100px;"></div>
+
+<a href="/our-history" class="back-button"> Back to Our History</a>

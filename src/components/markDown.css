@@ -4,3 +4,7 @@
     max-width: 1000px;
     height: auto;
 }
+
+.md-p{
+    max-width: 60vw;
+}

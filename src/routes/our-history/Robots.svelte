@@ -9,13 +9,23 @@
 	import daisee from '/src/lib/images/robots/DAISEE.png';
 	import brandee from '/src/lib/images/robots/BRANDEE.jpg';
 
+	import logo from '/src/lib/images/logo.png';
+
 	const robotsList = [
 		{
 			image: pirate,
 			name: 'PIRATE',
 			acronym: 'Piloted Robotic All Terrain Excavator',
 			description:
-				"Here is our very first robot, PIRATE, who placed 6th out of 44 teams competing. We've come a long way since then, but you can still see similarities with our recent robots!",
+				"Here is our very first robot, PIRATE, who placed 5th out of 44 teams competing. We've come a long way since then, but you can still see similarities with our recent robots!",
+			year: '2010-2011'
+		},
+		{
+			image: logo,
+			name: 'STEVE',
+			acronym: 'Systematic Technical Extraterrestrial Vehicle for Excavation',
+			description:
+				'STEVE was our 2012 robot who placed 13th for total regolith mined. It was a great learning experience for the team and we are proud of the work that went into this robot.',
 			year: '2011-2012'
 		},
 		{
@@ -33,7 +43,7 @@
 			name: 'CHRISTEE',
 			description:
 				'Christee is our cherished 2015 robot who performed exceedingly well! She is our exemplary robot who joins us in all of our outreach events.',
-			year: '2015-2016'
+			year: '2013-2016'
 		},
 		{
 			image: spacee,

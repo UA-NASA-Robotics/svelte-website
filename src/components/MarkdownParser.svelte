@@ -11,7 +11,9 @@
 
 <div class="markdown">
 	{#each markDown.split('\n') as line}
-		{#if line.startsWith('# ')}
+		{#if line === ''}
+			<!-- Empty Line-->
+		{:else if line.startsWith('# ')}
 			<h1 class="md-h1">{line.replace('# ', '')}</h1>
 		{:else if line.startsWith('## ')}
 			<h2 class="md-h2">{line.replace('## ', '')}</h2>

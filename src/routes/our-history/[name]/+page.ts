@@ -19,8 +19,6 @@ async function parseRobotData() {
     for (const [robotPath, robotImporter] of Object.entries(robotData)) { //push all string content of the robots into the parsedRobotData array
         const robotName = robotPath.replace(/\.md$/, '').replace(/^\.\//, '').split('/').pop() ?? 'Undefined';
         const robotContent: any = await robotImporter();
-        console.log(robotContent);
-        
 
         parsedRobotData.push({ robotName, robotContent: robotContent });
     }
