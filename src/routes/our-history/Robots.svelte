@@ -1,21 +1,31 @@
 <script lang="ts">
-	import pirate from '/src/lib/images/PiRATE.jpg';
-	import stacee from '/src/lib/images/STACEE.jpg';
-	import christee from '/src/lib/images/CHRISTEE.png';
-	import spacee from '/src/lib/images/SPACEE.png';
-	import rockee from '/src/lib/images/ROCKEE.jpg';
-	import audree from '/src/lib/images/audree.jpg';
-	import katee from '/src/lib/images/KATEE.png';
-	import daisee from '/src/lib/images/DAISEE.png';
-	import brandee from '/src/lib/images/BRANDEE.jpg';
+	import pirate from '/src/lib/images/robots/PIRATE.jpg';
+	import stacee from '/src/lib/images/robots/STACEE.jpg';
+	import christee from '/src/lib/images/robots/CHRISTEE.png';
+	import spacee from '/src/lib/images/robots/SPACEE.png';
+	import rockee from '/src/lib/images/robots/ROCKEE.jpg';
+	import audree from '/src/lib/images/robots/audree.jpg';
+	import katee from '/src/lib/images/robots/KATEE.png';
+	import daisee from '/src/lib/images/robots/DAISEE.png';
+	import brandee from '/src/lib/images/robots/BRANDEE.jpg';
 
-	const robotsList = [
+	import logo from '/src/lib/images/logo.png';
+
+	let robotsList = [
 		{
 			image: pirate,
-			name: 'PiRATE',
+			name: 'PIRATE',
 			acronym: 'Piloted Robotic All Terrain Excavator',
 			description:
-				"Here is our very first robot, PiRATE, who placed 6th out of 44 teams competing. We've come a long way since then, but you can still see similarities with our recent robots!",
+				"Here is our very first robot, PIRATE, who placed 5th out of 44 teams competing. We've come a long way since then, but you can still see similarities with our recent robots!",
+			year: '2010-2011'
+		},
+		{
+			image: logo,
+			name: 'STEVE',
+			acronym: 'Systematic Technical Extraterrestrial Vehicle for Excavation',
+			description:
+				'STEVE was our 2012 robot who placed 13th for total regolith mined. It was a great learning experience for the team and we are proud of the work that went into this robot.',
 			year: '2011-2012'
 		},
 		{
@@ -33,7 +43,7 @@
 			name: 'CHRISTEE',
 			description:
 				'Christee is our cherished 2015 robot who performed exceedingly well! She is our exemplary robot who joins us in all of our outreach events.',
-			year: '2015-2016'
+			year: '2013-2016'
 		},
 		{
 			image: spacee,
@@ -84,6 +94,13 @@
 			year: '2023-2024'
 		}
 	];
+
+	robotsList.sort((a, b) => {
+		return (
+			parseInt(b.year.split('-')[0].replace(' ', '')) -
+			parseInt(a.year.split('-')[0].replace(' ', ''))
+		);
+	}); // Sort the robots by year, a, in the string (a - b) to get the most recent first
 </script>
 
 <div class="robotContent">
@@ -112,6 +129,7 @@
 					<hr class="bar" />
 					<h3>{robot.acronym}</h3>
 					<p>{robot.description}</p>
+					<p><a href={'/our-history/' + robot.name}> See more information on {robot.name}</a></p>
 				</div>
 			</div>
 		{/each}
