@@ -1,5 +1,5 @@
 <script lang="ts">
-	import pirate from '/src/lib/images/robots/PiRATE.jpg';
+	import pirate from '/src/lib/images/robots/PIRATE.jpg';
 	import stacee from '/src/lib/images/robots/STACEE.jpg';
 	import christee from '/src/lib/images/robots/CHRISTEE.png';
 	import spacee from '/src/lib/images/robots/SPACEE.png';
@@ -12,10 +12,10 @@
 	const robotsList = [
 		{
 			image: pirate,
-			name: 'PiRATE',
+			name: 'PIRATE',
 			acronym: 'Piloted Robotic All Terrain Excavator',
 			description:
-				"Here is our very first robot, PiRATE, who placed 6th out of 44 teams competing. We've come a long way since then, but you can still see similarities with our recent robots!",
+				"Here is our very first robot, PIRATE, who placed 6th out of 44 teams competing. We've come a long way since then, but you can still see similarities with our recent robots!",
 			year: '2011-2012'
 		},
 		{
