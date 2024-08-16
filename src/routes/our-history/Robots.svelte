@@ -1,13 +1,13 @@
 <script lang="ts">
-	import pirate from '/src/lib/images/PiRATE.jpg';
-	import stacee from '/src/lib/images/STACEE.jpg';
-	import christee from '/src/lib/images/CHRISTEE.png';
-	import spacee from '/src/lib/images/SPACEE.png';
-	import rockee from '/src/lib/images/ROCKEE.jpg';
-	import audree from '/src/lib/images/audree.jpg';
-	import katee from '/src/lib/images/KATEE.png';
-	import daisee from '/src/lib/images/DAISEE.png';
-	import brandee from '/src/lib/images/BRANDEE.jpg';
+	import pirate from '/src/lib/images/robots/PiRATE.jpg';
+	import stacee from '/src/lib/images/robots/STACEE.jpg';
+	import christee from '/src/lib/images/robots/CHRISTEE.png';
+	import spacee from '/src/lib/images/robots/SPACEE.png';
+	import rockee from '/src/lib/images/robots/ROCKEE.jpg';
+	import audree from '/src/lib/images/robots/audree.jpg';
+	import katee from '/src/lib/images/robots/KATEE.png';
+	import daisee from '/src/lib/images/robots/DAISEE.png';
+	import brandee from '/src/lib/images/robots/BRANDEE.jpg';
 
 	const robotsList = [
 		{
