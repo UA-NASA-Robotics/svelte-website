@@ -112,6 +112,7 @@
 					<hr class="bar" />
 					<h3>{robot.acronym}</h3>
 					<p>{robot.description}</p>
+					<p><a href={'/our-history/' + robot.name}> See more information on {robot.name}</a></p>
 				</div>
 			</div>
 		{/each}
