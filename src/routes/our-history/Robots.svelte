@@ -9,7 +9,7 @@
 	import daisee from '/src/lib/images/robots/DAISEE.png';
 	import brandee from '/src/lib/images/robots/BRANDEE.jpg';
 
-	import logo from '/src/lib/images/logo.png';
+	import logo from '/src/lib/images/Logo.png';
 
 	let robotsList = [
 		{
