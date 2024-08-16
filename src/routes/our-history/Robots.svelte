@@ -11,7 +11,7 @@
 
 	import logo from '/src/lib/images/logo.png';
 
-	const robotsList = [
+	let robotsList = [
 		{
 			image: pirate,
 			name: 'PIRATE',
@@ -94,6 +94,13 @@
 			year: '2023-2024'
 		}
 	];
+
+	robotsList.sort((a, b) => {
+		return (
+			parseInt(b.year.split('-')[0].replace(' ', '')) -
+			parseInt(a.year.split('-')[0].replace(' ', ''))
+		);
+	}); // Sort the robots by year, a, in the string (a - b) to get the most recent first
 </script>
 
 <div class="robotContent">
