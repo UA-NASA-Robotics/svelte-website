@@ -11,6 +11,7 @@
 	import jonR from '$lib/images/officers/JonR.jpg';
 	import jackson from '$lib/images/officers/Jackson.png';
 	import nathan from '$lib/images/officers/Nate.png';
+	import ayden from '$lib/images/officers/Ayden.jpg';
 
 	const admins = {
 		presidents: [
@@ -43,11 +44,12 @@
 					"Brandon McCune is the Project Manager of the NASA Robotics Team and he is a third-year Mechanical Engineering major with a minor in Mathematics. Brandon's favorite memory within this club was watching BRANDEE get out of the crater, and hearing team positivity throughout the competition.  Fun fact about Brandon, he used to do lots of origami crafts, and can make a variety of cool things from notecards.."
 			},
 			{
-				name: "Ayden Randall",
-				image: undefined,
-				team_title: "Assistant Project Manager",
-				degree: ["Computer Engineering"],
-				biography: "Ayden Randall is the Assistant Project Manager of the NASA Robotics Team and he is a second-year Computer Engineering major. Ayden's favorite memory within this club was being able to work with the entire team and alumni to create the software for BRANDEE!"
+				name: 'Ayden Randall',
+				image: ayden,
+				team_title: 'Assistant Project Manager',
+				degree: ['Computer Engineering'],
+				biography:
+					"Ayden Randall is the Assistant Project Manager of the NASA Robotics Team and he is a second-year Computer Engineering major. Ayden's favorite memory within this club was being able to work with the entire team and alumni to create the software for BRANDEE!"
 			}
 		],
 		treasurers: [
@@ -60,11 +62,12 @@
 					'Jonathan Daus is the Treasurer of the NASA Robotics Team and he is a third-year Mechanical Engineering major. Jon’s favorite memory within this club was attending the 2022/2023 NASA Robotics Mining Competition at the University of Alabama!'
 			},
 			{
-			name: "Garren Ward",
-			image: undefined,
-			team_title: "Marketing Lead",
-			degree: ["Electrical Engineering"],
-			biography: "Garren Ward is the Marketing Lead of the NASA Robotics Team and he is a second-year Electrical Engineering major. Garren's focus on the team is helping with outreach of the team. A large portion of the team is funded by generous donations from our sponsors and Garren helps to ensure that the team is able to continue to grow and compete in the future!"
+				name: 'Garren Ward',
+				image: undefined,
+				team_title: 'Marketing Lead',
+				degree: ['Electrical Engineering'],
+				biography:
+					"Garren Ward is the Marketing Lead of the NASA Robotics Team and he is a second-year Electrical Engineering major. Garren's focus on the team is helping with outreach of the team. A large portion of the team is funded by generous donations from our sponsors and Garren helps to ensure that the team is able to continue to grow and compete in the future!"
 			}
 		],
 		managers: [
@@ -102,7 +105,6 @@
 			}
 		],
 		leads: [
-
 			{
 				name: 'Eli Bukoski',
 				image: eli,
@@ -118,7 +120,7 @@
 				degree: ['Electrical Engineering', 'Mathematics Major'],
 				biography:
 					"Jonathan Roth is the communications software lead of the NASA Robotics Team and he is a second-year Electrical Engineering and Mathematics double major. His favorite memory within this club was anodizing titanium parts for the robot and the unexpected chemistry behind it! Fun fact about Jon, he can solve 22 types of rubik's cubes!"
-			},
+			}
 		],
 		members: []
 	};
