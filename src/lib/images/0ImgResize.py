@@ -81,7 +81,7 @@ for img in images:
                 image = image.resize((newWidth, maxImgHeight))
                 doSave = True
             if doSave:
-                image.save(os.path.join(CWD, img), optimize=True, quality=70, progressive=True)
+                image.save(os.path.join(CWD, img), optimize=True, quality=85, progressive=True)
             else:
                 # print("No resizing needed for: ", img)
                 pass
