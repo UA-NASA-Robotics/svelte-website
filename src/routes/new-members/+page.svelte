@@ -92,6 +92,7 @@
 				<li>Reading Datasheets</li>
 				<li>Hardware Interfacing</li>
 				<li>Wiring Harness Design and Construction</li>
+				<li>Industrial Control Panel Design</li>
 			</ul>
 		</div>
 	</div>
@@ -99,11 +100,11 @@
 	<h2>Software</h2>
 	<p>
 		The software team is responsible for the "brains" of the robot: all the code that makes it run!
-		On the software team, we will teach you how to code in C and C++. Once you have an understanding
-		of coding, you will learn how to use C++ to program the microprocessors on our circuit boards
-		designed by the electrical team. We will also teach you algorithm design and implementation, as
-		we work toward the goal of a fully autonomous robot! Here are some of the skills the software
-		team learns:
+		On the software team, we will teach you how to code in Python or C++, interconnected with the
+		communication framework of ROS (Robot Operating System). Once you have an understanding of
+		coding, you will learn how to use it to help build autonomous routines and control systems. We
+		will also teach you algorithm design and implementation, as we work toward the goal of a fully
+		autonomous robot! Here are some of the skills the software team learns:
 	</p>
 	<div class="flex-columns">
 		<div class="thirds">
@@ -112,9 +113,11 @@
 				<li>Python Programming</li>
 				<li>Algorithm Design</li>
 				<li>Hardware Interfacing</li>
-				<li>Embedded Communication Protocols</li>
+				<li>Various Communication Protocols</li>
 				<li>Image Processing</li>
 				<li>Programming for Autonomy</li>
+				<li>ROS (Robot Operating System) usage</li>
+				<li>Version Control and Collaboration</li>
 			</ul>
 		</div>
 		<div class="two-thirds">
