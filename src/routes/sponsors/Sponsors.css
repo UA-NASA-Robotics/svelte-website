@@ -7,17 +7,15 @@
 }
 
 .sponsorCard {
-	background-color: var(--light-bg-primary);
 	transition: background-color flex var(--transition-length) linear;
 	-webkit-transition: var(--transition-length);
 	display: flex;
 	border-radius: 10px;
-	flex-grow: 100%;
 	margin-bottom: 2vh;
 }
 
 .tierOne {
-	flex-basis: 14.24%;
+	flex-basis: 13%;
 	flex-direction: column;
 	padding-right: 2vw;
 }
@@ -30,6 +28,7 @@
 .tierThree {
 	flex-basis: 50%;
 	flex-direction: row;
+	flex-grow: 2;
 }
 
 .tierFour {
@@ -53,7 +52,7 @@
 	max-height: 5cqw;
 	width: auto;
 	align-self: start;
-	padding-left: 5%;
+	margin-left: 5%;
 }
 
 .sponsorImgTierThree {
@@ -138,7 +137,7 @@ body.dark .bar {
 	.sponsorImgTierThree img {
 		width: 40cqw;
 		height: fit-content;
-		padding-left: 2%;
+		margin-left: 2%;
 	}
 
 	.sponsorImgTierTwo img {

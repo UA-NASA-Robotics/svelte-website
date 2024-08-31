@@ -36,7 +36,7 @@
 							src={sponsor.logo}
 							alt="sponsor Thumbnail"
 							class="sponsorImg"
-							style="border-radius: unset; margin-top: 3px; height: fit-content; max-width: 90%;"
+							style="margin-top: 3px; height: fit-content; max-width: 90%;"
 						/>
 					{:else}
 						<img src={logo} alt="sponsor Thumbnail" class="sponsorImg" />
