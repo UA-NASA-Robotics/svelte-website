@@ -55,11 +55,15 @@
 </script>
 
 <div class="sponsorContentContainer">
+	<h2>Class Action Sponsors:</h2>
 	<SponsorCard sponsorsList={sponsorsList.tierFourSponsors} tier={4} />
 	<div style="height: 5vh;"></div>
+	<h2>Criminal Sponsors:</h2>
 	<SponsorCard sponsorsList={sponsorsList.tierThreeSponsors} tier={3} />
 	<div style="height: 5vh;"></div>
+	<h2>Civil Sponsors:</h2>
 	<SponsorCard sponsorsList={sponsorsList.tierTwoSponsors} tier={2} />
 	<div style="height: 5vh;"></div>
+	<h2>Mediated Sponsors:</h2>
 	<SponsorCard sponsorsList={sponsorsList.tierOneSponsors} tier={1} />
 </div>
