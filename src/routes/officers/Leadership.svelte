@@ -98,7 +98,7 @@
 			{
 				name: 'Nathan O’Brien',
 				image: nathan,
-				team_title: 'Software Lead',
+				team_title: 'Software Co-Manager',
 				degree: ['Computer Engineering', 'Computer Science'],
 				biography:
 					'Nathan O’Brien is a Software Co-Manager of the NASA Robotics Team and he is a third-year Computer Engineering major and pursing a minor in Computer Science. Nathan’s favorite memory within this club was programming RoboFett to dance and play a Billie Joel song!'
@@ -109,7 +109,7 @@
 				name: 'Eli Bukoski',
 				image: eli,
 				team_title: 'Electrical Lead',
-				degree: ['Electrical Engineering', 'Computer Science Minor'],
+				degree: ['Electrical Engineering', 'Computer Science'],
 				biography:
 					'Eli Bukoski is the power distribution electrical lead of the NASA Robotics Team and he is a second-year Electrical Engineering major and pursing a minor in Computer Science. Eli’s favorite memory within this club was competing in Lunabotics at Kennedy Space Center! Fun fact about Eli, during high school his team competed in the 2021 Vex Robotics Worlds Competition.'
 			},
@@ -117,7 +117,7 @@
 				name: 'Jonathan Roth',
 				image: jonR,
 				team_title: 'Software Lead',
-				degree: ['Electrical Engineering', 'Mathematics Major'],
+				degree: ['Electrical Engineering', 'Mathematics'],
 				biography:
 					"Jonathan Roth is the communications software lead of the NASA Robotics Team and he is a second-year Electrical Engineering and Mathematics double major. His favorite memory within this club was anodizing titanium parts for the robot and the unexpected chemistry behind it! Fun fact about Jon, he can solve 22 types of rubik's cubes!"
 			}
