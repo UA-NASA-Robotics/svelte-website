@@ -9,6 +9,7 @@
 	import andersonPower from '$lib/images/sponsors/anderson-power.png';
 	import SponsorCard from './SponsorCard.svelte';
 
+	//make sure fix the tier displays when more are added
 	const sponsorsList = {
 		tierFourSponsors: [
 			{
@@ -17,21 +18,24 @@
 				link: 'http://www.uakron.edu/',
 				description:
 					'The University of Akron provides funding and resources to the Robotics Mining Team. It is the home of the team!'
-			}
-		],
-		tierThreeSponsors: [
+			},
 			{
 				logo: osgc,
 				name: 'Ohio Space Grant Consortium',
-				link: 'http://www.osgc.org/'
+				link: 'http://www.osgc.org/',
+				description:
+					'The Ohio Space Grant Consortium provides funding and resources to the Robotics Mining Team. They provide resources to help areospace and STEM programs in Ohio.'
+			},
+			{
+				logo: schaeffler,
+				name: 'Schaeffler',
+				link: 'http://www.schaeffler.us/',
+				description:
+					'Schaeffler is a global automotive and industrial supplier. They provide funding and resources to the Robotics Mining Team as well as other many other University of Akron design teams.'
 			}
 		],
+		tierThreeSponsors: [],
 		tierTwoSponsors: [
-			{
-				logo: altium,
-				name: 'Altium',
-				link: 'http://www.altium.com/'
-			},
 			{
 				logo: wardjet,
 				name: 'WardJet',
@@ -39,12 +43,6 @@
 			}
 		],
 		tierOneSponsors: [
-			{
-				logo: schaeffler,
-				name: 'Schaeffler',
-				link: 'http://www.schaeffler.us/'
-			},
-
 			{
 				logo: andersonPower,
 				name: 'Anderson Power Products',
@@ -55,15 +53,27 @@
 </script>
 
 <div class="sponsorContentContainer">
-	<h2>Class Action Sponsors:</h2>
-	<SponsorCard sponsorsList={sponsorsList.tierFourSponsors} tier={4} />
-	<div style="height: 5vh;"></div>
-	<h2>Criminal Sponsors:</h2>
-	<SponsorCard sponsorsList={sponsorsList.tierThreeSponsors} tier={3} />
-	<div style="height: 5vh;"></div>
-	<h2>Civil Sponsors:</h2>
-	<SponsorCard sponsorsList={sponsorsList.tierTwoSponsors} tier={2} />
-	<div style="height: 5vh;"></div>
-	<h2>Mediated Sponsors:</h2>
-	<SponsorCard sponsorsList={sponsorsList.tierOneSponsors} tier={1} />
+	{#if sponsorsList.tierFourSponsors.length === 0 && sponsorsList.tierThreeSponsors.length === 0 && sponsorsList.tierTwoSponsors.length === 0 && sponsorsList.tierOneSponsors.length === 0}
+		<h1>No sponsors yet!</h1>
+	{/if}
+	{#if sponsorsList.tierFourSponsors.length !== 0}
+		<h2>Cosmic Sponsors:</h2>
+		<SponsorCard sponsorsList={sponsorsList.tierFourSponsors} tier={4} />
+	{/if}
+	{#if sponsorsList.tierThreeSponsors.length !== 0}
+		<div style="height: 5vh;"></div>
+		<h2>Interstellar Sponsors:</h2>
+		<SponsorCard sponsorsList={sponsorsList.tierThreeSponsors} tier={3} />
+	{/if}
+	{#if sponsorsList.tierTwoSponsors.length !== 0}
+		<div style="height: 5vh;"></div>
+		<h2>Lunar Sponsors:</h2>
+		<SponsorCard sponsorsList={sponsorsList.tierTwoSponsors} tier={4} />
+		<!-- Change tier back to 2, when we get more sponsors-->
+	{/if}
+	{#if sponsorsList.tierOneSponsors.length !== 0}
+		<div style="height: 5vh;"></div>
+		<h2>Orbital Sponsors:</h2>
+		<SponsorCard sponsorsList={sponsorsList.tierOneSponsors} tier={4} />
+	{/if}
 </div>
