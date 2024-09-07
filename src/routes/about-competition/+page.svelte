@@ -1,9 +1,24 @@
 <script>
+	//@ts-nocheck
+
 	import cad from '$lib/images/cad.png';
 	import brandeeinee from '$lib/images/brandeeinee.jpg';
 	import audreepic from '$lib/images/audree-pic.jpg';
 	import outreach from '$lib/images/outreach.jpg';
 	import competition7 from '$lib/images/2019-competition7.jpg';
+
+	import { Splide, SplideSlide } from '@splidejs/svelte-splide';
+	import '@splidejs/svelte-splide/css/skyblue';
+
+	const imageModules = import.meta.glob(
+		'$lib/images/2024-comp-slideshow/*.{avif,gif,heif,jpeg,jpg,png,tiff,webp,svg}',
+		{
+			eager: true,
+			query: {
+				enhanced: true
+			}
+		}
+	);
 </script>
 
 <svelte:head>
@@ -76,22 +91,7 @@
 	</p>
 
 	<div class="flex-columns">
-		<div class="thirds">
-			<h4>Slide Presentation:</h4>
-			<p>This is a presentation that we make to the judges while at competition describing:</p>
-			<ul>
-				<li>Project management</li>
-				<li>Safety plan</li>
-				<li>Performance goals</li>
-				<li>Robot design and testing</li>
-				<li>
-					Innovation from prior years' designs Proof of Life Video This video shows our robot in
-					action performing two digging cycles.
-				</li>
-			</ul>
-			<img src={audreepic} width="85%" alt="Previous Robot Design" />
-		</div>
-		<div class="thirds">
+		<div class="halves">
 			<h4>Public Outreach Project Report:</h4>
 			<p>
 				In this paper, we describe our outreach efforts over the course of the year. For more
@@ -109,7 +109,7 @@
 				>
 			</p>
 		</div>
-		<div class="thirds">
+		<div class="halves">
 			<h4>Systems Engineering Paper</h4>
 			<p>
 				This paper demonstrates how our team uses the systems engineering process in designing,
@@ -155,6 +155,32 @@
 			<img src={competition7} width="85%" alt="Robot in competition field." />
 		</div>
 	</div>
+	<div style="height: 3vh;"></div>
+	<h2>2024 Competition</h2>
+	<Splide
+		aria-label="Compeititon Picture Slideshow"
+		options={{
+			rewind: true,
+			width: '80vw',
+			gap: '0rem',
+			autoplay: true,
+			interval: 3000
+		}}
+	>
+		{#each Object.entries(imageModules) as [_path, module]}
+			{#if module === undefined || module === null || module == {}}
+				{console.log('Image not found:', _path)}
+			{:else}
+				<SplideSlide>
+					<img
+						src={module.default}
+						alt="Competition Event"
+						style="max-width=100%; max-height:50vh;"
+					/>
+				</SplideSlide>
+			{/if}
+		{/each}
+	</Splide>
 </div>
 
 <style>

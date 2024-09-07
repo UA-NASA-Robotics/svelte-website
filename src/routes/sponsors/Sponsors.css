@@ -1,91 +1,97 @@
-.sponsorCard {
+.sponsorContent {
 	width: 100%;
-	border: 2px solid var(--light-bg-primary);
-	border-radius: 5px;
-	background-color: var(--light-bg-primary);
-	transition: background-color var(--transition-length) linear;
-	-webkit-transition: var(--transition-length);
-	padding: 1%;
-	margin-top: 5%;
 	display: flex;
-	float: left;
-	flex: 1;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	
+}
+
+.sponsorCard {
+	transition: background-color flex var(--transition-length) linear;
+	-webkit-transition: var(--transition-length);
+	display: flex;
+	border-radius: 10px;
+	margin-bottom: 2vh;
+}
+
+.tierOne {
+	flex-basis: 13%;
+	flex-direction: column;
+	padding-right: 2vw;
+}
+
+.tierTwo {
+	flex-basis: 25%;
+	flex-direction: column;
+}
+
+.tierThree {
+	flex-basis: 50%;
 	flex-direction: row;
 }
 
-.majorSponsor {
-	flex-direction: column;
+.tierFour {
+	flex-basis: 100%;
+	flex-direction: row;
 }
 
-body.dark .sponsorCard {
-	background-color: var(--dark-bg-primary);
-	border: 2px solid var(--dark-bg-primary);
-}
-
-/*
-.sponsorCard:hover {
-	border: 2px solid var(--ua-dark-grey);
-}
-
-body.dark .sponsorCard:hover {
-	border: 2px solid var(--ua-gold);
-}*/
-
-.sponsorCardReverse {
-	flex-direction: row-reverse;
-	justify-content: right;
-}
-
-.sponsorContent {
-	width: 100%;
-	align-items: center;
+.sponsorImgTierOne {
+	flex-basis: 100%;
+	justify-content: center;
 	display: flex;
+}
+
+.sponsorImgTierTwo {
+	flex-basis: 100%;
+	justify-content: center;
+	display: flex;
+}
+
+.sponsorImgTierTwo img{
+	max-height: 5cqw;
+	width: auto;
+	align-self: start;
+	margin-left: 5%;
+}
+
+.sponsorImgTierThree {
+	flex-basis: 50%;
+	justify-content: center;
+	display: flex;
+}
+
+.sponsorImgTierFour {
+	flex-basis: 50%;
+	justify-content: center;
+	display: flex;
+}
+
+.sponsorTxtTierOne {
+	flex-basis: 100%;
+	text-align: center;
+}
+
+.sponsorTxtTierOne h2 {
+	font-size: medium;
+}
+
+.sponsorTxtTierTwo {
+	flex-basis: 100%;
+	display: flex;
+	align-items: center;
 	flex-direction: column;
+	text-align: center;
 }
 
-.sponsorText {
-	width: 49%;
-	margin-top: 20px;
-	float: left;
+.sponsorTxtTierThree {
+	flex-basis: 50%;
 }
 
-.sponsorTextMajor {
-	width: 97%;
-	margin-top: 20px;
-	float: left;
+.sponsorTxtTierFour {
+	flex-basis: 50%;
 }
 
-.sponsorImageDiv {
-	width: 47%;
-	float: left;
-	margin-right: 20px;
-	margin-left: 20px;
-}
-.sponsorImageDivMajor {
-	width: 97%;
-	float: left;
-	margin-right: 20px;
-	margin-left: 20px;
-}
-
-.sponsorImg {
-	width: 90%;
-}
-
-@media (max-width: 600px) {
-	.sponsorText {
-		width: 100%;
-	}
-	.sponsorImageDiv {
-		width: 100%;
-	}
-	.sponsorCard {
-		flex-direction: column;
-	}
-	.sponsorCardReverse {
-		flex-direction: column;
-	}
-}
 
 .bar {
 	color: var(--light-txt-secondary);
@@ -101,50 +107,48 @@ body.dark .bar {
 	background-color: var(--dark-accent);
 }
 
-.degreeTokenDiv {
-	width: 100%;
-	margin-top: 15px;
-	margin-bottom: 20px;
-	float: left;
+
+@media screen and (max-width: 768px) {
+	.sponsorCard {
+		flex-direction: column;
+	}
+
+	
 }
 
-.degreeToken {
-	background-color: var(--ua-dark-grey);
-	border: 2px solid var(--ua-dark-grey);
-	border-radius: 5px;
-	float: left;
-	height: 20px;
-	margin-right: 5px;
-	margin-top: 5px;
-	align-items: center;
-	text-align: center;
-	padding: 0px;
-	transition: background-color var(--transition-length) linear;
-	-webkit-transition: var(--transition-length);
-}
+@media screen and (max-width: 600px) {
+	.tierFour {
+		flex-basis: 100%;
+	}
+	.tierThree {
+		flex-basis: 100%;
+	}
+	.tierTwo {
+		flex-basis: 50%;
+	}
+	.tierOne {
+		flex-basis: 30%;
+	}
 
-.degreeToken:hover {
-	border: 2px solid var(--ua-blue);
-}
+	.sponsorImgTierThree{
+		justify-content: start;
+		display: flex;
+	}
+	.sponsorImgTierThree img {
+		width: 40cqw;
+		height: fit-content;
+		margin-left: 2%;
+	}
 
-body.dark .degreeToken {
-	background-color: var(--ua-light-grey);
-}
+	.sponsorImgTierTwo img {
+		width: 20cqw;
+		height: fit-content;
+		max-height: none;
 
-body.dark .degreeToken:hover {
-	border: 2px solid var(--ua-gold);
-}
+	}
 
-.degreeTokenText {
-	color: var(--dark-txt-primary);
-	text-align: center;
-	font-size: 75%;
-	margin-left: 2px;
-	margin-right: 2px;
-	margin-top: 0;
-	margin-bottom: 0;
-}
-
-body.dark .degreeTokenText {
-	color: var(--light-txt-secondary);
+	.sponsorTxtTierOne h2 {
+		font-size: small;
+	}
+	
 }

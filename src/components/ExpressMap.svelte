@@ -10,6 +10,7 @@
 			src="https://www.google.com/maps/embed/v1/place?q=Express+Building,+Wolf+Ledges+Parkway,+Akron,+OH+44325,+USA&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"
 		/>
 	</div>
+	<p>Note, the Express Building is <em>not</em> permanently closed.</p>
 	<style>
 		#gmap-canvas img {
 			max-height: none;

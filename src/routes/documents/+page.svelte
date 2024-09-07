@@ -53,12 +53,12 @@
 	<div class="flex-columns">
 		<div class="seconds">
 			<embed
-				src="/document-files/lunabotics_updated.pdf"
+				src="/document-files/lunaboticsguidebook-2025.pdf"
 				type="application/pdf"
 				width="100%"
 				height="600px"
 			/>
-			<a href="/document-files/lunabotics_updated.pdf" download
+			<a href="/document-files/lunaboticsguidebook-2025.pdf" download
 				><button class="download">Download</button></a
 			>
 		</div>
@@ -67,8 +67,8 @@
 				These documents are provided by NASA and outline the rules and regulations for the
 				competition. They are updated annually and are the official rules for the competition.
 				<br />
-				The a version of the competition documents is readable to the left as of 2023, but the most recent
-				version is available on the
+				The a version of the competition documents is readable to the left as of 2024 (fall), but the
+				most recent version is available on the
 				<a
 					href="
 				https://www.nasa.gov/learning-resources/lunabotics-challenge/"
