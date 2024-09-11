@@ -2,7 +2,7 @@
 	import PersonnelBio from './PersonnelBio.svelte';
 
 	import callie from '$lib/images/officers/Callie.png';
-	import faith from '$lib/images/officers/Faith.png';
+	import faith from '$lib/images/officers/Faith.jpg';
 	import brandon from '$lib/images/officers/Brandon.jpg';
 	import jon from '$lib/images/officers/Jon.png';
 	import lane from '$lib/images/officers/Lane.jpg';
@@ -12,6 +12,9 @@
 	import jackson from '$lib/images/officers/Jackson.png';
 	import nathan from '$lib/images/officers/Nate.png';
 	import ayden from '$lib/images/officers/Ayden.jpg';
+	import zach from '$lib/images/officers/Zach.png';
+	import philip from '$lib/images/officers/Philip.png';
+	import garren from '$lib/images/officers/Garren.jpg';
 
 	const admins = {
 		presidents: [
@@ -63,7 +66,7 @@
 			},
 			{
 				name: 'Garren Ward',
-				image: undefined,
+				image: garren,
 				team_title: 'Marketing Lead',
 				degree: ['Electrical Engineering'],
 				biography:
@@ -105,6 +108,22 @@
 			}
 		],
 		leads: [
+			{
+				name: 'Zach Ellis',
+				image: zach,
+				team_title: 'Mechanical Lead',
+				degree: ['Mechanical Engineering'],
+				biography:
+					'Zach Ellis is the mechanical lead of the NASA Robotics Team and he is a third-year Mechanical Engineering major. Zach’s favorite memory within this club was getting Brandon to go workout with him. Fun Fact, he joined the robotics team for the opportunity to design systems and utilize engineering knowledge.'
+			},
+			{
+				name: 'Philip Westmeyer',
+				image: philip,
+				team_title: 'Mechanical Lead',
+				degree: ['Mechanical Engineering'],
+				biography:
+					'Philip Westmeyer is the mechanical lead of the NASA Robotics Team and he is a third-year Mechanical Engineering major.'
+			},
 			{
 				name: 'Eli Bukoski',
 				image: eli,
