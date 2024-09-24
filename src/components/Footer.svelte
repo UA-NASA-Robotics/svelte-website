@@ -56,11 +56,11 @@
 	import discord from '$lib/images/footer-links/logo-discord.png';
 
 	const socialButtons = [
-		{
-			url: 'https://discord.gg/WH3zCN3JSd',
-			imgSrc: discord,
-			alt: 'Discord'
-		},
+		//{
+		//	url: 'https://discord.gg/WH3zCN3JSd',
+		//	imgSrc: discord,
+		//	alt: 'Discord'
+		//},
 		{
 			url: 'https://www.instagram.com/uakronrobotics/',
 			imgSrc: instagram,
