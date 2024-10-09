@@ -60,7 +60,7 @@
 			{
 				name: 'Jonathan Daus',
 				image: jon,
-				team_title: 'Treasurer',
+				team_title: 'Treasurer and Mechanical Lead',
 				degree: ['Mechanical Engineering'],
 				biography:
 					'Jonathan Daus is the Treasurer of the NASA Robotics Team and he is a third-year Mechanical Engineering major. Jon’s favorite memory within this club was attending the 2022/2023 NASA Robotics Mining Competition at the University of Alabama!'
