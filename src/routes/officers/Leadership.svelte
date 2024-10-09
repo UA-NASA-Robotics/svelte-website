@@ -15,6 +15,7 @@
 	import zach from '$lib/images/officers/Zach.png';
 	import philip from '$lib/images/officers/Philip.png';
 	import garren from '$lib/images/officers/Garren.jpg';
+	import bobby from '$lib/images/officers/Bobby.jpg';
 
 	const admins = {
 		presidents: [
@@ -123,6 +124,14 @@
 				degree: ['Mechanical Engineering'],
 				biography:
 					'Philip Westmeyer is the mechanical lead of the NASA Robotics Team and he is a third-year Mechanical Engineering major.'
+			},
+			{
+				name: 'Bobby Freshour',
+				image: bobby,
+				team_title: 'Mechanical Lead',
+				degree: ['Mechanical Engineering'],
+				biography:
+					'Bobby is a third year mechanical engineering major and is one of the mechanical leads for the team. His favorite memory within the club were the design reviews. Fun fact about Bobby, he is the president of his fraternity, Phi Kappa Tau.'
 			},
 			{
 				name: 'Eli Bukoski',
