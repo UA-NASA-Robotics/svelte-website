@@ -13,7 +13,6 @@
 	import nathan from '$lib/images/officers/Nate.png';
 	import ayden from '$lib/images/officers/Ayden.jpg';
 	import zach from '$lib/images/officers/Zach.png';
-	import philip from '$lib/images/officers/Philip.png';
 	import garren from '$lib/images/officers/Garren.jpg';
 	import bobby from '$lib/images/officers/Bobby.jpg';
 
@@ -60,7 +59,7 @@
 			{
 				name: 'Jonathan Daus',
 				image: jon,
-				team_title: 'Treasurer',
+				team_title: 'Treasurer and Mechanical Lead',
 				degree: ['Mechanical Engineering'],
 				biography:
 					'Jonathan Daus is the Treasurer of the NASA Robotics Team and he is a third-year Mechanical Engineering major. Jon’s favorite memory within this club was attending the 2022/2023 NASA Robotics Mining Competition at the University of Alabama!'
@@ -117,14 +116,7 @@
 				biography:
 					'Zach Ellis is the mechanical lead of the NASA Robotics Team and he is a third-year Mechanical Engineering major. Zach’s favorite memory within this club was getting Brandon to go workout with him. Fun Fact, he joined the robotics team for the opportunity to design systems and utilize engineering knowledge.'
 			},
-			{
-				name: 'Philip Westmeyer',
-				image: philip,
-				team_title: 'Mechanical Lead',
-				degree: ['Mechanical Engineering'],
-				biography:
-					'Philip Westmeyer is the mechanical lead of the NASA Robotics Team and he is a third-year Mechanical Engineering major.'
-			},
+
 			{
 				name: 'Bobby Freshour',
 				image: bobby,
