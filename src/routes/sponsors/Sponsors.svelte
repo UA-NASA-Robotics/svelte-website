@@ -2,7 +2,8 @@
 	import './SponsorCard.svelte';
 
 	import ua from '$lib/images/sponsors/UniversityofAkron.jpg';
-	import altium from '$lib/images/sponsors/altium.jpg';
+	import clinton from '$lib/images/sponsors/Clinton-Aluminum---logo.jpg';
+	import graco from '$lib/images/sponsors/Graco Inc..avif';
 	import osgc from '$lib/images/sponsors/osgc.jpg';
 	import wardjet from '$lib/images/sponsors/wardjet.jpg';
 	import schaeffler from '$lib/images/sponsors/schaeffler.jpg';
@@ -32,6 +33,13 @@
 				link: 'http://www.schaeffler.us/',
 				description:
 					'Schaeffler is a global automotive and industrial supplier. They provide funding and resources to the Robotics Mining Team as well as other many other University of Akron design teams.'
+			},
+			{
+				logo: clinton,
+				name: 'Clinton Aluminum',
+				link: 'https://www.clintalum.com/',
+				description:
+					'Clinton Aluminum is a supplier of aluminum products. They provide the foundational material for the team to build their robot.'
 			}
 		],
 		tierThreeSponsors: [],
@@ -40,6 +48,11 @@
 				logo: wardjet,
 				name: 'WardJet',
 				link: 'http://www.wardjet.com/'
+			},
+			{
+				logo: graco,
+				name: 'Graco',
+				link: 'http://www.graco.com/'
 			}
 		],
 		tierOneSponsors: [
@@ -68,12 +81,12 @@
 	{#if sponsorsList.tierTwoSponsors.length !== 0}
 		<div style="height: 5vh;"></div>
 		<h2>Lunar Sponsors:</h2>
-		<SponsorCard sponsorsList={sponsorsList.tierTwoSponsors} tier={4} />
+		<SponsorCard sponsorsList={sponsorsList.tierTwoSponsors} tier={3} />
 		<!-- Change tier back to 2, when we get more sponsors-->
 	{/if}
 	{#if sponsorsList.tierOneSponsors.length !== 0}
 		<div style="height: 5vh;"></div>
 		<h2>Orbital Sponsors:</h2>
-		<SponsorCard sponsorsList={sponsorsList.tierOneSponsors} tier={4} />
+		<SponsorCard sponsorsList={sponsorsList.tierOneSponsors} tier={2} />
 	{/if}
 </div>
