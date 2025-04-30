@@ -116,15 +116,6 @@
 				biography:
 					'Zach Ellis is the mechanical lead of the NASA Robotics Team and he is a third-year Mechanical Engineering major. Zach’s favorite memory within this club was getting Brandon to go workout with him. Fun Fact, he joined the robotics team for the opportunity to design systems and utilize engineering knowledge.'
 			},
-
-			{
-				name: 'Bobby Freshour',
-				image: bobby,
-				team_title: 'Mechanical Lead',
-				degree: ['Mechanical Engineering'],
-				biography:
-					'Bobby is a third year mechanical engineering major and is one of the mechanical leads for the team. His favorite memory within the club were the design reviews. Fun fact about Bobby, he is the president of his fraternity, Phi Kappa Tau.'
-			},
 			{
 				name: 'Eli Bukoski',
 				image: eli,
