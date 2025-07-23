@@ -8,6 +8,8 @@
 	import katee from '/src/lib/images/robots/KATEE.png';
 	import daisee from '/src/lib/images/robots/DAISEE.png';
 	import brandee from '/src/lib/images/robots/BRANDEE.jpg';
+	import steve from '/src/lib/images/robots/STEVE.jpg';
+	import melodee from '/src/lib/images/robots/MELODEE.jpg';
 
 	import logo from '/src/lib/images/Logo.png';
 
@@ -21,7 +23,7 @@
 			year: '2010-2011'
 		},
 		{
-			image: logo,
+			image: steve,
 			name: 'STEVE',
 			acronym: 'Systematic Technical Extraterrestrial Vehicle for Excavation',
 			description:
@@ -75,7 +77,7 @@
 			name: 'KATEE',
 			description:
 				"Failure is not an option, words spoken not only for the work of NASA, but the work of our team. Although we encountered hardships with this robot and couldn't make it into the arena, we are still incredibly proud of the work everyone has contributed and being in the competition. As said by Walt Disney, Around here, however, we don't look backwards for very long. We keep moving forward, opening up new doors and doing new things, because we're curious...and curiosity keeps leading us down new paths.",
-			year: '2020-2021'
+			year: '2021-2022'
 		},
 		{
 			image: daisee,
@@ -92,6 +94,14 @@
 			description:
 				'Brandee was the 2023-2024 robot, and we are proud of the success we had with this robot. She was a 4 wheel front loader design who will continue to support the team as an outreach robot.',
 			year: '2023-2024'
+		},
+		{
+			image: melodee,
+			acronym: 'Mining Excavation Lunar Operations for Deep Exolith Exploration',
+			name: 'MELODEE',
+			description:
+				'MELODEE was the 2024-2025 robot, a 4 wheel front loader design featuring the first implementation of our Roobot Over IP control system. She placed 2nd at UCF and 3rd in autonomy at the Kennedy Space Center competition leg.',
+			year: '2024-2025'
 		}
 	];
 
