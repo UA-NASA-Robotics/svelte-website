@@ -19,22 +19,22 @@
 	const admins = {
 		presidents: [
 			{
-				name: 'Callie Lewis',
-				image: callie,
+				name: 'Lane Cline',
+				image: lane,
 				team_title: 'President',
-				degree: ['Chemical Engineering', 'Spanish'],
+				degree: ['Electrical Engineering', 'History'],
 				biography:
-					"Callie Lewis is the president of the NASA Robotics Team and she is a senior Chemical Engineering major with a minor in Spanish. Callie's favorite memory within this club was going to NASA Kennedy Space Center her Freshman year!"
+					'Lane Cline is the President of the NASA Robotics Team and he is a fifth-year Electrical Engineering major and pursing a minor in history. Lane’s favorite memory within this club was staying up late wiring the robot with the team. Fun fact about Lane, he loves making salsa!'
 			}
 		],
 		vice_presidents: [
 			{
-				name: 'Faith Stewart',
-				image: faith,
+				name: 'Nathan O’Brien',
+				image: nathan,
 				team_title: 'Vice President',
-				degree: ['Electrical Engineering', 'Classics'],
+				degree: ['Computer Engineering', 'Computer Science'],
 				biography:
-					'Faith Stewart is the Vice President of the NASA Robotics Team and she is a fourth-year Electrical Engineering major and pursuing a minor in Classical Studies. Faith’s favorite memories within this club include the many of design reviews and being able to connect to the entire team as well as alumni!'
+					'Nathan O’Brien is the Vice President of the NASA Robotics Team and he is a forth-year Computer Engineering major and pursing a minor in Computer Science. Nathan’s favorite memory within this club was programming RoboFett to dance and play a Billie Joel song!'
 			}
 		],
 		project_managers: [
@@ -44,15 +44,15 @@
 				team_title: 'Project Manager',
 				degree: ['Mechanical Engineering', 'Applied Mathematics'],
 				biography:
-					"Brandon McCune is the Project Manager of the NASA Robotics Team and he is a third-year Mechanical Engineering major with a minor in Mathematics. Brandon's favorite memory within this club was watching BRANDEE get out of the crater, and hearing team positivity throughout the competition.  Fun fact about Brandon, he used to do lots of origami crafts, and can make a variety of cool things from notecards.."
+					"Brandon McCune is a Co-Project Manager of the NASA Robotics Team and he is a fourth-year Mechanical Engineering major with a minor in Mathematics. Brandon's favorite memory within this club was watching BRANDEE get out of the crater, and hearing team positivity throughout the competition.  Fun fact about Brandon, he used to do lots of origami crafts, and can make a variety of cool things from notecards.."
 			},
 			{
 				name: 'Ayden Randall',
 				image: ayden,
-				team_title: 'Assistant Project Manager',
+				team_title: 'Project Manager',
 				degree: ['Computer Engineering'],
 				biography:
-					"Ayden Randall is the Assistant Project Manager of the NASA Robotics Team and he is a second-year Computer Engineering major. Ayden's favorite memory within this club was being able to work with the entire team and alumni to create the software for BRANDEE!"
+					"Ayden Randall is a Co-Project Manager of the NASA Robotics Team and he is a third-year Computer Engineering major. Ayden's favorite memory within this club was being able to work with the entire team and alumni to create the software for BRANDEE!"
 			}
 		],
 		treasurers: [
@@ -62,7 +62,7 @@
 				team_title: 'Treasurer and Mechanical Lead',
 				degree: ['Mechanical Engineering'],
 				biography:
-					'Jonathan Daus is the Treasurer of the NASA Robotics Team and he is a third-year Mechanical Engineering major. Jon’s favorite memory within this club was attending the 2022/2023 NASA Robotics Mining Competition at the University of Alabama!'
+					'Jonathan Daus is the Treasurer of the NASA Robotics Team and he is a forth-year Mechanical Engineering major. Jon’s favorite memory within this club was attending the 2022/2023 NASA Robotics Mining Competition at the University of Alabama!'
 			},
 			{
 				name: 'Garren Ward',
@@ -70,7 +70,7 @@
 				team_title: 'Marketing Lead',
 				degree: ['Electrical Engineering'],
 				biography:
-					"Garren Ward is the Marketing Lead of the NASA Robotics Team and he is a second-year Electrical Engineering major. Garren's focus on the team is helping with outreach of the team. A large portion of the team is funded by generous donations from our sponsors and Garren helps to ensure that the team is able to continue to grow and compete in the future!"
+					"Garren Ward is the Marketing Lead of the NASA Robotics Team and he is a third-year Electrical Engineering major. Garren's focus on the team is helping with outreach of the team. A large portion of the team is funded by generous donations from our sponsors and Garren helps to ensure that the team is able to continue to grow and compete in the future!"
 			}
 		],
 		managers: [
@@ -80,31 +80,23 @@
 				team_title: 'Mechanical Manager',
 				degree: ['Mechanical Engineering', 'Mathematics'],
 				biography:
-					'Nick Seiler is the new Mechanical Manager of the NASA Robotics Team and he is a third-year Mechanical Engineering major and is pursing a minor in Mathematics. Nick’s favorite memory within this club was being able to volunteer and be a judge at multiple VEX Robotics Events!'
+					'Nick Seiler is the Mechanical Manager of the NASA Robotics Team and he is a forth-year Mechanical Engineering major and is pursing a minor in Mathematics. Nick’s favorite memory within this club was being able to volunteer and be a judge at multiple VEX Robotics Events!'
 			},
 			{
-				name: 'Lane Cline',
-				image: lane,
+				name: 'Eli Bukoski',
+				image: eli,
 				team_title: 'Electrical Manager',
-				degree: ['Electrical Engineering', 'History'],
+				degree: ['Electrical Engineering', 'Computer Science'],
 				biography:
-					'Lane Cline is the Electrical Manager of the NASA Robotics Team and he is a fourth-year Electrical Engineering major and pursing a minor in history. Lane’s favorite memory within this club was staying up late wiring the robot with the team. Fun fact about Lane, he loves making salsa!'
+					'Eli Bukoski is the Electrical Officer of the NASA Robotics Team and he is a third-year Electrical Engineering major and pursing a minor in Computer Science. Eli’s favorite memory within this club was competing in Lunabotics at Kennedy Space Center! Fun fact about Eli, during high school his team competed in the 2021 Vex Robotics Worlds Competition.'
 			},
 			{
 				name: 'Jackson Stillwagon',
 				image: jackson,
-				team_title: 'Software Co-Manager',
+				team_title: 'Software Manager',
 				degree: ['Electrical Engineering'],
 				biography:
-					"Jackson Stillwagon is a Software Co-Manager of the NASA Robotics Team and he is a third-year Electrical Engineering major. Jackson's favorite memory within this club was attending Robsgiving this year with the entire Software Team! Fun fact, Jackson is a general class HAM operator with the call-sign KE8ZMO."
-			},
-			{
-				name: 'Nathan O’Brien',
-				image: nathan,
-				team_title: 'Software Co-Manager',
-				degree: ['Computer Engineering', 'Computer Science'],
-				biography:
-					'Nathan O’Brien is a Software Co-Manager of the NASA Robotics Team and he is a third-year Computer Engineering major and pursing a minor in Computer Science. Nathan’s favorite memory within this club was programming RoboFett to dance and play a Billie Joel song!'
+					"Jackson Stillwagon is the Software Manager of the NASA Robotics Team and he is a fourth-year Electrical Engineering major. Jackson's favorite memory within this club was attending Robsgiving this year with the entire Software Team! Fun fact, Jackson is a general class HAM operator with the call-sign KE8ZMO."
 			}
 		],
 		leads: [
@@ -116,21 +108,14 @@
 				biography:
 					'Zach Ellis is the mechanical lead of the NASA Robotics Team and he is a third-year Mechanical Engineering major. Zach’s favorite memory within this club was getting Brandon to go workout with him. Fun Fact, he joined the robotics team for the opportunity to design systems and utilize engineering knowledge.'
 			},
-			{
-				name: 'Eli Bukoski',
-				image: eli,
-				team_title: 'Electrical Lead',
-				degree: ['Electrical Engineering', 'Computer Science'],
-				biography:
-					'Eli Bukoski is the power distribution electrical lead of the NASA Robotics Team and he is a second-year Electrical Engineering major and pursing a minor in Computer Science. Eli’s favorite memory within this club was competing in Lunabotics at Kennedy Space Center! Fun fact about Eli, during high school his team competed in the 2021 Vex Robotics Worlds Competition.'
-			},
+
 			{
 				name: 'Jonathan Roth',
 				image: jonR,
 				team_title: 'Software Lead',
 				degree: ['Electrical Engineering', 'Mathematics'],
 				biography:
-					"Jonathan Roth is the communications software lead of the NASA Robotics Team and he is a second-year Electrical Engineering and Mathematics double major. His favorite memory within this club was anodizing titanium parts for the robot and the unexpected chemistry behind it! Fun fact about Jon, he can solve 22 types of rubik's cubes!"
+					"Jonathan Roth is the communications software lead of the NASA Robotics Team and he is a third-year Electrical Engineering and Mathematics double major. His favorite memory within this club was anodizing titanium parts for the robot and the unexpected chemistry behind it! Fun fact about Jon, he can solve 22 types of rubik's cubes!"
 			}
 		],
 		members: []
