@@ -11,23 +11,23 @@ jobs:
     build-and-run:
      runs-on: self-hosted
      steps:
-      #- name: stop webserver
-      #  run: service svelte stop
+      - name: stop webserver
+        run: /var/www/svelte-stop.sh
             
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Show current directory
-        run: pwd && ls -la
+      - name: rm old code
+        run: rm -rf /var/www/svelte/{*,.*}
 
-      #- name: rm old code
-      #  run: rm -rf /var/www/svelte/{*,.*}
+      - name: mv in new code
+        run: mv ./* /var/www/svelte/
 
       #- name: Use Node.js 20.x
       #  uses: actions/setup-node@v4
       #  with:
       #    node-version: '20.x'
 
-      #- name: restart node service
-      #  run: service svelte start
+      - name: restart node service
+        run: /var/www/svelte-start.sh
     
