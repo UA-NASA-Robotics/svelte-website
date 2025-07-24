@@ -11,6 +11,15 @@ jobs:
     build-and-run:
      runs-on: self-hosted
      steps:
+      - name: Debug User and Shell
+        run: |
+            echo "User: $(whoami)"
+            echo "Shell: $SHELL"
+            echo "Home: $HOME"
+            echo "TTY: $(tty || echo none)"
+            sudo -n true && echo "Sudo works without password" || echo "Sudo needs password"
+
+     
       - name: stop webserver
         run: /var/www/svelte-stop.sh
             
