@@ -12,7 +12,7 @@ jobs:
      runs-on: self-hosted
      steps:
       - name: stop webserver
-        run: /var/www/svelte-stop.sh
+        run: sudo -n /var/www/svelte-stop.sh
             
       - name: Checkout code
         uses: actions/checkout@v4
