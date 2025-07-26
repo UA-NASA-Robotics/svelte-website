@@ -12,6 +12,11 @@ jobs:
      runs-on: self-hosted
      steps:
       - name: stop webserver
+        run: whoami
+      - name: stop webserver
+        run: sudo -l
+        
+      - name: stop webserver
         run: /var/www/svelte-stop.sh
             
       - name: Checkout code
