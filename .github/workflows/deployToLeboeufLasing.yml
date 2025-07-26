@@ -23,7 +23,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: rm old code
-        run: rm -rf /var/www/svelte/{*,.*}
+        run: rm -rf /var/www/svelte/* /var/www/svelte/.??*
 
       - name: mv in new code
         run: mv ./* /var/www/svelte/
