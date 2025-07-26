@@ -1,4 +1,4 @@
-# This workflow will build and deploy the svelte website onto a hosting server
+# This workflow will build and deploy the Svelte website onto a hosting server. DO NOT EDIT. This is not run in an isolated environment.
 
 on:
   push:
@@ -10,12 +10,7 @@ on:
 jobs:
     build-and-run:
      runs-on: self-hosted
-     steps:
-      - name: stop webserver
-        run: whoami
-      - name: stop webserver
-        run: sudo -l
-        
+     steps:       
       - name: stop webserver
         run: sudo -n /bin/systemctl stop svelte
             
