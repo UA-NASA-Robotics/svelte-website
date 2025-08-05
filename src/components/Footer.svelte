@@ -114,7 +114,7 @@
 			</div>
 		</div>
 	</div>
-	<p>© University of Akron NASA RMC Team 2024-2025</p>
+	<p>© University of Akron NASA RMC Team 2025-2026</p>
 </footer>
 
 <style>
