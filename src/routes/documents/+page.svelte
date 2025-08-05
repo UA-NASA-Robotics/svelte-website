@@ -8,7 +8,7 @@
 		name="keywords"
 		content="NASA, Robotic Mining Competition, Lunabotics, Artemis, Moon to Mars, legal, document, constitution"
 	/>
-	<meta name="author" content="uA NASA Robotic Mining Competition Team" />
+	<meta name="author" content="UA NASA Robotic Mining Competition Team" />
 </svelte:head>
 
 <div class="text-column">
@@ -24,14 +24,11 @@
 	<div class="flex-columns">
 		<div class="seconds">
 			<embed
-				src="/document-files/2023-2024_Constitution.pdf"
+				src="/document-files/Constitution08_04_2025.pdf"
 				type="application/pdf"
 				width="100%"
 				height="600px"
 			/>
-			<a href="/document-files/2023-2024_Constitution.pdf" download
-				><button class="download">Download</button></a
-			>
 		</div>
 		<div class="seconds">
 			<p>
@@ -43,7 +40,8 @@
 			</p>
 
 			<h3>Previous Versions</h3>
-			<p>No previous versions at this time.</p>
+				<a href="/document-files/2023-2024_Constitution.pdf" download
+				><button class="download">Download 2023-2024 Rev</button></a>
 		</div>
 	</div>
 
@@ -53,28 +51,31 @@
 	<div class="flex-columns">
 		<div class="seconds">
 			<embed
-				src="/document-files/lunaboticsguidebook-2025.pdf"
+				src="/document-files/lunaboticsguidebook-2025 V4.pdf"
 				type="application/pdf"
 				width="100%"
 				height="600px"
 			/>
-			<a href="/document-files/lunaboticsguidebook-2025.pdf" download
-				><button class="download">Download</button></a
-			>
 		</div>
 		<div class="seconds">
 			<p>
 				These documents are provided by NASA and outline the rules and regulations for the
 				competition. They are updated annually and are the official rules for the competition.
 				<br />
-				The a version of the competition documents is readable to the left as of 2024 (fall), but the
+				The a version of the competition documents is readable to the left as of 2025 (spring) as Version 4, but the
 				most recent version is available on the
 				<a
 					href="
 				https://www.nasa.gov/learning-resources/lunabotics-challenge/"
 				>
 					Nasa website</a
-				>.
+				>. Earlier versions contain better scoring guidelines.
+
+			<h3>Previous Versions</h3>
+				<a href="/document-files/lunaboticsguidebook-2025 V3.pdf" download
+				><button class="download">Download 2025 Version 3</button></a>
+				<a href="/document-files/lunaboticsguidebook-2025 V1.pdf" download
+				><button class="download">Download 2025 Version 1</button></a>
 			</p>
 		</div>
 	</div>
