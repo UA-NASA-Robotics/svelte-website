@@ -23,10 +23,11 @@ jobs:
       - name: mv in new code
         run: mv ./* /var/www/svelte/
 
-      #- name: Use Node.js 20.x
-      #  uses: actions/setup-node@v4
-      #  with:
-      #    node-version: '20.x'
+      - name: npm install and build
+        run: |
+          cd /var/www/svelte
+          npm install
+          npm run build
 
       - name: restart node service
         run: sudo -n /bin/systemctl start svelte
