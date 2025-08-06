@@ -3,7 +3,7 @@ on:
   pull_request:
     branches:
       - main
-    types: [opened, synchronize, reopened] # Optional: specify types of PR events
+    types: [opened, synchronize, reopened, edited, converted_to_draft, unlocked] # Optional: specify types of PR events
 
 jobs:
   build:
