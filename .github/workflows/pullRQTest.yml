@@ -12,5 +12,5 @@ jobs:
       - uses: actions/checkout@v4
       - name: Install dependencies
         run: npm install
-      - name: Run tests
+      - name: Test svelte build
         run: npm run build
