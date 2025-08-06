@@ -2,7 +2,7 @@ name: PullRequestTest
 on:
   pull_request:
     branches:
-      - main
+      - master
     types: [opened, synchronize, reopened, edited, converted_to_draft, unlocked] # Optional: specify types of PR events
 
 jobs:
