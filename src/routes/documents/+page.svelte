@@ -70,8 +70,9 @@
 				>
 					Nasa website</a
 				>. Earlier versions contain better scoring guidelines.
-
+</p>
 			<h3>Previous Versions</h3>
+<p>
 				<a href="/document-files/lunaboticsguidebook-2025 V3.pdf" download
 				><button class="download">Download 2025 Version 3</button></a>
 				<a href="/document-files/lunaboticsguidebook-2025 V1.pdf" download

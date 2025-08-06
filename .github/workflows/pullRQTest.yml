@@ -1,0 +1,16 @@
+name: PullRequestTest
+on:
+  pull_request:
+    branches:
+      - master
+    types: [opened, synchronize, reopened, edited, converted_to_draft, unlocked] # Optional: specify types of PR events
+
+jobs:
+  build:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install dependencies
+        run: npm install
+      - name: Test svelte build
+        run: npm run build

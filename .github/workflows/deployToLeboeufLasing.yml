@@ -1,0 +1,35 @@
+# This workflow will build and deploy the Svelte website onto a hosting server. DO NOT EDIT. This is not run in an isolated environment.
+
+on:
+  push:
+    branches: 
+      - master
+    paths-ignore:
+      - 'archive/**'
+      - '.github/**'
+
+jobs:
+    build-and-run:
+     runs-on: self-hosted
+     steps:       
+      - name: stop webserver
+        run: sudo -n /bin/systemctl stop svelte
+            
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: rm old code
+        run: rm -rf /var/www/svelte/* /var/www/svelte/.??*
+
+      - name: mv in new code
+        run: mv ./* /var/www/svelte/
+
+      - name: npm install and build
+        run: |
+          cd /var/www/svelte
+          npm install
+          npm run build
+
+      - name: restart node service
+        run: sudo -n /bin/systemctl start svelte
+    
