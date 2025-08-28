@@ -24,6 +24,10 @@ export const actions ={
     scan_submission: async ({ request, cookies }) => {
         const data = await request.formData();
         const zipData = data.get('zip') as string || "+000?";
+        // if "E" in data, it's an error code from the scanner
+        if (zipData.includes("E")){
+            return fail(400, { success: false, message: "Error reading card, please try again."});
+        }
         const zip = zipData.split("+")[1].split("?")[0]; //parse the zip from the scanned data
         const authenticated = cookies.get('attendance_auth');
         if (authenticated === 'true') {
