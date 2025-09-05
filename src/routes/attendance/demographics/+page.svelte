@@ -3,14 +3,14 @@
 	export let data: {
 		props: {
 			zip: string;
-			demographics: { email: string; age: string | number; gender: string; major: string };
+			demographics: { email: string; yearsOnTeam: string | number; gender: string; major: string };
 		};
 	};
 
 	const { zip, demographics } = data.props;
 
 	let email = demographics.email ?? '';
-	let age: string | number = demographics.age ?? '';
+	let yearsOnTeam: string | number = demographics.yearsOnTeam ?? '';
 	let gender = demographics.gender ?? '';
 	let major = demographics.major ?? '';
 </script>
@@ -37,18 +37,19 @@
 		</div>
 
 		<div class="field">
-			<label for="age">Age *</label>
+			<label for="yearsOnTeam">Years on the Team *</label>
 			<input
-				id="age"
-				name="age"
+				id="yearsOnTeam"
+				name="yearsOnTeam"
 				type="number"
 				min="0"
+				step="1"
 				inputmode="numeric"
-				placeholder="120"
+				placeholder="e.g., 1, 2, 3"
 				required
-				bind:value={age}
+				bind:value={yearsOnTeam}
 			/>
-			<small class="hint">Only used for anonymous University demographics reporting.</small>
+			<small class="hint">Only used for anonymous reporting. Enter whole years.</small>
 		</div>
 
 		<div class="field">

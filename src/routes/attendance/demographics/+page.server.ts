@@ -21,16 +21,16 @@ export async function load({ cookies, url }: { cookies: Cookies; url: URL }) {
 
     let demographics = {
         email: '',
-        age: '',
+        yearsOnTeam: '',
         gender: '',
         major: ''
-    } as { email: string; age: string | number; gender: string; major: string };
+    } as { email: string; yearsOnTeam: string | number; gender: string; major: string };
 
     if (member && typeof member === 'object' && 'demographics' in member && member.demographics) {
-        const d = member.demographics as Partial<typeof demographics>;
+        const d = member.demographics as Partial<typeof demographics & { age?: string | number }>;
         demographics = {
             email: d.email ?? '',
-            age: d.age ?? '',
+            yearsOnTeam: (d as any).yearsOnTeam ?? d.age ?? '',
             gender: d.gender ?? '',
             major: d.major ?? ''
         };
@@ -57,7 +57,7 @@ export const actions = {
         const form = await request.formData();
         const zip = (form.get('zip') as string | null)?.trim() || '';
         const email = (form.get('email') as string | null)?.trim() || '';
-        const ageRaw = (form.get('age') as string | null)?.trim() || '';
+    const yearsRaw = (form.get('yearsOnTeam') as string | null)?.trim() || '';
         const gender = (form.get('gender') as string | null)?.trim() || '';
         const major = (form.get('major') as string | null)?.trim() || '';
 
@@ -68,13 +68,13 @@ export const actions = {
             return fail(400, { success: false, message: 'Please fill out all required fields.' });
         }
 
-        let age: number | '' = '';
-        if (ageRaw) {
-            const n = Number(ageRaw);
+        let yearsOnTeam: number | '' = '';
+        if (yearsRaw) {
+            const n = Number(yearsRaw);
             if (!Number.isFinite(n) || n < 0) {
-                return fail(400, { success: false, message: 'Age must be a valid non-negative number.' });
+                return fail(400, { success: false, message: 'Years on team must be a valid non-negative number.' });
             }
-            age = n;
+            yearsOnTeam = n;
         }
 
         // Read existing member
@@ -86,11 +86,11 @@ export const actions = {
         }
 
         // Merge and save demographics onto the member doc
-        const updated = {
+    const updated = {
             ...member,
             demographics: {
                 email,
-                age,
+        yearsOnTeam,
                 gender,
                 major,
                 //add a timestamp in ms
