@@ -1,5 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
+	import { page } from '$app/state';
 	export let data;
 	export let form;
 
@@ -36,6 +37,11 @@
 			{#if form}
 				<div class="alert {form.success ? 'success' : 'error'}" role="status" aria-live="polite">
 					{form.message}
+				</div>
+			{/if}
+			{#if page.url.searchParams.get('demographics') === '1'}
+				<div class="alert success" role="status" aria-live="polite">
+					Demographics saved successfully.
 				</div>
 			{/if}
 

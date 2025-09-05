@@ -49,7 +49,7 @@ export const actions ={
                 };
                 let createResponse = await db.append("members", newMember);
                 if (createResponse && "ok" in createResponse && createResponse.ok){
-                    redirect(303, '/attendance');
+                    redirect(303, '/attendance/demographics?zip=' + zip);
                     return { success: true, message: "Attendance recorded successfully."};
 
             }else{
