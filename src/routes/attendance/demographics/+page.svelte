@@ -53,7 +53,7 @@
 
 		<div class="field">
 			<label for="gender">Gender *</label>
-			<input name="gender" type="text" required />
+			<input name="gender" type="text" required bind:value={gender} />
 			<small class="hint">Only used for anonymous University demographics reporting.</small>
 		</div>
 
