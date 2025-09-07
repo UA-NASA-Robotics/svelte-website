@@ -24,10 +24,12 @@ export async function load({ cookies }: { cookies: Cookies }) {
     const db = new Database('leboeuflasing.com:5984', 'contact', 'lunaboticswebsitecontact');
 
     // Fetch common demographics views. Use yearsOnTeam (preferred), fallback to age if yearsOnTeam view doesn't exist.
-    const [gender, major, yearsOnTeam] = await Promise.all([
+    const [gender, major, yearsOnTeam, ethnicity, isHispanic] = await Promise.all([
         fetchView(db, 'gender'),
         fetchView(db, 'major'),
-        fetchView(db, 'yearsOnTeam')
+        fetchView(db, 'yearsOnTeam'),
+        fetchView(db, 'ethnicity'),
+        fetchView(db, 'isHispanic')
     ]);
 
     const years = yearsOnTeam && yearsOnTeam.length ? yearsOnTeam : await fetchView(db, 'age');
@@ -36,7 +38,9 @@ export async function load({ cookies }: { cookies: Cookies }) {
         props: {
             gender,
             major,
-            years
+            years,
+            ethnicity,
+            isHispanic
         }
     };
 }

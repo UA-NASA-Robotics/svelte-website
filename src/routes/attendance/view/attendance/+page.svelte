@@ -177,7 +177,7 @@
 		margin: 0.25rem 0 1rem;
 	}
 	.filter select {
-		border: 1px solid #d1d5db;
+		border: 1px solid var(--light-bg-secondary);
 		border-radius: 8px;
 		padding: 0.35rem 0.5rem;
 	}
@@ -187,7 +187,7 @@
 	}
 	.card {
 		background: #fff;
-		border: 1px solid #e5e7eb;
+		border: 1px solid var(--light-bg-secondary);
 		border-radius: 12px;
 		padding: 1rem;
 		box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
@@ -278,5 +278,37 @@
 	}
 	.member:active .count {
 		background: #d1d5db;
+	}
+	/* Dark mode overrides */
+	:global(body.dark) .muted {
+		color: var(--dark-txt-secondary);
+	}
+	:global(body.dark) .filter select {
+		background: var(--dark-bg-primary);
+		border-color: var(--dark-bg-secondary);
+		color: var(--dark-txt-primary);
+	}
+	:global(body.dark) .card {
+		background: var(--dark-bg-tertiary);
+		border-color: var(--dark-bg-tertiary);
+		box-shadow:
+			0 10px 30px rgba(0, 0, 0, 0.35),
+			0 2px 10px rgba(0, 0, 0, 0.25);
+	}
+	:global(body.dark) .member {
+		border-bottom: 1px dashed #2e3a59;
+	}
+	:global(body.dark) .member:hover {
+		background: var(--dark-bg-secondary);
+	}
+	:global(body.dark) .member:active {
+		background: #1f2937;
+	}
+	:global(body.dark) .member .count {
+		background: var(--dark-bg-secondary);
+		color: var(--dark-txt-primary);
+	}
+	:global(body.dark) .member:hover .count {
+		background: #2e3a59;
 	}
 </style>

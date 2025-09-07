@@ -3,7 +3,14 @@
 	export let data: {
 		props: {
 			zip: string;
-			demographics: { email: string; yearsOnTeam: string | number; gender: string; major: string };
+			demographics: {
+				email: string;
+				yearsOnTeam: string | number;
+				gender: string;
+				major: string;
+				ethnicity?: string;
+				isHispanic?: string;
+			};
 		};
 	};
 
@@ -13,22 +20,26 @@
 	let yearsOnTeam: string | number = demographics.yearsOnTeam ?? '';
 	let gender = demographics.gender ?? '';
 	let major = demographics.major ?? '';
+	let ethnicity = demographics.ethnicity ?? '';
+	let isHispanic = demographics.isHispanic ?? '';
 </script>
 
 <h1>Member Demographics</h1>
-<p class="muted">Please fill out or update information here.</p>
+<p class="muted">
+	Please fill out or update information here. Demographic data is anonymous and only reported to the
+	University. You may opt out of responding to any section by leaving it blank.
+</p>
 
 <form method="POST" action="?/save_demographics" class="form-card" autocomplete="on">
 	<input type="hidden" name="zip" value={zip} />
 
 	<div class="form-grid">
 		<div class="field">
-			<label for="email">Email *</label>
+			<label for="email">Email</label>
 			<input
 				id="email"
 				name="email"
 				type="email"
-				required
 				placeholder="xxx1@uakron.edu"
 				autocomplete="email"
 				bind:value={email}
@@ -37,7 +48,7 @@
 		</div>
 
 		<div class="field">
-			<label for="yearsOnTeam">Years on the Team *</label>
+			<label for="yearsOnTeam">Completed Years on the Team</label>
 			<input
 				id="yearsOnTeam"
 				name="yearsOnTeam"
@@ -46,29 +57,49 @@
 				step="1"
 				inputmode="numeric"
 				placeholder="e.g., 1, 2, 3"
-				required
 				bind:value={yearsOnTeam}
 			/>
 			<small class="hint">Only used for anonymous reporting. Enter whole years.</small>
 		</div>
 
 		<div class="field">
-			<label for="gender">Gender *</label>
-			<input name="gender" type="text" required bind:value={gender} />
+			<label for="gender">Gender</label>
+			<input name="gender" type="text" bind:value={gender} />
 			<small class="hint">Only used for anonymous University demographics reporting.</small>
 		</div>
 
 		<div class="field">
-			<label for="major">Major *</label>
+			<label for="major">Major</label>
 			<input
 				id="major"
 				name="major"
 				type="text"
-				required
-				placeholder="Costume Technology Science"
+				placeholder="e.g. Costume Technology Science"
 				autocomplete="off"
 				bind:value={major}
 			/>
+			<small class="hint">Only used for anonymous University demographics reporting.</small>
+		</div>
+
+		<div class="field">
+			<label for="ethnicity">Ethnicity</label>
+			<input
+				id="ethnicity"
+				name="ethnicity"
+				type="text"
+				placeholder="e.g., White, Black, Asian, etc."
+				bind:value={ethnicity}
+			/>
+			<small class="hint">Only used for anonymous University demographics reporting.</small>
+		</div>
+
+		<div class="field">
+			<label for="isHispanic">Hispanic/Latino</label>
+			<select id="isHispanic" name="isHispanic" bind:value={isHispanic}>
+				<option value="">Prefer not to say</option>
+				<option value="Yes">Yes</option>
+				<option value="No">No</option>
+			</select>
 			<small class="hint">Only used for anonymous University demographics reporting.</small>
 		</div>
 	</div>
@@ -101,7 +132,7 @@
 	}
 	.form-card {
 		background: #fff;
-		border: 1px solid #e5e7eb;
+		border: 1px solid var(--light-bg-secondary);
 		border-radius: 12px;
 		padding: 1.25rem;
 		box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
@@ -126,17 +157,18 @@
 	}
 	input,
 	select {
-		border: 1px solid #d1d5db;
+		border: 1px solid var(--light-bg-secondary);
 		border-radius: 8px;
 		padding: 0.55rem 0.7rem;
 		font-size: 1rem;
 		background-color: #fff;
+		color: var(--light-txt-primary);
 	}
 	input:focus,
 	select:focus {
 		outline: none;
-		border-color: #2563eb;
-		box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+		border-color: var(--ua-blue);
+		box-shadow: 0 0 0 3px rgba(0, 76, 157, 0.15);
 	}
 	.hint {
 		color: #6b7280;
@@ -167,12 +199,25 @@
 	.btn.primary:hover {
 		background: #1e40af;
 	}
-	.btn.secondary {
-		background: #f3f4f6;
-		color: #111827;
-		border-color: #e5e7eb;
+	:global(body.dark) .form-card {
+		background: var(--dark-bg-tertiary);
+		border-color: var(--dark-bg-tertiary);
 	}
-	.btn.secondary:hover {
-		background: #e5e7eb;
+	:global(body.dark) label {
+		color: var(--dark-txt-primary);
+	}
+	:global(body.dark) .muted {
+		color: var(--dark-txt-secondary);
+	}
+	:global(body.dark) input,
+	:global(body.dark) select {
+		background: var(--dark-bg-primary);
+		border-color: var(--dark-bg-secondary);
+		color: var(--dark-txt-primary);
+	}
+	:global(body.dark) input:focus,
+	:global(body.dark) select:focus {
+		border-color: var(--ua-light-blue);
+		box-shadow: 0 0 0 3px rgba(88, 184, 253, 0.2);
 	}
 </style>

@@ -18,7 +18,6 @@ export const actions = {
 
         let db = new Database('leboeuflasing.com:5984', 'contact', 'lunaboticswebsitecontact');
         let response = await db.read('keys', 'attendance');
-        console.log(response);
         if (response.password) {
             if (response.password === password) {
                 //set a cookie called attendance_auth to true

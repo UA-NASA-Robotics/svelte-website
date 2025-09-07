@@ -1,7 +1,7 @@
 import type { Cookies } from '@sveltejs/kit';
 import { fail } from '@sveltejs/kit';
 import { Database } from '../../components/Database';
-import { createLoginDoc } from '../attendance/loginhelper';
+import { createLoginDoc, needsDemographics } from '../attendance/loginhelper';
 import { redirect } from '@sveltejs/kit';
 
 export async function load({ cookies }: { cookies: Cookies }) {
@@ -45,9 +45,7 @@ export const actions = {
             let success = await createLoginDoc(db, zip);
 
             if (response && "isMember" in response) {
-                if (! ("demographics" in response)) {
-                    throw redirect(303, '/attendance/demographics?zip=' + zip);
-                }else if (Date.now() - response.demographics.updated > 31536000000) { //1 year
+                if (needsDemographics(response)) {
                     throw redirect(303, '/attendance/demographics?zip=' + zip);
                 }
 
