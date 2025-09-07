@@ -47,4 +47,18 @@
 		color: #3730a3;
 		font-weight: 600;
 	}
+
+	:global(body.dark) .subnav a {
+		background: var(--dark-bg-primary);
+		border-color: var(--dark-bg-secondary);
+		color: var(--dark-txt-primary);
+	}
+	:global(body.dark) .subnav a:hover {
+		background: var(--dark-bg-secondary);
+	}
+	:global(body.dark) .subnav a.active {
+		background: #263149;
+		border-color: #2e3a59;
+		color: #a5b4fc;
+	}
 </style>

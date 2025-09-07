@@ -102,7 +102,7 @@
 	}
 	.card {
 		background: #fff;
-		border: 1px solid #e5e7eb;
+		border: 1px solid var(--light-bg-secondary);
 		border-radius: 12px;
 		padding: 1rem;
 		box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
@@ -124,5 +124,22 @@
 	}
 	.table tr:hover {
 		background: #fafafa;
+	}
+	:global(body.dark) .card {
+		background: var(--dark-bg-tertiary);
+		border-color: var(--dark-bg-tertiary);
+		box-shadow:
+			0 10px 30px rgba(0, 0, 0, 0.35),
+			0 2px 10px rgba(0, 0, 0, 0.25);
+	}
+	:global(body.dark) .table th {
+		color: var(--dark-txt-primary);
+	}
+	:global(body.dark) .table td {
+		color: var(--dark-txt-primary);
+		border-bottom: 1px solid #2e3a59;
+	}
+	:global(body.dark) .table tr:hover {
+		background: var(--dark-bg-secondary);
 	}
 </style>
