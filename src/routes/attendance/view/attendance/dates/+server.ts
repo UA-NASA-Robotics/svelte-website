@@ -19,16 +19,30 @@ export const GET: RequestHandler = async ({ url, cookies }) => {
   const rows = Array.isArray(res?.rows) ? res.rows : [];
   let dates: string[] = rows.map((r: any) => String(r.value));
   if (year) {
-    const matchesYear = (s: string) => {
-      const y = String(year);
-      const v = String(s || '').trim();
-      if (v.startsWith(y)) return true;
-      const g = v.match(/\b(\d{4})\b/g);
-      if (g && g.includes(y)) return true;
-      const dt = new Date(v);
-      return !isNaN(dt.getTime()) && String(dt.getUTCFullYear()) === y;
+    const schoolYearFromDate = (d: Date) => {
+      const yr = d.getFullYear();
+      const m = d.getMonth() + 1; // 1-12
+      return m >= 8 ? yr + 1 : yr;
     };
-    dates = dates.filter(matchesYear);
+    const matchesSchoolYear = (s: string) => {
+      const sy = Number(year);
+      const v = String(s || '').trim();
+      const dt = new Date(v);
+      if (!isNaN(dt.getTime())) return schoolYearFromDate(dt) === sy;
+      const mdY = v.match(/\b(\d{1,2})[\/-](\d{1,2})[\/-](\d{4})\b/);
+      if (mdY) {
+        const month = Number(mdY[1]);
+        const yr = Number(mdY[3]);
+        return (month >= 8 ? yr + 1 : yr) === sy;
+      }
+      const yOnly = v.match(/\b(\d{4})\b/);
+      if (yOnly) {
+        const yr = Number(yOnly[1]);
+        return yr === sy || yr + 1 === sy;
+      }
+      return false;
+    };
+    dates = dates.filter(matchesSchoolYear);
   }
   return json({ dates });
 };
