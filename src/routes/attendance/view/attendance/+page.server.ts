@@ -2,7 +2,8 @@ import type { Cookies } from '@sveltejs/kit';
 import { redirect } from '@sveltejs/kit';
 import { Database } from '../../../../components/Database';
 
-type CountRow = { key: string; value: number };
+type CountKey = string | [string, string | number];
+type CountRow = { key: CountKey; value: number };
 type CountResult = { rows?: CountRow[] } | null;
 
 type MemberDoc = {
@@ -16,19 +17,38 @@ type AllDocs = { rows?: Array<{ id: string; doc?: MemberDoc }>; } | null;
 
 const ONE_YEAR_MS = 31536000000;
 
-function matchesYear(dateStr: string, year: string): boolean {
-  const y = String(year);
-  if (!y) return true;
+// School year logic: Aug (8)–Dec roll up to next calendar year value
+function schoolYearFromDate(d: Date): number {
+  const yr = d.getFullYear();
+  const m = d.getMonth() + 1; // 1-12
+  return m >= 6 ? yr + 1 : yr;
+}
+
+function matchesSchoolYear(dateStr: string, schoolYear: string): boolean {
+  const sy = Number(schoolYear);
+  if (!sy) return false;
   const s = String(dateStr || '').trim();
   if (!s) return false;
-  // ISO-like starts with YYYY
-  if (s.startsWith(y)) return true;
-  // Look for 4-digit groups anywhere
-  const groups = s.match(/\b(\d{4})\b/g);
-  if (groups && groups.includes(y)) return true;
-  // Fallback: try Date parsing
+  // Parse with Date first
   const d = new Date(s);
-  if (!isNaN(d.getTime())) return String(d.getUTCFullYear()) === y;
+  if (!isNaN(d.getTime())) return schoolYearFromDate(d) === sy;
+  // Fallback: try to extract MM and YYYY from common formats
+  // Examples: 9/9/2025, 09-09-2025, 2025-09-09
+  // Prefer a month-first pattern
+  const mdY = s.match(/\b(\d{1,2})[\/-](\d{1,2})[\/-](\d{4})\b/);
+  if (mdY) {
+    const month = Number(mdY[1]);
+    const year = Number(mdY[3]);
+    const calc = month >= 8 ? year + 1 : year;
+    return calc === sy;
+  }
+  // ISO leading year; assume Jan–Jul stay same year, Aug–Dec roll
+  const yOnly = s.match(/\b(\d{4})\b/);
+  if (yOnly) {
+    const year = Number(yOnly[1]);
+    // Without a month we can't be precise; assume matches if either direct or previous-year-to-next roll
+    return year === sy || year + 1 === sy;
+  }
   return false;
 }
 
@@ -55,8 +75,36 @@ export async function load({ cookies, url }: { cookies: Cookies; url: URL }) {
   // Get attendance counts by zip
   const countsRes: CountResult = await db.read('attendance', '_design/stats/_view/count_by_zip?group=true');
   const countsMap = new Map<string, number>();
+  let usedDedupByYear = false;
   for (const r of countsRes?.rows ?? []) {
-    if (typeof r.key === 'string') countsMap.set(r.key, Number(r.value) || 0);
+    const val = Number(r.value) || 0;
+    if (Array.isArray(r.key)) {
+      // New deduplicated format: [zip, year]
+      const [zip, year] = r.key;
+      const zipStr = String(zip);
+      const yearStr = String(year);
+      usedDedupByYear = true;
+      if (!selectedYear || selectedYear === yearStr) {
+        countsMap.set(zipStr, (countsMap.get(zipStr) || 0) + val);
+      }
+    } else if (typeof r.key === 'string') {
+      // Legacy format: per-zip totals
+      countsMap.set(r.key, val);
+    }
+  }
+
+  // If years list is empty but counts contain [zip, year], derive years from rows
+  if (years.length === 0) {
+    const ys = new Set<string>();
+    for (const r of countsRes?.rows ?? []) {
+      if (Array.isArray(r.key)) {
+        const yearStr = String(r.key[1]);
+        if (yearStr) ys.add(yearStr);
+      }
+    }
+    if (ys.size) {
+      years.push(...Array.from(ys).sort().reverse());
+    }
   }
 
   // Get members to enrich with name/subTeam/email and active flag
@@ -90,8 +138,8 @@ export async function load({ cookies, url }: { cookies: Cookies; url: URL }) {
   active.sort(sorter);
   inactive.sort(sorter);
 
-  // If filtering by year, recompute counts for that year by fetching dates per zip and filtering
-  if (selectedYear) {
+  // If filtering by year and we didn't have per-year counts, recompute by fetching dates per zip
+  if (selectedYear && !usedDedupByYear) {
     const updateCountsFor = async (list: typeof active) => {
       await Promise.all(
         list.map(async (m) => {
@@ -100,7 +148,7 @@ export async function load({ cookies, url }: { cookies: Cookies; url: URL }) {
             const res = await db.read('attendance', `_design/stats/_view/dates_by_zip?key=${key}`);
             const rows = Array.isArray((res as any)?.rows) ? (res as any).rows : [];
             const dates: string[] = rows.map((r: any) => String(r.value));
-            m.count = dates.filter((d) => matchesYear(d, selectedYear)).length;
+            m.count = dates.filter((d) => matchesSchoolYear(d, selectedYear)).length;
           } catch {
             m.count = 0;
           }

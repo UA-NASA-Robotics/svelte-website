@@ -7,10 +7,11 @@
 			years: { key: string | number; value: number }[];
 			ethnicity?: { key: string | number; value: number }[];
 			isHispanic?: { key: string | number; value: number }[];
+			numLatestYear?: number;
 		};
 	};
 
-	const { gender, major, years, ethnicity = [], isHispanic = [] } = data.props;
+	const { gender, major, years, ethnicity = [], isHispanic = [], numLatestYear } = data.props;
 
 	function total(rows: { value: number }[]) {
 		return rows.reduce((sum, r) => sum + (Number(r.value) || 0), 0);
@@ -131,6 +132,11 @@
 			{/if}
 		</div>
 	</section>
+	{#if typeof numLatestYear === 'number'}
+		<p>
+			Demographic data for the {numLatestYear - 1} - {numLatestYear} school year.
+		</p>
+	{/if}
 </div>
 
 <style>
