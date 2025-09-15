@@ -67,7 +67,7 @@
 						</div>
 
 						<div class="field">
-							<label for="zip">Zip code</label>
+							<label for="zip">Zip ID</label>
 							<input
 								type="text"
 								id="zip"

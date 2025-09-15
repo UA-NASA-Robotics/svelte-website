@@ -32,6 +32,7 @@
 			<h1>Record Attendance</h1>
 			<p class="subtitle">
 				Place the cursor in the field and swipe your Zip card. The reader will auto-submit.
+				Alternatively, you can manually enter your 7-digit Zip ID.
 			</p>
 
 			{#if form}
