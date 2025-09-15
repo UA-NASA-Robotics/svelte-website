@@ -31,9 +31,15 @@ export const actions = {
         }
         let zip: string | undefined = undefined;
         try{
+            if (!zipData.includes("+") && !zipData.includes("?") && zipData.length === 7) {
+                //perhaps its manually entered, allow it
+                zip = "00000000" + zipData;
+            }else{
+
              zip = zipData.split("+")[1].split("?")[0]; //parse the zip from the scanned data
+             }
         } catch {
-            return fail(400, { success: false, message: "Error: Use a zip card. ඞඞ amogus. " });
+            return fail(400, { success: false, message: "Error: Use a zip card or manually enter your zip. ඞඞ amogus. " });
         }
         const authenticated = cookies.get('attendance_auth');
         if (authenticated === 'true') {
