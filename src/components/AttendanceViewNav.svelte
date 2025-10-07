@@ -1,5 +1,5 @@
 <script lang="ts">
-	export let current: 'demographics' | 'members' | 'attendance' = 'demographics';
+	export let current: 'demographics' | 'members' | 'attendance' | 'manual' = 'demographics';
 </script>
 
 <nav class="subnav" aria-label="Attendance admin navigation">
@@ -17,6 +17,11 @@
 		href="/attendance/view/attendance"
 		class:active={current === 'attendance'}
 		aria-current={current === 'attendance' ? 'page' : undefined}>Attendance</a
+	>
+	<a
+		href="/attendance/view/attendance/manual"
+		class:active={current === 'manual'}
+		aria-current={current === 'manual' ? 'page' : undefined}>Add Records</a
 	>
 </nav>
 
