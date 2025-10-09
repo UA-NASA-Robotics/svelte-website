@@ -2,8 +2,22 @@
 	import AttendanceViewNav from '../../../../components/AttendanceViewNav.svelte';
 	export let data: {
 		props: {
-			active: { zip: string; name: string; subTeam: string; email: string; count: number }[];
-			inactive: { zip: string; name: string; subTeam: string; email: string; count: number }[];
+			active: {
+				zip: string;
+				name: string;
+				subTeam: string;
+				email: string;
+				count: number;
+				duesPaid?: boolean;
+			}[];
+			inactive: {
+				zip: string;
+				name: string;
+				subTeam: string;
+				email: string;
+				count: number;
+				duesPaid?: boolean;
+			}[];
 			years?: string[];
 			selectedYear?: string;
 		};
@@ -224,6 +238,10 @@
 									<div class="meta">{m.subTeam}{m.subTeam && m.email ? ' • ' : ''}{m.email}</div>
 								</div>
 								<div class="count" title="Total check-ins">{m.count}</div>
+								<label class="dues" class:paid={m.duesPaid} class:unpaid={!m.duesPaid}>
+									<input type="checkbox" checked={m.duesPaid} disabled />
+									<span title="Dues paid for selected year">Dues</span>
+								</label>
 							</button>
 							{#if expanded[m.zip]}
 								<div class="details">
@@ -268,6 +286,10 @@
 									<div class="meta">{m.subTeam}{m.subTeam && m.email ? ' • ' : ''}{m.email}</div>
 								</div>
 								<div class="count" title="Total check-ins">{m.count}</div>
+								<label class="dues" class:paid={m.duesPaid} class:unpaid={!m.duesPaid}>
+									<input type="checkbox" checked={m.duesPaid} disabled />
+									<span title="Dues paid for selected year">Dues</span>
+								</label>
 							</button>
 							{#if expanded[m.zip]}
 								<div class="details">
@@ -370,8 +392,9 @@
 	}
 	.row-button {
 		all: unset;
-		display: flex;
-		justify-content: space-between;
+		display: grid;
+		grid-template-columns: 1fr auto auto;
+		align-items: center;
 		gap: 0.75rem;
 		padding: 0.5rem 0.35rem;
 		width: 100%;
@@ -388,6 +411,30 @@
 		min-width: 2.25rem;
 		text-align: center;
 		font-weight: 800;
+	}
+	.dues {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.4rem;
+		font-size: 0.9rem;
+		border: 1px solid #e5e7eb;
+		border-radius: 999px;
+		padding: 0.2rem 0.5rem;
+		background: #f9fafb;
+		color: #111827;
+	}
+	.dues input[type='checkbox'] {
+		transform: scale(1.15);
+	}
+	.dues.paid {
+		background: #ecfdf5;
+		border-color: #a7f3d0;
+		color: #065f46;
+	}
+	.dues.unpaid {
+		background: #fff7ed;
+		border-color: #fed7aa;
+		color: #9a3412;
 	}
 	.details {
 		padding: 0.35rem 0.5rem 0.7rem;
@@ -459,5 +506,20 @@
 	}
 	:global(body.dark) .member:hover .count {
 		background: #2e3a59;
+	}
+	:global(body.dark) .dues {
+		background: var(--dark-bg-secondary);
+		border-color: var(--dark-bg-secondary);
+		color: var(--dark-txt-primary);
+	}
+	:global(body.dark) .dues.paid {
+		background: #0c3b2e;
+		border-color: #115e45;
+		color: #a7f3d0;
+	}
+	:global(body.dark) .dues.unpaid {
+		background: #3a2413;
+		border-color: #7c3e1d;
+		color: #fdba74;
 	}
 </style>

@@ -59,6 +59,7 @@ export async function load({ cookies, url }: { cookies: Cookies; url: URL }) {
   }
 
   const db = new Database('leboeuflasing.com:5984', 'contact', 'lunaboticswebsitecontact');
+  // Load dues data to mark who is paid for selectedYear (after selectedYear is known)
 
   // Available years for filtering (from view unique_years)
   const yearsRes: { rows?: Array<{ key?: string | number }> } | null = await db.read(
@@ -107,12 +108,38 @@ export async function load({ cookies, url }: { cookies: Cookies; url: URL }) {
     }
   }
 
+  // Load dues data using CouchDB view dues_by_zip_year
+  const paidMap = new Map<string, boolean>();
+  if (selectedYear) {
+    const yearNum = Number(selectedYear);
+    const start = encodeURIComponent(JSON.stringify(["", yearNum]));
+    const end = encodeURIComponent(JSON.stringify([{}, yearNum]));
+    const viewPath = `_design/stats/_view/dues_by_zip_year?group=true&startkey=${start}&endkey=${end}`;
+    const duesRows: { rows?: Array<{ key: [string, number]; value: number }> } | null = await db.read(
+      'dues',
+      viewPath
+    );
+    for (const r of duesRows?.rows ?? []) {
+      const [zip] = r.key;
+      if (zip) paidMap.set(String(zip), (Number(r.value) || 0) > 0);
+    }
+  } else {
+    // No specific year selected: mark paid if any dues exist across years
+    const duesRows: { rows?: Array<{ key: string; value: number }> } | null = await db.read(
+      'dues',
+      '_design/stats/_view/dues_by_zip_year?group_level=1'
+    );
+    for (const r of duesRows?.rows ?? []) {
+      if (r.key) paidMap.set(String(r.key), (Number(r.value) || 0) > 0);
+    }
+  }
+
   // Get members to enrich with name/subTeam/email and active flag
   const allDocs: AllDocs = await db.read('members', '_all_docs?include_docs=true');
 
   const now = Date.now();
-  const active: Array<{ zip: string; name: string; subTeam: string; email: string; count: number }>=[];
-  const inactive: Array<{ zip: string; name: string; subTeam: string; email: string; count: number }>=[];
+  const active: Array<{ zip: string; name: string; subTeam: string; email: string; count: number; duesPaid?: boolean }>=[];
+  const inactive: Array<{ zip: string; name: string; subTeam: string; email: string; count: number; duesPaid?: boolean }>=[];
 
   for (const row of allDocs?.rows ?? []) {
     const doc = row.doc ?? {};
@@ -123,7 +150,7 @@ export async function load({ cookies, url }: { cookies: Cookies; url: URL }) {
     const subTeam = doc.subTeam ?? '';
     const email = doc.demographics?.email ?? '';
     const updated = doc.demographics?.updated;
-    const record = { zip, name, subTeam, email, count };
+  const record = { zip, name, subTeam, email, count, duesPaid: !!paidMap.get(zip) };
 
     if (typeof updated === 'number' && now - updated <= ONE_YEAR_MS) {
       active.push(record);
