@@ -116,7 +116,11 @@
 		try {
 			const members = [...active, ...inactive];
 			// Fetch dues info for selected year (or all years if none selected)
-			let duesInfo: { years: string[]; paid?: Record<string, { method: string }>; paidByYear?: Record<string, Record<string, { method: string }>> } = { years: [] };
+			let duesInfo: {
+				years: string[];
+				paid?: Record<string, { method: string }>;
+				paidByYear?: Record<string, Record<string, { method: string }>>;
+			} = { years: [] };
 			try {
 				const params = new URLSearchParams();
 				if (selectedYear) params.set('year', selectedYear);
@@ -157,11 +161,11 @@
 				// Insert dues cell(s)
 				if (selectedYear) {
 					const paid = duesInfo.paid?.[m.zip];
-					cells.push(paid ? (paid.method || 'yes') : '');
+					cells.push(paid ? paid.method || 'yes' : '');
 				} else if (duesInfo.years.length) {
 					for (const y of duesInfo.years) {
 						const paid = duesInfo.paidByYear?.[y]?.[m.zip];
-						cells.push(paid ? (paid.method || 'yes') : '');
+						cells.push(paid ? paid.method || 'yes' : '');
 					}
 				}
 				for (const d of allDates) {
