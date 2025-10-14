@@ -55,7 +55,7 @@
 					<!-- Left column -->
 					<div class="col-left">
 						<div class="field">
-							<label for="name">Full name</label>
+							<label for="name">Full Name</label>
 							<input
 								type="text"
 								id="name"

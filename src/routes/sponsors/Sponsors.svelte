@@ -9,6 +9,7 @@
 	import schaeffler from '$lib/images/sponsors/schaeffler.jpg';
 	import andersonPower from '$lib/images/sponsors/anderson-power.png';
 	import SponsorCard from './SponsorCard.svelte';
+	import altium from '$lib/images/sponsors/altium.png';
 
 	//make sure fix the tier displays when more are added
 	const sponsorsList = {
@@ -42,7 +43,7 @@
 					'Clinton Aluminum is a supplier of aluminum products. They provide the foundational material for the team to build their robot.'
 			}
 		],
-		tierThreeSponsors: [],
+		tierThreeSponsors: [{ logo: altium, name: 'Altium', link: 'https://www.altium.com/' }],
 		tierTwoSponsors: [
 			{
 				logo: wardjet,
@@ -78,6 +79,7 @@
 		<h2>Interstellar Sponsors:</h2>
 		<SponsorCard sponsorsList={sponsorsList.tierThreeSponsors} tier={3} />
 	{/if}
+	<p>The ALTIUM logo above is a trademark of Altium LLC and is used here with permisson</p>
 	{#if sponsorsList.tierTwoSponsors.length !== 0}
 		<div style="height: 5vh;"></div>
 		<h2>Lunar Sponsors:</h2>

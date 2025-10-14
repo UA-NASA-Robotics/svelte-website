@@ -74,7 +74,7 @@
 				id="major"
 				name="major"
 				type="text"
-				placeholder="e.g. Costume Technology Science"
+				placeholder="e.g. Mechanical Engineering"
 				autocomplete="off"
 				bind:value={major}
 			/>
