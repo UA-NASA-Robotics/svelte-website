@@ -115,6 +115,14 @@
 		exporting = true;
 		try {
 			const members = [...active, ...inactive];
+			// Fetch dues info for selected year (or all years if none selected)
+			let duesInfo: { years: string[]; paid?: Record<string, { method: string }>; paidByYear?: Record<string, Record<string, { method: string }>> } = { years: [] };
+			try {
+				const params = new URLSearchParams();
+				if (selectedYear) params.set('year', selectedYear);
+				const res = await fetch(`/attendance/view/attendance/dues?${params.toString()}`);
+				if (res.ok) duesInfo = await res.json();
+			} catch {}
 			// Fetch dates for each member in parallel
 			const memberDates = await Promise.all(
 				members.map(async (m) => {
@@ -132,13 +140,30 @@
 			const allDates = Array.from(allDatesSet);
 			allDates.sort(sortDates);
 
-			// Header: Name, Total, ...dates
-			const header = ['Name', 'Total', ...allDates];
+			// Header: Name, Total, [Dues columns], ...dates
+			let header: string[] = ['Name', 'Total'];
+			if (selectedYear) {
+				header.push(`Dues_${selectedYear}`);
+			} else if (duesInfo.years.length) {
+				// add dues columns per year in ascending order
+				for (const y of duesInfo.years) header.push(`Dues_${y}`);
+			}
+			header = [...header, ...allDates];
 			const rows: string[] = [];
 			rows.push(header.map(csvEscape).join(','));
 			for (const m of memberDates) {
 				const total = m.days.size; // total unique days
 				const cells: string[] = [csvEscape(m.name), String(total)];
+				// Insert dues cell(s)
+				if (selectedYear) {
+					const paid = duesInfo.paid?.[m.zip];
+					cells.push(paid ? (paid.method || 'yes') : '');
+				} else if (duesInfo.years.length) {
+					for (const y of duesInfo.years) {
+						const paid = duesInfo.paidByYear?.[y]?.[m.zip];
+						cells.push(paid ? (paid.method || 'yes') : '');
+					}
+				}
 				for (const d of allDates) {
 					cells.push(m.days.has(d) ? '1' : '');
 				}
