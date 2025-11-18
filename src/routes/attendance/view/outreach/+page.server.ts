@@ -26,16 +26,27 @@ function parseDateString(dateStr: string): { month: number; day: number; year: n
 	return null;
 }
 
-// Check if a date matches an outreach day
-function matchesOutreachDay(dateStr: string, outreachDays: Array<{ datearray: number[] }>): boolean {
+// Normalize date string to YYYY-MM-DD format for deduplication
+function normalizeDateToDay(dateStr: string): string | null {
 	const parsed = parseDateString(dateStr);
-	if (!parsed) return false;
+	if (!parsed) return null;
+	const { year, month, day } = parsed;
+	return `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+}
 
-	return outreachDays.some((outreach) => {
-		if (!outreach.datearray || outreach.datearray.length < 3) return false;
+// Check if a date matches an outreach day and return the matching outreach date key
+function getMatchingOutreachDay(dateStr: string, outreachDays: Array<{ datearray: number[]; key: string }>): string | null {
+	const parsed = parseDateString(dateStr);
+	if (!parsed) return null;
+
+	for (const outreach of outreachDays) {
+		if (!outreach.datearray || outreach.datearray.length < 3) continue;
 		const [oYear, oMonth, oDay] = outreach.datearray;
-		return parsed.year === oYear && parsed.month === oMonth && parsed.day === oDay;
-	});
+		if (parsed.year === oYear && parsed.month === oMonth && parsed.day === oDay) {
+			return outreach.key;
+		}
+	}
+	return null;
 }
 
 // Calculate outreach attendance for a given year
@@ -46,7 +57,8 @@ async function calculateOutreachAttendance(db: Database, year: number): Promise<
 		`_design/outreach/_view/outreachDays?startkey=${year}&endkey=${year}`
 	);
 	const outreachDays = (outreachResult?.rows ?? []).map((r: any) => ({
-		datearray: r.value
+		datearray: r.value,
+		key: `${r.value[0]}-${r.value[1]}-${r.value[2]}` // YYYY-MM-DD key for matching
 	}));
 
 	if (outreachDays.length === 0) {
@@ -68,14 +80,17 @@ async function calculateOutreachAttendance(db: Database, year: number): Promise<
 			);
 			const attendanceDates = (attendanceResult?.rows ?? []).map((r: any) => r.value);
 
-			let count = 0;
+			// Track unique outreach days attended (deduplicate by outreach day)
+			const uniqueOutreachDays = new Set<string>();
+			
 			for (const dateStr of attendanceDates) {
-				if (matchesOutreachDay(dateStr, outreachDays)) {
-					count++;
+				const matchingOutreachDay = getMatchingOutreachDay(dateStr, outreachDays);
+				if (matchingOutreachDay) {
+					uniqueOutreachDays.add(matchingOutreachDay);
 				}
 			}
 
-			outreachCounts[zipId] = count;
+			outreachCounts[zipId] = uniqueOutreachDays.size;
 		})
 	);
 
