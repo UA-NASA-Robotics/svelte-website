@@ -9,6 +9,7 @@
 				email: string;
 				count: number;
 				duesPaid?: boolean;
+				outreachCount?: number;
 			}[];
 			inactive: {
 				zip: string;
@@ -17,6 +18,7 @@
 				email: string;
 				count: number;
 				duesPaid?: boolean;
+				outreachCount?: number;
 			}[];
 			years?: string[];
 			selectedYear?: string;
@@ -267,6 +269,14 @@
 									<div class="meta">{m.subTeam}{m.subTeam && m.email ? ' • ' : ''}{m.email}</div>
 								</div>
 								<div class="count" title="Total check-ins">{m.count}</div>
+								<div
+									class="outreach-badge"
+									class:low={!m.outreachCount || m.outreachCount < 2}
+									class:good={m.outreachCount && m.outreachCount >= 2}
+									title="Outreach events attended"
+								>
+									{m.outreachCount ?? 0} <span title="Outreach events attended">Outreach</span>
+								</div>
 								<label class="dues" class:paid={m.duesPaid} class:unpaid={!m.duesPaid}>
 									<input type="checkbox" checked={m.duesPaid} disabled />
 									<span title="Dues paid for selected year">Dues</span>
@@ -315,6 +325,14 @@
 									<div class="meta">{m.subTeam}{m.subTeam && m.email ? ' • ' : ''}{m.email}</div>
 								</div>
 								<div class="count" title="Total check-ins">{m.count}</div>
+								<div
+									class="outreach-badge"
+									class:low={!m.outreachCount || m.outreachCount < 2}
+									class:good={m.outreachCount && m.outreachCount >= 2}
+									title="Outreach events attended"
+								>
+									{m.outreachCount ?? 0}
+								</div>
 								<label class="dues" class:paid={m.duesPaid} class:unpaid={!m.duesPaid}>
 									<input type="checkbox" checked={m.duesPaid} disabled />
 									<span title="Dues paid for selected year">Dues</span>
@@ -422,7 +440,7 @@
 	.row-button {
 		all: unset;
 		display: grid;
-		grid-template-columns: 1fr auto auto;
+		grid-template-columns: 1fr auto auto auto;
 		align-items: center;
 		gap: 0.75rem;
 		padding: 0.5rem 0.35rem;
@@ -440,6 +458,28 @@
 		min-width: 2.25rem;
 		text-align: center;
 		font-weight: 800;
+	}
+	.outreach-badge {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.4rem;
+		font-size: 0.9rem;
+		border: 1px solid #e5e7eb;
+		border-radius: 999px;
+		padding: 0.2rem 0.5rem;
+		background: #f9fafb;
+		color: #111827;
+		font-weight: 600;
+	}
+	.outreach-badge.low {
+		background: #fff7ed;
+		border-color: #fed7aa;
+		color: #9a3412;
+	}
+	.outreach-badge.good {
+		background: #ecfdf5;
+		border-color: #a7f3d0;
+		color: #065f46;
 	}
 	.dues {
 		display: inline-flex;

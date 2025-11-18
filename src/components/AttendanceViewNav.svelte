@@ -1,19 +1,9 @@
 <script lang="ts">
-	export let current: 'demographics' | 'members' | 'attendance' | 'manual' | 'dues' =
+	export let current: 'demographics' | 'members' | 'attendance' | 'manual' | 'dues' | 'outreach' =
 		'demographics';
 </script>
 
 <nav class="subnav" aria-label="Attendance admin navigation">
-	<a
-		href="/attendance/view"
-		class:active={current === 'demographics'}
-		aria-current={current === 'demographics' ? 'page' : undefined}>Demographics</a
-	>
-	<a
-		href="/attendance/view/members"
-		class:active={current === 'members'}
-		aria-current={current === 'members' ? 'page' : undefined}>Members</a
-	>
 	<a
 		href="/attendance/view/attendance"
 		class:active={current === 'attendance'}
@@ -23,11 +13,25 @@
 		href="/attendance/view/attendance/manual"
 		class:active={current === 'manual'}
 		aria-current={current === 'manual' ? 'page' : undefined}>Add Records</a
-	>
-	<a
+	><a
 		href="/attendance/view/dues"
 		class:active={current === 'dues'}
 		aria-current={current === 'dues' ? 'page' : undefined}>Dues</a
+	>
+	<a
+		href="/attendance/view/outreach"
+		class:active={current === 'outreach'}
+		aria-current={current === 'outreach' ? 'page' : undefined}>Outreach Days</a
+	>
+	<a
+		href="/attendance/view"
+		class:active={current === 'demographics'}
+		aria-current={current === 'demographics' ? 'page' : undefined}>Demographics</a
+	>
+	<a
+		href="/attendance/view/members"
+		class:active={current === 'members'}
+		aria-current={current === 'members' ? 'page' : undefined}>Members</a
 	>
 </nav>
 
