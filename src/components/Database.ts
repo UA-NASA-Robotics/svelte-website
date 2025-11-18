@@ -60,4 +60,36 @@ export class Database {
 		}
 
 	}
+
+	async update(table: string, documentID: string, data: any) {
+		const doc = await this.read(table, documentID);
+		if (!doc || !doc._rev) {
+			// Document doesn't exist, create it with the specified ID
+			const response = await fetch('http://' + this.url + '/' + table + '/' + documentID, {
+				method: 'PUT',
+				headers: {
+					Authorization: `Basic ${btoa(this.user + ':' + this.password)}`,
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({ _id: documentID, ...data })
+			});
+			return response.ok ? await response.json() : null;
+		}
+		
+		// Document exists, update it
+		const response = await fetch('http://' + this.url + '/' + table + '/' + documentID, {
+			method: 'PUT',
+			headers: {
+				Authorization: `Basic ${btoa(this.user + ':' + this.password)}`,
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({ ...data, _id: documentID, _rev: doc._rev })
+		});
+
+		if (response.ok) {
+			return await response.json();
+		} else {
+			return null;
+		}
+	}
 }

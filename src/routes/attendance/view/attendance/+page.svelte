@@ -9,6 +9,7 @@
 				email: string;
 				count: number;
 				duesPaid?: boolean;
+				outreachCount?: number;
 			}[];
 			inactive: {
 				zip: string;
@@ -17,6 +18,7 @@
 				email: string;
 				count: number;
 				duesPaid?: boolean;
+				outreachCount?: number;
 			}[];
 			years?: string[];
 			selectedYear?: string;
@@ -115,6 +117,18 @@
 		exporting = true;
 		try {
 			const members = [...active, ...inactive];
+			// Fetch dues info for selected year (or all years if none selected)
+			let duesInfo: {
+				years: string[];
+				paid?: Record<string, { method: string }>;
+				paidByYear?: Record<string, Record<string, { method: string }>>;
+			} = { years: [] };
+			try {
+				const params = new URLSearchParams();
+				if (selectedYear) params.set('year', selectedYear);
+				const res = await fetch(`/attendance/view/attendance/dues?${params.toString()}`);
+				if (res.ok) duesInfo = await res.json();
+			} catch {}
 			// Fetch dates for each member in parallel
 			const memberDates = await Promise.all(
 				members.map(async (m) => {
@@ -132,13 +146,30 @@
 			const allDates = Array.from(allDatesSet);
 			allDates.sort(sortDates);
 
-			// Header: Name, Total, ...dates
-			const header = ['Name', 'Total', ...allDates];
+			// Header: Name, Total, [Dues columns], ...dates
+			let header: string[] = ['Name', 'Total'];
+			if (selectedYear) {
+				header.push(`Dues_${selectedYear}`);
+			} else if (duesInfo.years.length) {
+				// add dues columns per year in ascending order
+				for (const y of duesInfo.years) header.push(`Dues_${y}`);
+			}
+			header = [...header, ...allDates];
 			const rows: string[] = [];
 			rows.push(header.map(csvEscape).join(','));
 			for (const m of memberDates) {
 				const total = m.days.size; // total unique days
 				const cells: string[] = [csvEscape(m.name), String(total)];
+				// Insert dues cell(s)
+				if (selectedYear) {
+					const paid = duesInfo.paid?.[m.zip];
+					cells.push(paid ? paid.method || 'yes' : '');
+				} else if (duesInfo.years.length) {
+					for (const y of duesInfo.years) {
+						const paid = duesInfo.paidByYear?.[y]?.[m.zip];
+						cells.push(paid ? paid.method || 'yes' : '');
+					}
+				}
 				for (const d of allDates) {
 					cells.push(m.days.has(d) ? '1' : '');
 				}
@@ -238,6 +269,14 @@
 									<div class="meta">{m.subTeam}{m.subTeam && m.email ? ' • ' : ''}{m.email}</div>
 								</div>
 								<div class="count" title="Total check-ins">{m.count}</div>
+								<div
+									class="outreach-badge"
+									class:low={!m.outreachCount || m.outreachCount < 2}
+									class:good={m.outreachCount && m.outreachCount >= 2}
+									title="Outreach events attended"
+								>
+									{m.outreachCount ?? 0} <span title="Outreach events attended">Outreach</span>
+								</div>
 								<label class="dues" class:paid={m.duesPaid} class:unpaid={!m.duesPaid}>
 									<input type="checkbox" checked={m.duesPaid} disabled />
 									<span title="Dues paid for selected year">Dues</span>
@@ -286,6 +325,14 @@
 									<div class="meta">{m.subTeam}{m.subTeam && m.email ? ' • ' : ''}{m.email}</div>
 								</div>
 								<div class="count" title="Total check-ins">{m.count}</div>
+								<div
+									class="outreach-badge"
+									class:low={!m.outreachCount || m.outreachCount < 2}
+									class:good={m.outreachCount && m.outreachCount >= 2}
+									title="Outreach events attended"
+								>
+									{m.outreachCount ?? 0}
+								</div>
 								<label class="dues" class:paid={m.duesPaid} class:unpaid={!m.duesPaid}>
 									<input type="checkbox" checked={m.duesPaid} disabled />
 									<span title="Dues paid for selected year">Dues</span>
@@ -393,7 +440,7 @@
 	.row-button {
 		all: unset;
 		display: grid;
-		grid-template-columns: 1fr auto auto;
+		grid-template-columns: 1fr auto auto auto;
 		align-items: center;
 		gap: 0.75rem;
 		padding: 0.5rem 0.35rem;
@@ -411,6 +458,28 @@
 		min-width: 2.25rem;
 		text-align: center;
 		font-weight: 800;
+	}
+	.outreach-badge {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.4rem;
+		font-size: 0.9rem;
+		border: 1px solid #e5e7eb;
+		border-radius: 999px;
+		padding: 0.2rem 0.5rem;
+		background: #f9fafb;
+		color: #111827;
+		font-weight: 600;
+	}
+	.outreach-badge.low {
+		background: #fff7ed;
+		border-color: #fed7aa;
+		color: #9a3412;
+	}
+	.outreach-badge.good {
+		background: #ecfdf5;
+		border-color: #a7f3d0;
+		color: #065f46;
 	}
 	.dues {
 		display: inline-flex;

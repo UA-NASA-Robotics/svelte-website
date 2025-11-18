@@ -73,6 +73,15 @@ export async function load({ cookies, url }: { cookies: Cookies; url: URL }) {
     .reverse();
   const selectedYear = (url.searchParams.get('year') || '').trim();
 
+  // Load outreach cache for the selected year (or default to current school year)
+  const currentSchoolYear = schoolYearFromDate(new Date());
+  const yearForOutreach = selectedYear ? Number(selectedYear) : currentSchoolYear;
+  const outreachCache = await db.read('keys', 'outreachCache');
+  const outreachData: Record<string, number> = 
+    (outreachCache && outreachCache.year === yearForOutreach && outreachCache.data) 
+      ? outreachCache.data 
+      : {};
+
   // Get attendance counts by zip
   const countsRes: CountResult = await db.read('attendance', '_design/stats/_view/count_by_zip?group=true');
   const countsMap = new Map<string, number>();
@@ -138,8 +147,8 @@ export async function load({ cookies, url }: { cookies: Cookies; url: URL }) {
   const allDocs: AllDocs = await db.read('members', '_all_docs?include_docs=true');
 
   const now = Date.now();
-  const active: Array<{ zip: string; name: string; subTeam: string; email: string; count: number; duesPaid?: boolean }>=[];
-  const inactive: Array<{ zip: string; name: string; subTeam: string; email: string; count: number; duesPaid?: boolean }>=[];
+  const active: Array<{ zip: string; name: string; subTeam: string; email: string; count: number; duesPaid?: boolean; outreachCount?: number }>=[];
+  const inactive: Array<{ zip: string; name: string; subTeam: string; email: string; count: number; duesPaid?: boolean; outreachCount?: number }>=[];
 
   for (const row of allDocs?.rows ?? []) {
     const doc = row.doc ?? {};
@@ -150,7 +159,8 @@ export async function load({ cookies, url }: { cookies: Cookies; url: URL }) {
     const subTeam = doc.subTeam ?? '';
     const email = doc.demographics?.email ?? '';
     const updated = doc.demographics?.updated;
-  const record = { zip, name, subTeam, email, count, duesPaid: !!paidMap.get(zip) };
+    const outreachCount = outreachData[zip] ?? 0;
+  const record = { zip, name, subTeam, email, count, duesPaid: !!paidMap.get(zip), outreachCount };
 
     if (typeof updated === 'number' && now - updated <= ONE_YEAR_MS) {
       active.push(record);
