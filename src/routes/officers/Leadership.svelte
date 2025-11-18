@@ -63,14 +63,6 @@
 				degree: ['Mechanical Engineering'],
 				biography:
 					'Jonathan Daus is the Treasurer of the NASA Robotics Team and he is a forth-year Mechanical Engineering major. Jon’s favorite memory within this club was attending the 2022/2023 NASA Robotics Mining Competition at the University of Alabama!'
-			},
-			{
-				name: 'Garren Ward',
-				image: garren,
-				team_title: 'Marketing Lead',
-				degree: ['Electrical Engineering'],
-				biography:
-					"Garren Ward is the Marketing Lead of the NASA Robotics Team and he is a third-year Electrical Engineering major. Garren's focus on the team is helping with outreach of the team. A large portion of the team is funded by generous donations from our sponsors and Garren helps to ensure that the team is able to continue to grow and compete in the future!"
 			}
 		],
 		managers: [
@@ -108,15 +100,30 @@
 				biography:
 					'Zach Ellis is the mechanical lead of the NASA Robotics Team and he is a third-year Mechanical Engineering major. Zach’s favorite memory within this club was getting Brandon to go workout with him. Fun Fact, he joined the robotics team for the opportunity to design systems and utilize engineering knowledge.'
 			},
-
 			{
-				name: 'Jonathan Roth',
-				image: jonR,
-				team_title: 'Software Lead',
-				degree: ['Electrical Engineering', 'Mathematics'],
+				name: 'Garren Ward',
+				image: garren,
+				team_title: 'Electrical PCB Lead',
+				degree: ['Electrical Engineering'],
 				biography:
-					"Jonathan Roth is the communications software lead of the NASA Robotics Team and he is a third-year Electrical Engineering and Mathematics double major. His favorite memory within this club was anodizing titanium parts for the robot and the unexpected chemistry behind it! Fun fact about Jon, he can solve 22 types of rubik's cubes!"
+					"Garren Ward is an Electrical Subteam Lead of the NASA Robotics Team and he is a third-year Electrical Engineering major. Garren's focus on the team is designing our controls system pcbs."
+			},
+			{
+				name: 'Liam Boyce',
+				team_title: 'Electrical Power Lead',
+				degree: ['Electrical Engineering', 'Computer Engineering'],
+				biography:
+					"Liam Boyce is an Electrical Subteam Lead of the NASA Robotics Team and he is a second-year Electrical Engineering and Computer Engineering major. Liam's focus on the team is designing and maintaining the power system of the robot."
 			}
+
+			//{
+			//	name: 'Jonathan Roth',
+			//	image: jonR,
+			//	team_title: 'Software Lead',
+			//	degree: ['Electrical Engineering', 'Mathematics'],
+			//	biography:
+			//		"Jonathan Roth is the communications software lead of the NASA Robotics Team and he is a third-year Electrical Engineering and Mathematics double major. His favorite memory within this club was anodizing titanium parts for the robot and the unexpected chemistry behind it! Fun fact about Jon, he can solve 22 types of rubik's cubes!"
+			//}
 		],
 		members: []
 	};
