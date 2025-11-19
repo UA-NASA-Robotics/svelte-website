@@ -97,15 +97,16 @@ async function calculateOutreachAttendance(db: Database, year: number): Promise<
 	return outreachCounts;
 }
 
-// Cache outreach attendance data
+// Cache outreach attendance data for a specific year
 async function cacheOutreachData(db: Database, year: number, data: Record<string, number>): Promise<boolean> {
+	const docId = `${year}outreachCache`;
 	const cacheDoc = {
 		year,
 		data,
 		lastUpdated: new Date().toISOString()
 	};
 
-	const result = await db.update('keys', 'outreachCache', cacheDoc);
+	const result = await db.update('keys', docId, cacheDoc);
 	return result && 'ok' in result && result.ok;
 }
 

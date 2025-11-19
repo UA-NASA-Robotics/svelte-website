@@ -229,7 +229,6 @@
 	<form method="get" class="filter">
 		<label for="year">Year</label>
 		<select id="year" name="year" on:change={onYearChange}>
-			<option value="" selected={!selectedYear}>All years</option>
 			{#each years as y}
 				<option value={y} selected={selectedYear === y}>{y}</option>
 			{/each}
