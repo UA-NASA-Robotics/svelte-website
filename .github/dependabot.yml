@@ -6,7 +6,15 @@
 version: 2
 updates:
   - package-ecosystem: "npm" # See documentation for possible values
-    target-branch: "master"
     directory: "/" # Location of package manifests
     schedule:
       interval: "weekly"
+    groups:
+      sveltes:
+        patterns:
+          - "svelte*"
+          - "@sveltejs/*"
+      devTools:
+        patterns:
+          - "*eslint*"
+          - "prettier*"
