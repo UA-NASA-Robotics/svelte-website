@@ -1,4 +1,7 @@
 import type { Database } from '../../../../components/Database';
+import { getCurrentSchoolYear, isCurrentSchoolYearTimestamp, schoolYearFromDate } from '../../schoolYear';
+
+export { getCurrentSchoolYear, schoolYearFromDate } from '../../schoolYear';
 
 export type MemberRecord = {
 	zip: string;
@@ -18,19 +21,6 @@ export type MemberDoc = {
 	demographics?: { email?: string; updated?: number };
 };
 
-const ONE_YEAR_MS = 31536000000;
-
-// School year logic: June (6) onwards rounds up to next calendar year value
-export function schoolYearFromDate(d: Date): number {
-	const yr = d.getFullYear();
-	const m = d.getMonth() + 1; // 1-12
-	return m >= 6 ? yr + 1 : yr;
-}
-
-export function getCurrentSchoolYear(): number {
-	return schoolYearFromDate(new Date());
-}
-
 export function matchesSchoolYear(dateStr: string, schoolYear: string): boolean {
 	const sy = Number(schoolYear);
 	if (!sy) return false;
@@ -49,18 +39,17 @@ export function matchesSchoolYear(dateStr: string, schoolYear: string): boolean 
 		const calc = month >= 6 ? year + 1 : year;
 		return calc === sy;
 	}
-	// ISO leading year; assume Jan–Jul stay same year, Aug–Dec roll
+	// ISO leading year without a month cannot be precise; accept either adjacent school year.
 	const yOnly = s.match(/\b(\d{4})\b/);
 	if (yOnly) {
 		const year = Number(yOnly[1]);
-		// Without a month we can't be precise; assume matches if either direct or previous-year-to-next roll
 		return year === sy || year + 1 === sy;
 	}
 	return false;
 }
 
 export function isActiveMember(updated: number | undefined, now: number): boolean {
-	return typeof updated === 'number' && now - updated <= ONE_YEAR_MS;
+	return isCurrentSchoolYearTimestamp(updated, now);
 }
 
 export function sortMembers(a: MemberRecord, b: MemberRecord): number {

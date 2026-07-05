@@ -1,12 +1,6 @@
 import { redirect, fail } from '@sveltejs/kit';
 import { Database } from '../../../../components/Database';
-
-// Calculate school year: June (6) onwards rounds up to next calendar year
-function calculateSchoolYear(date: Date): number {
-	const year = date.getFullYear();
-	const month = date.getMonth() + 1; // 0-indexed, so +1 for 1-12
-	return month >= 6 ? year + 1 : year;
-}
+import { schoolYearFromDate } from '../../schoolYear';
 
 // Parse date strings to compare with outreach dates
 function parseDateString(dateStr: string): { month: number; day: number; year: number } | null {
@@ -164,8 +158,7 @@ export const actions = {
 			return fail(400, { success: false, message: 'Invalid date format.' });
 		}
 
-		const year = calculateSchoolYear(date);
-		const schoolYearForDateArray = date.getMonth() + 1 >= 6 ? date.getFullYear() + 1 : date.getFullYear();
+		const year = schoolYearFromDate(date);
 		const datearray = [
 			date.getFullYear(),
 			date.getMonth() + 1, // 1-12
