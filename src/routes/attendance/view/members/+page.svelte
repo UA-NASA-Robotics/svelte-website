@@ -66,7 +66,7 @@
 			<option value="subteam">By sub-team (A–Z)</option>
 		</select>
 	</div>
-	<p class="muted">Active = demographics confirmed within the last 12 months.</p>
+	<p class="muted">Active = demographics confirmed for the current school year.</p>
 
 	<section class="lists">
 		<div class="card">

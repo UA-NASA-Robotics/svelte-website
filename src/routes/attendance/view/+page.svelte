@@ -7,11 +7,11 @@
 			years: { key: string | number; value: number }[];
 			ethnicity?: { key: string | number; value: number }[];
 			isHispanic?: { key: string | number; value: number }[];
-			numLatestYear?: number;
+			schoolYear?: number;
 		};
 	};
 
-	const { gender, major, years, ethnicity = [], isHispanic = [], numLatestYear } = data.props;
+	const { gender, major, years, ethnicity = [], isHispanic = [], schoolYear } = data.props;
 
 	function total(rows: { value: number }[]) {
 		return rows.reduce((sum, r) => sum + (Number(r.value) || 0), 0);
@@ -29,7 +29,9 @@
 	<AttendanceViewNav current="demographics" />
 
 	<h1>Member Demographics Summary</h1>
-	<p class="muted">Counts are aggregated from anonymized member demographics.</p>
+	<p class="muted">
+		Counts are aggregated from anonymized member demographics for the current school year.
+	</p>
 
 	<section class="cards">
 		<div class="card">
@@ -132,9 +134,9 @@
 			{/if}
 		</div>
 	</section>
-	{#if typeof numLatestYear === 'number'}
+	{#if typeof schoolYear === 'number'}
 		<p>
-			Demographic data for the {numLatestYear - 1} - {numLatestYear} school year.
+			Demographic data for the {schoolYear - 1} - {schoolYear} school year.
 		</p>
 	{/if}
 </div>

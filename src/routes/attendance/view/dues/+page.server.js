@@ -1,13 +1,7 @@
 // @ts-nocheck
 import { redirect, fail } from '@sveltejs/kit';
 import { Database } from '../../../../components/Database';
-
-// Helper: compute school year similar to attendance
-function schoolYearFromDate(d) {
-	const yr = d.getFullYear();
-	const m = d.getMonth() + 1; // 1-12
-	return m >= 6 ? yr + 1 : yr;
-}
+import { schoolYearFromDate } from '../../schoolYear';
 
 export async function load({ cookies, url }) {
 	const attendance_auth = cookies.get('attendance_auth');

@@ -1,6 +1,7 @@
 import type { Cookies } from '@sveltejs/kit';
 import { redirect } from '@sveltejs/kit';
 import { Database } from '../../../../components/Database';
+import { isCurrentSchoolYearTimestamp } from '../../schoolYear';
 
 type MemberDoc = {
   _id?: string;
@@ -13,8 +14,6 @@ type MemberDoc = {
 type AllDocs = {
   rows?: Array<{ id: string; doc?: MemberDoc }>;
 } | null;
-
-const ONE_YEAR_MS = 31536000000; // 365 days
 
 export async function load({ cookies }: { cookies: Cookies }) {
   const attendance_auth = cookies.get('attendance_auth');
@@ -41,7 +40,7 @@ export async function load({ cookies }: { cookies: Cookies }) {
 
     const record = { id, name, email, subTeam };
 
-    if (typeof updated === 'number' && now - updated <= ONE_YEAR_MS) {
+    if (isCurrentSchoolYearTimestamp(updated, now)) {
       active.push(record);
     } else {
       inactive.push(record);

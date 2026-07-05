@@ -245,6 +245,7 @@
 	</form>
 	<p class="muted">
 		Click a member to view their attendance dates{selectedYear ? ` for ${selectedYear}` : ''}.
+		Inactive members have not updated demographics during the current school year.
 	</p>
 
 	<section class="cards">

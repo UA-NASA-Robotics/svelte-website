@@ -27,7 +27,8 @@
 <h1>Member Demographics</h1>
 <p class="muted">
 	Please fill out or update information here. Demographic data is anonymous and only reported to the
-	University. You may opt out of responding to any section by leaving it blank.
+	University. This form is refreshed once per school year. You may opt out of responding to any
+	section by leaving it blank.
 </p>
 
 <form method="POST" action="?/save_demographics" class="form-card" autocomplete="on">
