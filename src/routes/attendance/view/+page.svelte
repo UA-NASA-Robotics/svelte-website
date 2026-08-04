@@ -7,11 +7,20 @@
 			years: { key: string | number; value: number }[];
 			ethnicity?: { key: string | number; value: number }[];
 			isHispanic?: { key: string | number; value: number }[];
-			schoolYear?: number;
+			availableYears?: string[];
+			selectedYear?: string;
 		};
 	};
 
-	const { gender, major, years, ethnicity = [], isHispanic = [], schoolYear } = data.props;
+	const {
+		gender,
+		major,
+		years,
+		ethnicity = [],
+		isHispanic = [],
+		availableYears = [],
+		selectedYear = ''
+	} = data.props;
 
 	function total(rows: { value: number }[]) {
 		return rows.reduce((sum, r) => sum + (Number(r.value) || 0), 0);
@@ -23,6 +32,17 @@
 		const v = Number(value) || 0;
 		return ((v * 100) / t).toFixed(1);
 	}
+
+	function onYearChange(e: Event) {
+		const sel = e.currentTarget as HTMLSelectElement | null;
+		sel?.form?.submit();
+	}
+
+	function schoolYearLabel(year: string) {
+		const numericYear = Number(year);
+		if (!Number.isFinite(numericYear)) return year;
+		return `${numericYear - 1} - ${numericYear}`;
+	}
 </script>
 
 <div class="text-column">
@@ -30,8 +50,21 @@
 
 	<h1>Member Demographics Summary</h1>
 	<p class="muted">
-		Counts are aggregated from anonymized member demographics for the current school year.
+		Select a school year to view anonymized member demographics. Records stay with the school year
+		when they were last updated.
 	</p>
+
+	<form method="get" class="controls">
+		<label for="year">Year</label>
+		<select id="year" name="year" on:change={onYearChange}>
+			{#each availableYears as year}
+				<option value={year} selected={selectedYear === year}>{year}</option>
+			{/each}
+			{#if selectedYear && !availableYears.includes(selectedYear)}
+				<option value={selectedYear} selected>{selectedYear}</option>
+			{/if}
+		</select>
+	</form>
 
 	<section class="cards">
 		<div class="card">
@@ -134,9 +167,9 @@
 			{/if}
 		</div>
 	</section>
-	{#if typeof schoolYear === 'number'}
+	{#if selectedYear}
 		<p>
-			Demographic data for the {schoolYear - 1} - {schoolYear} school year.
+			Demographic data for the {schoolYearLabel(selectedYear)} school year.
 		</p>
 	{/if}
 </div>
@@ -152,6 +185,26 @@
 	}
 	.muted {
 		color: #666;
+	}
+
+	.controls {
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+		margin: 1rem 0 1.25rem;
+		flex-wrap: wrap;
+	}
+
+	.controls label {
+		font-weight: 600;
+	}
+
+	.controls select {
+		min-width: 8rem;
+		padding: 0.45rem 0.6rem;
+		border-radius: 8px;
+		border: 1px solid var(--light-bg-secondary);
+		background: #fff;
 	}
 
 	.cards {
@@ -203,6 +256,11 @@
 	}
 	:global(body.dark) .muted {
 		color: var(--dark-txt-secondary);
+	}
+	:global(body.dark) .controls select {
+		background: var(--dark-bg-tertiary);
+		border-color: var(--dark-bg-tertiary);
+		color: var(--dark-txt-primary);
 	}
 	:global(body.dark) .list li {
 		border-bottom: 1px dashed #2e3a59;
