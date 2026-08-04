@@ -7,21 +7,23 @@ type Row = { key: string | number; value: number };
 type AnyRow = { key: unknown; value: number };
 type ViewResult = { rows?: AnyRow[] } | null;
 
-async function fetchViewForYear(db: Database, viewName: string, year?: string): Promise<Row[]> {
+async function fetchViewRows(db: Database, viewName: string): Promise<AnyRow[]> {
     // Demographics views emit [category, schoolYear] keys derived from demographics.updated.
     const res: ViewResult = await db.read('members', `_design/stats/_view/${viewName}?group_level=2`);
-    const rows = res?.rows ?? [];
+    return res?.rows ?? [];
+}
 
-    // Aggregate by category for the requested school year.
+function aggregateRowsForYear(rows: AnyRow[], year?: string): Row[] {
     const agg = new Map<string, number>();
+
     for (const r of rows) {
         const val = Number((r as any).value) || 0;
         let include = true;
         let category: string | number | null | undefined;
 
         if (Array.isArray((r as any).key)) {
-            const [cat, y] = (r as any).key as [unknown, unknown];
-            if (year) include = String(y ?? '') === year;
+            const [cat, rowYear] = (r as any).key as [unknown, unknown];
+            if (year) include = String(rowYear ?? '') === year;
             category = (cat as any) ?? 'Unknown';
         } else {
             // Legacy fallback for older views that only emit category keys.
@@ -38,7 +40,22 @@ async function fetchViewForYear(db: Database, viewName: string, year?: string): 
         .sort((a, b) => b.value - a.value);
 }
 
-export async function load({ cookies }: { cookies: Cookies }) {
+function getAvailableYears(...rowGroups: AnyRow[][]): string[] {
+    const years = new Set<string>();
+
+    for (const rows of rowGroups) {
+        for (const row of rows) {
+            if (!Array.isArray((row as any).key)) continue;
+            const [, year] = (row as any).key as [unknown, unknown];
+            const schoolYear = String(year ?? '').trim();
+            if (schoolYear) years.add(schoolYear);
+        }
+    }
+
+    return Array.from(years).sort((a, b) => Number(b) - Number(a) || b.localeCompare(a));
+}
+
+export async function load({ cookies, url }: { cookies: Cookies; url: URL }) {
     const attendance_auth = cookies.get('attendance_auth');
     if (attendance_auth !== 'true') {
         throw redirect(303, '/attendance/login');
@@ -46,21 +63,44 @@ export async function load({ cookies }: { cookies: Cookies }) {
 
     const db = new Database('leboeuflasing.com:5984', 'contact', 'lunaboticswebsitecontact');
 
-    const schoolYear = String(getCurrentSchoolYear());
+    const currentSchoolYear = String(getCurrentSchoolYear());
+    const urlYear = url.searchParams.get('year')?.trim() || '';
+    const selectedYear = urlYear || currentSchoolYear;
 
-    // Fetch demographics for the current school year.
-    const [gender, major, yearsOnTeam, ethnicity, isHispanic] = await Promise.all([
-        fetchViewForYear(db, 'gender', schoolYear),
-        fetchViewForYear(db, 'major', schoolYear),
-        fetchViewForYear(db, 'yearsOnTeam', schoolYear),
-        fetchViewForYear(db, 'ethnicity', schoolYear),
-        fetchViewForYear(db, 'isHispanic', schoolYear)
-    ]);
+    const [genderRows, majorRows, yearsOnTeamRows, ethnicityRows, isHispanicRows, ageRows] =
+        await Promise.all([
+            fetchViewRows(db, 'gender'),
+            fetchViewRows(db, 'major'),
+            fetchViewRows(db, 'yearsOnTeam'),
+            fetchViewRows(db, 'ethnicity'),
+            fetchViewRows(db, 'isHispanic'),
+            fetchViewRows(db, 'age')
+        ]);
+
+    const [gender, major, yearsOnTeam, ethnicity, isHispanic] = [
+        aggregateRowsForYear(genderRows, selectedYear),
+        aggregateRowsForYear(majorRows, selectedYear),
+        aggregateRowsForYear(yearsOnTeamRows, selectedYear),
+        aggregateRowsForYear(ethnicityRows, selectedYear),
+        aggregateRowsForYear(isHispanicRows, selectedYear)
+    ];
+
+    let availableYears = getAvailableYears(
+        genderRows,
+        majorRows,
+        yearsOnTeamRows,
+        ethnicityRows,
+        isHispanicRows,
+        ageRows
+    );
+    availableYears = Array.from(new Set([...availableYears, currentSchoolYear, selectedYear])).sort(
+        (a, b) => Number(b) - Number(a) || b.localeCompare(a)
+    );
 
     // Fallback for years panel if yearsOnTeam is empty: use age view (also filtered when the view is year-keyed)
     const years = yearsOnTeam && yearsOnTeam.length
         ? yearsOnTeam
-        : await fetchViewForYear(db, 'age', schoolYear);
+        : aggregateRowsForYear(ageRows, selectedYear);
 
     return {
         props: {
@@ -69,7 +109,8 @@ export async function load({ cookies }: { cookies: Cookies }) {
             years,
             ethnicity,
             isHispanic,
-            schoolYear: parseInt(schoolYear)
+            availableYears,
+            selectedYear
         }
     };
 }
