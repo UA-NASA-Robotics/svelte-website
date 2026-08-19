@@ -11,6 +11,10 @@ Contact form and CouchDB
 - Contact form lives at src/routes/contact-us/+page.svelte and posts to the action contact_submission
 - The server action is in src/routes/contact-us/+page.server.js; it validates name/email/message and uses Database.append to store a document in CouchDB
 - Database.ts implements simple basic-auth GET/POST to CouchDB at leboeuflasing.ddns.net:5984
+- Public email signup lives at src/routes/email-signup/+page.svelte and posts to src/routes/email-signup/+page.server.ts
+- Email signup records are written to the CouchDB email table with fields like name, email, major, source, and createdAt
+- Public signup availability is controlled by keys/emailSignup with an enabled boolean
+- The signup form major dropdown reads from members/_design/stats/_view/major_options?group=true and expects rows whose key is the display major string and whose value is an aggregate count
 - Notes:
   - This path is currently hard-coded; consider moving to config/env
   - Data is not sensitive; do not store PII; spam protection is minimal

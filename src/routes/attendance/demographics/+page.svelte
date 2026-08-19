@@ -3,6 +3,7 @@
 	export let data: {
 		props: {
 			zip: string;
+			majorOptions: string[];
 			demographics: {
 				email: string;
 				yearsOnTeam: string | number;
@@ -14,12 +15,15 @@
 		};
 	};
 
-	const { zip, demographics } = data.props;
+	const { zip, demographics, majorOptions } = data.props;
+	const initialMajor = demographics.major ?? '';
+	const hasListedMajor = majorOptions.includes(initialMajor);
 
 	let email = demographics.email ?? '';
 	let yearsOnTeam: string | number = demographics.yearsOnTeam ?? '';
 	let gender = demographics.gender ?? '';
-	let major = demographics.major ?? '';
+	let major = initialMajor ? (hasListedMajor ? initialMajor : '__custom__') : '';
+	let customMajor = initialMajor && !hasListedMajor ? initialMajor : '';
 	let ethnicity = demographics.ethnicity ?? '';
 	let isHispanic = demographics.isHispanic ?? '';
 </script>
@@ -71,15 +75,27 @@
 
 		<div class="field">
 			<label for="major">Major</label>
-			<input
-				id="major"
-				name="major"
-				type="text"
-				placeholder="e.g. Mechanical Engineering"
-				autocomplete="off"
-				bind:value={major}
-			/>
+			<select id="major" name="major" bind:value={major}>
+				<option value="">Select a major (optional)</option>
+				{#each majorOptions as option}
+					<option value={option}>{option}</option>
+				{/each}
+				<option value="__custom__">Not listed</option>
+			</select>
 			<small class="hint">Only used for anonymous University demographics reporting.</small>
+		</div>
+
+		<div class="field">
+			<label for="customMajor">Custom major</label>
+			<input
+				id="customMajor"
+				name="customMajor"
+				type="text"
+				placeholder="Use this if your major is not in the list"
+				autocomplete="off"
+				bind:value={customMajor}
+			/>
+			<small class="hint">If you type here, it overrides the dropdown choice.</small>
 		</div>
 
 		<div class="field">
@@ -111,19 +127,6 @@
 </form>
 
 <style>
-	.text-column {
-		max-width: 900px;
-		margin: 0 auto;
-		padding: 1rem;
-	}
-	.breadcrumbs {
-		font-size: 0.9rem;
-		margin-bottom: 0.5rem;
-	}
-	.breadcrumbs a {
-		text-decoration: none;
-		color: inherit;
-	}
 	h1 {
 		margin: 0.25rem 0 0.5rem;
 	}

@@ -15,6 +15,7 @@ Navigation model
 
 - Header and Footer derive their links from src/components/Sitemap.ts
 - To add a new top-level or nested route to navigation, add entries in Sitemap.ts and create the corresponding route folder
+- The public Email Signup page is a top-level route at src/routes/email-signup and is linked through Sitemap.ts
 
 Shared components
 
@@ -24,6 +25,7 @@ Shared components
 - MarkdownParser.svelte (+ markDown.css) – for rendering markdown content blocks
 - ExpressMap.svelte – Google Maps embed used on Events page
 - AttendanceViewNav.svelte – attendance UI (if/when used by attendance routes)
+- AttendanceViewNav.svelte now includes the Email List admin route under src/routes/attendance/view/email-list
 
 Images
 

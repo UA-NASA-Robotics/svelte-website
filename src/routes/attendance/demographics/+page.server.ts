@@ -1,6 +1,7 @@
 import type { Cookies } from '@sveltejs/kit';
 import { fail, redirect } from '@sveltejs/kit';
 import { Database } from '../../../components/Database';
+import { loadMajorOptions, normalizeMajor } from '$lib/server/emailSignup';
 
 export async function load({ cookies, url }: { cookies: Cookies; url: URL }) {
     // Auth check
@@ -17,7 +18,7 @@ export async function load({ cookies, url }: { cookies: Cookies; url: URL }) {
 
     // Pull existing member and demographics
     const db = new Database('leboeuflasing.com:5984', 'contact', 'lunaboticswebsitecontact');
-    const member = await db.read('members', zip);
+    const [member, majorOptions] = await Promise.all([db.read('members', zip), loadMajorOptions()]);
 
     let demographics = {
         email: '',
@@ -45,7 +46,8 @@ export async function load({ cookies, url }: { cookies: Cookies; url: URL }) {
         props: {
             authenticated: true,
             zip,
-            demographics
+            demographics,
+            majorOptions
         }
     };
 }
@@ -63,7 +65,10 @@ export const actions = {
         let email = (form.get('email') as string | null)?.trim() || '';
         let yearsRaw = (form.get('yearsOnTeam') as string | null)?.trim() || '';
         let gender = (form.get('gender') as string | null)?.trim() || '';
-        let major = (form.get('major') as string | null)?.trim() || '';
+        let major = normalizeMajor(
+            (form.get('major') as string | null) ?? '',
+            (form.get('customMajor') as string | null) ?? ''
+        );
         let ethnicity = (form.get('ethnicity') as string | null)?.trim() || '';
         let isHispanic = (form.get('isHispanic') as string | null)?.trim() || '';
 
