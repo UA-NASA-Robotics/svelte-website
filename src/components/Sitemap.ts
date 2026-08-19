@@ -102,6 +102,14 @@ const routes: HeaderRoute[] = [
 		footerHide: false
 	},
 	{
+		name: 'Email Signup',
+		route: '/email-signup',
+		imgSrc: '',
+		headerLevel: 0,
+		headerHide: false,
+		footerHide: false
+	},
+	{
 		name: 'Documents',
 		route: '/documents',
 		imgSrc: '',
