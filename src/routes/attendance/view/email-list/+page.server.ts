@@ -1,11 +1,16 @@
 import { fail, redirect } from '@sveltejs/kit';
 import type { Actions, PageServerLoad } from './$types';
 import {
+	archiveEmailSignupRecords,
 	createClubDatabase,
+	deleteEmailArchive,
+	deleteEmailSignupRecords,
 	formatMailingListForOutlook,
+	loadEmailArchives,
 	loadEmailSignupRecords,
 	parseBulkEmailInput,
 	readEmailSignupStatus,
+	restoreEmailArchive,
 	updateEmailSignupStatus
 } from '$lib/server/emailSignup';
 
@@ -18,13 +23,18 @@ function ensureAttendanceAuth(attendanceAuth: string | undefined) {
 export const load: PageServerLoad = async ({ cookies }) => {
 	ensureAttendanceAuth(cookies.get('attendance_auth'));
 
-	const [status, records] = await Promise.all([readEmailSignupStatus(), loadEmailSignupRecords()]);
+	const [status, records, archives] = await Promise.all([
+		readEmailSignupStatus(),
+		loadEmailSignupRecords(),
+		loadEmailArchives()
+	]);
 
 	return {
 		props: {
 			enabled: status.enabled,
 			records,
-			copyAllText: formatMailingListForOutlook(records)
+			copyAllText: formatMailingListForOutlook(records),
+			archives
 		}
 	};
 };
@@ -71,6 +81,80 @@ export const actions: Actions = {
 		return {
 			success: true,
 			message: 'Email record removed.'
+		};
+	},
+
+	archive: async ({ cookies }) => {
+		ensureAttendanceAuth(cookies.get('attendance_auth'));
+
+		const records = await loadEmailSignupRecords();
+		if (!records.length) {
+			return fail(400, {
+				error: 'There are no active email records to archive.'
+			});
+		}
+
+		const archiveId = await archiveEmailSignupRecords(records);
+		if (!archiveId) {
+			return fail(500, {
+				error: 'Unable to create the email archive. Active records were not changed.'
+			});
+		}
+
+		const deletedCount = await deleteEmailSignupRecords(records);
+		if (deletedCount !== records.length) {
+			return fail(500, {
+				error: `Archive ${archiveId} was created, but only ${deletedCount} of ${records.length} active records were removed.`
+			});
+		}
+
+		return {
+			success: true,
+		message: `Archived ${records.length} email${records.length === 1 ? '' : 's'} and cleared the active list.`
+		};
+	},
+
+	delete_archive: async ({ request, cookies }) => {
+		ensureAttendanceAuth(cookies.get('attendance_auth'));
+
+		const formData = await request.formData();
+		const id = (formData.get('id') ?? '').toString().trim();
+		if (!id || id.startsWith('_design')) {
+			return fail(400, { error: 'Missing archive id.' });
+		}
+
+		const result = await deleteEmailArchive(id);
+		if (!result || !('ok' in result) || !result.ok) {
+			return fail(500, { error: 'Unable to delete this email archive.' });
+		}
+
+		return { success: true, message: 'Email archive deleted.' };
+	},
+
+	restore_archive: async ({ request, cookies }) => {
+		ensureAttendanceAuth(cookies.get('attendance_auth'));
+
+		const formData = await request.formData();
+		const id = (formData.get('id') ?? '').toString().trim();
+		if (!id || id.startsWith('_design')) {
+			return fail(400, { error: 'Missing archive id.' });
+		}
+
+		const archive = (await loadEmailArchives()).find((entry) => entry.id === id);
+		if (!archive) {
+			return fail(404, { error: 'Email archive not found.' });
+		}
+
+		const restoredCount = await restoreEmailArchive(archive);
+		if (restoredCount !== archive.records.length) {
+			return fail(500, {
+				error: `Restored ${restoredCount} of ${archive.records.length} records from the archive.`
+			});
+		}
+
+		return {
+			success: true,
+		message: `Copied ${restoredCount} email${restoredCount === 1 ? '' : 's'} back to the active list.`
 		};
 	},
 

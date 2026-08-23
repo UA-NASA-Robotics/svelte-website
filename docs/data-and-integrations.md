@@ -15,6 +15,10 @@ Contact form and CouchDB
 - Email signup records are written to the CouchDB email table with fields like name, email, major, source, and createdAt
 - Public signup availability is controlled by keys/emailSignup with an enabled boolean
 - The signup form major dropdown reads from members/_design/stats/_view/major_options?group=true and expects rows whose key is the display major string and whose value is an aggregate count
+- The authenticated email management page moves active records into the CouchDB `email_archive` database. Each archive operation creates one document with `archivedAt`, `recordCount`, and a `records` array containing the signup fields `name`, `email`, `major`, `source`, and `createdAt`.
+- Archiving writes the consolidated archive document before deleting the source records from `email`. The page reports incomplete cleanup if individual deletes fail.
+- An archive can be viewed, copied as an Outlook mailing list, deleted, or restored. Restoration appends fresh documents to `email`, keeps existing active records, and intentionally allows duplicates.
+- Archive management uses `_all_docs?include_docs=true`; no CouchDB design document or view is required. This is appropriate while the archive remains modest in size.
 - Notes:
   - This path is currently hard-coded; consider moving to config/env
   - Data is not sensitive; do not store PII; spam protection is minimal
