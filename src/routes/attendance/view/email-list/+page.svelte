@@ -15,6 +15,7 @@
 			enabled: boolean;
 			records: EmailRecord[];
 			copyAllText: string;
+			archives: EmailArchive[];
 		};
 	};
 
@@ -26,7 +27,15 @@
 		bulkValue?: string;
 	} | null = null;
 
-	const { enabled, records, copyAllText } = data.props;
+	type EmailArchive = {
+		id: string;
+		archivedAt: string;
+		recordCount: number;
+		records: EmailRecord[];
+		copyText: string;
+	};
+
+	const { enabled, records, copyAllText, archives } = data.props;
 	let copyFeedback = '';
 	let bulkValue = form?.bulkValue ?? '';
 
@@ -50,6 +59,36 @@
 
 	function confirmDelete(email: string) {
 		return window.confirm(`Remove ${email} from the mailing list?`);
+	}
+
+	function confirmArchive() {
+		return window.confirm(
+			`Archive all ${records.length} active email records and clear the active list?`
+		);
+	}
+
+	function confirmRestore(archive: EmailArchive) {
+		return window.confirm(
+			`Copy ${archive.recordCount} email records from this archive into the active list? Existing active records will remain.`
+		);
+	}
+
+	function confirmDeleteArchive(archive: EmailArchive) {
+		return window.confirm(
+			`Permanently delete the archive from ${formatCreatedAt(archive.archivedAt)}?`
+		);
+	}
+
+	async function copyArchive(archive: EmailArchive) {
+		if (!archive.copyText) return;
+
+		try {
+			await navigator.clipboard.writeText(archive.copyText);
+			copyFeedback = `Copied ${archive.recordCount} archived email${archive.recordCount === 1 ? '' : 's'} to the clipboard.`;
+		} catch {
+			copyFeedback =
+				'Clipboard access failed. Expand the archive and select the export text manually.';
+		}
 	}
 </script>
 
@@ -112,6 +151,98 @@
 		<textarea readonly rows="4">{copyAllText}</textarea>
 		{#if copyFeedback}
 			<p class="copy-feedback">{copyFeedback}</p>
+		{/if}
+	</section>
+
+	<section class="card archive-card">
+		<div class="section-head">
+			<div>
+				<h2>Email Archives</h2>
+				<p class="muted">
+					Archive snapshots can be viewed, copied, deleted, or added back to the active list.
+				</p>
+			</div>
+			<form
+				method="POST"
+				action="?/archive"
+				on:submit={(event) => {
+					if (!confirmArchive()) event.preventDefault();
+				}}
+			>
+				<button type="submit" class="primary" disabled={!records.length}>Archive Active List</button
+				>
+			</form>
+		</div>
+
+		{#if archives.length}
+			<div class="archive-list">
+				{#each archives as archive}
+					<details class="archive-entry">
+						<summary>
+							<span>
+								<strong>{formatCreatedAt(archive.archivedAt)}</strong>
+								<span class="muted"
+									>{archive.recordCount} record{archive.recordCount === 1 ? '' : 's'}</span
+								>
+							</span>
+						</summary>
+						<div class="archive-content">
+							<div class="archive-actions">
+								<button
+									type="button"
+									class="primary"
+									on:click={() => copyArchive(archive)}
+									disabled={!archive.copyText}
+								>
+									Copy All Emails
+								</button>
+								<form
+									method="POST"
+									action="?/restore_archive"
+									on:submit={(event) => {
+										if (!confirmRestore(archive)) event.preventDefault();
+									}}
+								>
+									<input type="hidden" name="id" value={archive.id} />
+									<button type="submit" class="primary">Copy to Active List</button>
+								</form>
+								<form
+									method="POST"
+									action="?/delete_archive"
+									on:submit={(event) => {
+										if (!confirmDeleteArchive(archive)) event.preventDefault();
+									}}
+								>
+									<input type="hidden" name="id" value={archive.id} />
+									<button type="submit" class="danger">Delete Archive</button>
+								</form>
+							</div>
+							<textarea readonly rows="3">{archive.copyText}</textarea>
+							<div class="table-wrap">
+								<table>
+									<thead>
+										<tr><th>Name</th><th>Email</th><th>Major</th><th>Source</th><th>Created</th></tr
+										>
+									</thead>
+									<tbody>
+										{#each archive.records as record}
+											<tr>
+												<td>{record.name || '—'}</td>
+												<td><a href={`mailto:${record.email}`}>{record.email}</a></td>
+												<td>{record.major || '—'}</td>
+												<td>{record.source}</td>
+												<td>{formatCreatedAt(record.createdAt)}</td>
+											</tr>
+										{/each}
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</details>
+				{/each}
+			</div>
+		{:else}
+			<p class="muted">No email archives have been created yet.</p>
 		{/if}
 	</section>
 
@@ -291,6 +422,38 @@
 		margin-bottom: 0.9rem;
 	}
 
+	.archive-list {
+		display: grid;
+		gap: 0.75rem;
+	}
+
+	.archive-entry {
+		border: 1px solid var(--light-bg-secondary);
+		border-radius: 12px;
+		padding: 0.8rem 1rem;
+	}
+
+	.archive-entry summary {
+		cursor: pointer;
+	}
+
+	.archive-entry summary > span {
+		display: flex;
+		justify-content: space-between;
+		gap: 1rem;
+	}
+
+	.archive-content {
+		padding-top: 1rem;
+	}
+
+	.archive-actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.6rem;
+		margin-bottom: 0.8rem;
+	}
+
 	textarea {
 		width: 100%;
 		box-sizing: border-box;
@@ -412,6 +575,10 @@
 		border-color: var(--dark-bg-secondary);
 	}
 
+	:global(body.dark) .archive-entry {
+		border-color: var(--dark-bg-secondary);
+	}
+
 	:global(body.dark) textarea {
 		background: var(--dark-bg-primary);
 		border-color: var(--dark-bg-secondary);
@@ -424,6 +591,18 @@
 
 	:global(body.dark) td {
 		border-bottom-color: #2e3a59;
+	}
+
+	@media (max-width: 700px) {
+		.overview-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.section-head,
+		.archive-entry summary > span {
+			align-items: flex-start;
+			flex-direction: column;
+		}
 	}
 
 	:global(body.dark) .notice-success {

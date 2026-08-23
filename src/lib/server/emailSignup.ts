@@ -6,6 +6,7 @@ const DB_PASSWORD = 'lunaboticswebsitecontact';
 
 export const EMAIL_SIGNUP_DOC_ID = 'emailSignup';
 export const EMAIL_SIGNUP_MAJOR_VIEW = '_design/stats/_view/major_options?group=true';
+export const EMAIL_ARCHIVE_TABLE = 'email_archive';
 
 const IGNORED_MAJORS = new Set(['prefer not to say', 'unknown', 'na', 'n/a']);
 
@@ -26,8 +27,16 @@ type EmailSignupDoc = {
 	createdAt?: string;
 };
 
+type EmailArchiveDoc = {
+	_id?: string;
+	_rev?: string;
+	archivedAt?: string;
+	recordCount?: number;
+	records?: EmailSignupDoc[];
+};
+
 type AllDocsResult = {
-	rows?: Array<{ id: string; doc?: EmailSignupDoc }>;
+	rows?: Array<{ id: string; doc?: EmailSignupDoc | EmailArchiveDoc }>;
 } | null;
 
 type ViewResult = {
@@ -41,6 +50,14 @@ export type EmailSignupRecord = {
 	major: string;
 	source: string;
 	createdAt: string;
+};
+
+export type EmailArchiveRecord = {
+	id: string;
+	archivedAt: string;
+	recordCount: number;
+	records: EmailSignupRecord[];
+	copyText: string;
 };
 
 export function createClubDatabase() {
@@ -142,7 +159,7 @@ export async function loadEmailSignupRecords() {
 	return (result?.rows ?? [])
 		.filter((row) => row.id && !row.id.startsWith('_design'))
 		.map((row) => {
-			const doc = row.doc ?? {};
+			const doc = (row.doc ?? {}) as EmailSignupDoc;
 			return {
 				id: row.id,
 				name: (doc.name ?? '').trim(),
@@ -159,3 +176,81 @@ export async function loadEmailSignupRecords() {
 			return leftName.localeCompare(rightName, undefined, { sensitivity: 'base' });
 		});
 }
+
+	function normalizeEmailSignupRecord(doc: EmailSignupDoc, id: string): EmailSignupRecord {
+		return {
+			id,
+			name: (doc.name ?? '').trim(),
+			email: normalizeEmail(doc.email ?? ''),
+			major: (doc.major ?? '').trim(),
+			source: (doc.source ?? 'public').trim() || 'public',
+			createdAt: (doc.createdAt ?? '').trim()
+		};
+	}
+
+	function sortEmailSignupRecords(records: EmailSignupRecord[]) {
+		return records.sort((left, right) => {
+			const leftName = left.name || left.email;
+			const rightName = right.name || right.email;
+			return leftName.localeCompare(rightName, undefined, { sensitivity: 'base' });
+		});
+	}
+
+	export async function loadEmailArchives() {
+		const result = (await createClubDatabase().read(
+			EMAIL_ARCHIVE_TABLE,
+			'_all_docs?include_docs=true'
+		)) as AllDocsResult;
+
+		return (result?.rows ?? [])
+			.filter((row) => row.id && !row.id.startsWith('_design'))
+			.map((row) => {
+				const doc = (row.doc ?? {}) as EmailArchiveDoc;
+				const records = sortEmailSignupRecords(
+					(doc.records ?? [])
+						.map((record) => normalizeEmailSignupRecord(record, ''))
+						.filter((record) => record.email)
+				);
+
+				return {
+					id: row.id,
+					archivedAt: (doc.archivedAt ?? '').trim(),
+					recordCount: records.length,
+					records,
+					copyText: formatMailingListForOutlook(records)
+				};
+			})
+			.sort((left, right) => right.archivedAt.localeCompare(left.archivedAt));
+	}
+
+	export async function archiveEmailSignupRecords(records: EmailSignupRecord[]) {
+		const result = await createClubDatabase().append(EMAIL_ARCHIVE_TABLE, {
+			archivedAt: new Date().toISOString(),
+			recordCount: records.length,
+			records: records.map(({ id, ...record }) => record)
+		});
+
+		if (!result || !('ok' in result) || !result.ok || typeof result.id !== 'string') {
+			return null;
+		}
+
+		return result.id;
+	}
+
+	export async function deleteEmailSignupRecords(records: EmailSignupRecord[]) {
+		const results = await Promise.all(
+			records.map((record) => createClubDatabase().delete('email', record.id))
+		);
+		return results.filter((result) => result && 'ok' in result && result.ok).length;
+	}
+
+	export async function deleteEmailArchive(id: string) {
+		return createClubDatabase().delete(EMAIL_ARCHIVE_TABLE, id);
+	}
+
+	export async function restoreEmailArchive(archive: EmailArchiveRecord) {
+		const results = await Promise.all(
+			archive.records.map(({ id, ...record }) => createClubDatabase().append('email', record))
+		);
+		return results.filter((result) => result && 'ok' in result && result.ok).length;
+	}
